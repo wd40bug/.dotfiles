@@ -1,0 +1,17 @@
+theme = "dark_plus"
+
+[keys.normal]
+"g" = {"a" = "code_action"}
+
+[editor.lsp]
+display-inlay-hints = true
+display-messages = true
+auto-signature-help = false
+display-signature-help-docs = false
+
+[editor.indent-guides]
+render = true
+skip-levels = 1
+
+[editor.cursor-shape]
+insert = "bar"

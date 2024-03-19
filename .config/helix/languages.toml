@@ -1,0 +1,17 @@
+[[language]]
+name = "rust"
+auto-format = true
+formatter = { command = "rustfmt" }
+# checkOnSave = { command = "clippy" }
+indent = { tab-width = 2, unit = "t" }
+# indent = { tab-width = 2, unit = "\t" }
+
+[language-server.rust-analyzer.config]
+check.command = "clippy"
+
+[[language]]
+name = "python"
+
+[language-server.pylsp.config.pylsp.plugins]
+ruff = {enabled = false}
+rope_completion = {enabled = true}
