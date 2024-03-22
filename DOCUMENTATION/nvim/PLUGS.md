@@ -14,7 +14,7 @@ use ys to add surroundings
 use cs to change surroundings
 
 ## Telescope
-Use <leader>(space) + keys to do actions
+Use t + keys to do actions
 Use :Telescope builtin to look at built in commands
 Within telescope window, press ? for a list of commands
 | Key   | Effect                |

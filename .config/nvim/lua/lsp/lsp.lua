@@ -1,10 +1,16 @@
 require('mason').setup()
-require('mason-lspconfig').setup()
+require("mason-lspconfig").setup {
+  ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "pyright" }, --TODO: Config for clangd and pyright
+}
+
 
 lspconfig = require("lspconfig")
 lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- LSP setups
 require("lsp.rust")
 require("lsp.lua")
+require("lsp.python")
+require("lsp.c")
 
 require('luasnip.loaders.from_vscode').lazy_load()
 
@@ -90,7 +96,8 @@ cmp.setup({
     --Completion selection
     ['<C-y>'] = cmp.mapping.confirm({select = true}),
     ['<CR>'] = cmp.mapping.confirm({select = false}),
-
+    --Functions for luasnip snippets
+    --
     ['<C-f>'] = cmp.mapping(
       function(fallback)
         if luasnip.jumpable(1) then

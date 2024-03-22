@@ -9,16 +9,17 @@ vim.keymap.set({'n', 'x'}, 'X', '"_d') -- use X to delete like with d without pu
 -- vim.keymap.set('n', '<leader>a', ':keepjumps normal! ggVG<cr>')
 
 -- Telescope
-vim.keymap.set('n', '<leader><space>', '<cmd>Telescope buffers<cr>')
-vim.keymap.set('n', '<leader>?', '<cmd>Telescope oldfiles<cr>')
-vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
-vim.keymap.set('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
-vim.keymap.set('n', '<leader>d', '<cmd>Telescope diagnostics<cr>')
-vim.keymap.set('n', '<leader>fs', '<cmd>Telescope current_buffer_fuzzy_find<cr>')
-vim.keymap.set('n', '<leader>c', '<cmd>Telescope commands<cr>')
-vim.keymap.set('n', '<leader>h', '<cmd>Telescope help_tags<cr>')
-vim.keymap.set('n', '<leader>s', '<cmd>Telescope lsp_document_symbols<cr>')
-vim.keymap.set('n', '<leader>S', '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>')
+local t_lead = 't' -- Telescope leader
+vim.keymap.set('n', t_lead .. '<space>', '<cmd>Telescope buffers<cr>')
+vim.keymap.set('n', t_lead .. '?', '<cmd>Telescope oldfiles<cr>')
+vim.keymap.set('n', t_lead .. 'ff', '<cmd>Telescope find_files<cr>')
+vim.keymap.set('n', t_lead .. 'fg', '<cmd>Telescope live_grep<cr>')
+vim.keymap.set('n', t_lead .. 'd', '<cmd>Telescope diagnostics<cr>')
+vim.keymap.set('n', t_lead .. 'fs', '<cmd>Telescope current_buffer_fuzzy_find<cr>')
+vim.keymap.set('n', t_lead .. 'c', '<cmd>Telescope commands<cr>')
+vim.keymap.set('n', t_lead .. 'h', '<cmd>Telescope help_tags<cr>')
+vim.keymap.set('n', t_lead .. 's', '<cmd>Telescope lsp_document_symbols<cr>')
+vim.keymap.set('n', t_lead .. 'S', '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>')
 
 
 
