@@ -12,6 +12,7 @@ use 's' and a surround character to select surroundings
 ds' to delete surrounding ', etc.
 use ys to add surroundings
 use cs to change surroundings
+use 'S' when in visual mode to add a surrounding
 
 ## Telescope
 Use t + keys to do actions

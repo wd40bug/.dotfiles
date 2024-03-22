@@ -1,25 +1,26 @@
+-- Mason.nvim
 require('mason').setup()
-require("mason-lspconfig").setup {
-  ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "pyright" }, --TODO: Config for clangd and pyright
+require('mason-lspconfig').setup {
+  ensure_installed = { 'lua_ls', 'rust_analyzer', 'clangd', 'pyright' }, --TODO: Config for clangd and pyright
 }
 
+-- Config variables
+Lspconfig = require('lspconfig')
+Lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-lspconfig = require("lspconfig")
-lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- LSP setups
-require("lsp.rust")
-require("lsp.lua")
-require("lsp.python")
-require("lsp.c")
+require('lsp.rust')
+require('lsp.lua')
+require('lsp.python')
+require('lsp.c')
 
 require('luasnip.loaders.from_vscode').lazy_load()
 
-vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
+vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
 local cmp = require('cmp')
 local luasnip = require('luasnip')
-
-local select_opts = {behavior = cmp.SelectBehavior.Select}
+local select_opts = { behavior = cmp.SelectBehavior.Select }
 
 local sign = function(opts)
   vim.fn.sign_define(opts.name, {
@@ -29,10 +30,10 @@ local sign = function(opts)
   })
 end
 
-sign({name = 'DiagnosticSignError', text = '✘'})
-sign({name = 'DiagnosticSignWarn', text = '▲'})
-sign({name = 'DiagnosticSignHint', text = '⚑'})
-sign({name = 'DiagnosticSignInfo', text = '»'})
+sign({ name = 'DiagnosticSignError', text = '✘' })
+sign({ name = 'DiagnosticSignWarn', text = '▲' })
+sign({ name = 'DiagnosticSignHint', text = '⚑' })
+sign({ name = 'DiagnosticSignInfo', text = '»' })
 
 vim.diagnostic.config({
   virtual_text = false,
@@ -45,12 +46,12 @@ vim.diagnostic.config({
 
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
   vim.lsp.handlers.hover,
-  {border = 'rounded'}
+  { border = 'rounded' }
 )
 
 vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
   vim.lsp.handlers.signature_help,
-  {border = 'rounded'}
+  { border = 'rounded' }
 )
 
 cmp.setup({
@@ -60,16 +61,16 @@ cmp.setup({
     end
   },
   sources = {
-    {name = 'path'},
-    {name = 'nvim_lsp', keyword_length = 1},
-    {name = 'buffer', keyword_length = 3},
-    {name = 'luasnip', keyword_length = 2},
+    { name = 'path' },
+    { name = 'nvim_lsp', keyword_length = 1 },
+    { name = 'buffer',   keyword_length = 3 },
+    { name = 'luasnip',  keyword_length = 2 },
   },
   window = {
     documentation = cmp.config.window.bordered()
   },
   formatting = {
-    fields = {'menu', 'abbr', 'kind'},
+    fields = { 'menu', 'abbr', 'kind' },
     format = function(entry, item)
       local menu_icon = {
         nvim_lsp = 'λ',
@@ -94,8 +95,8 @@ cmp.setup({
     -- Abort completion
     ['<C-e>'] = cmp.mapping.abort(),
     --Completion selection
-    ['<C-y>'] = cmp.mapping.confirm({select = true}),
-    ['<CR>'] = cmp.mapping.confirm({select = false}),
+    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    ['<CR>'] = cmp.mapping.confirm({ select = false }),
     --Functions for luasnip snippets
     --
     ['<C-f>'] = cmp.mapping(
@@ -106,8 +107,8 @@ cmp.setup({
           fallback()
         end
       end,
-      {'i', 's'}),
-    
+      { 'i', 's' }),
+
     ['<C-b>'] = cmp.mapping(
       function(fallback)
         if luasnip.jumpable(-1) then
@@ -116,7 +117,7 @@ cmp.setup({
           fallback()
         end
       end,
-      {'i', 's'}),
+      { 'i', 's' }),
 
     ['<Tab>'] = cmp.mapping(
       function(fallback)
@@ -124,14 +125,12 @@ cmp.setup({
 
         if cmp.visible() then
           cmp.select_next_item(select_opts)
-        elseif col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
-          fallback()
         else
-          cmp.complete()
+          fallback()
         end
-      end, 
-      {'i', 's'}),
-    
+      end,
+      { 'i', 's' }),
+
     ['<S-Tab>'] = cmp.mapping(
       function(fallback)
         if cmp.visible() then
@@ -140,15 +139,15 @@ cmp.setup({
           fallback()
         end
       end,
-      {'i', 's'}),
+      { 'i', 's' }),
   }
 })
 
-  vim.api.nvim_create_autocmd('LspAttach', {
-    desc = 'LSP actions',
+vim.api.nvim_create_autocmd('LspAttach', {
+  desc = 'LSP actions',
   callback = function()
     local bufmap = function(mode, lhs, rhs)
-      local opts = {buffer = true}
+      local opts = { buffer = true }
       vim.keymap.set(mode, lhs, rhs, opts)
     end
 
@@ -167,7 +166,7 @@ cmp.setup({
     -- Jumps to the definition of the type symbol
     bufmap('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
 
-    -- Lists all the references 
+    -- Lists all the references
     bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
 
     -- Displays a function's signature information
@@ -180,7 +179,7 @@ cmp.setup({
     bufmap('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<cr>')
 
     -- Show diagnostics in a floating window
-    bufmap('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
+    bufmap('n', '<leader>l', '<cmd>lua vim.diagnostic.open_float()<cr>')
 
     -- Move to the previous diagnostic
     bufmap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')

@@ -1,3 +1,3 @@
-lspconfig.rust_analyzer.setup({
-  capabilities = lsp_capabilities
+Lspconfig.rust_analyzer.setup({
+  capabilities = Lsp_capabilities,
 }) 

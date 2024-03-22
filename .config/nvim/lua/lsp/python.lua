@@ -1,3 +1,3 @@
-lspconfig.pyright.setup({
-  capabilities = lsp_capabilities, 
+Lspconfig.pyright.setup({
+  capabilities = Lsp_capabilities,
 })

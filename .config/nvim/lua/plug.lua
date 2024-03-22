@@ -31,36 +31,43 @@ end
 lazy.path = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 lazy.opts = {}
 
-lazy.setup({ 
-  {'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' }},
-  {'tpope/vim-fugitive'},
-  {'tpope/vim-repeat'},
-  {'navarasu/onedark.nvim'},
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
-  { "numToStr/Comment.nvim" },
-  { "tpope/vim-surround" },
-  {'akinsho/toggleterm.nvim'},
-  {'lewis6991/gitsigns.nvim'},
-  {'nvim-lua/plenary.nvim'},
-  {'jiangmiao/auto-pairs'},
+lazy.setup({
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' }
+  },
+  { 'tpope/vim-fugitive' },
+  { 'tpope/vim-repeat' },
+  { 'navarasu/onedark.nvim' },
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    main = 'ibl',
+    opts = {}
+  },
+  { 'numToStr/Comment.nvim' },
+  { 'tpope/vim-surround' },
+  { 'akinsho/toggleterm.nvim' },
+  { 'lewis6991/gitsigns.nvim' },
+  { 'nvim-lua/plenary.nvim' },
+  { 'jiangmiao/auto-pairs' },
   -- Treesitter
-  {'nvim-treesitter/nvim-treesitter'}, -- Parses code as AST
-  {'nvim-treesitter/nvim-treesitter-textobjects'},
-  {'RRethy/nvim-treesitter-textsubjects'},
-  {'wellle/targets.vim'},
+  { 'nvim-treesitter/nvim-treesitter' }, -- Parses code as AST
+  { 'nvim-treesitter/nvim-treesitter-textobjects' },
+  { 'RRethy/nvim-treesitter-textsubjects' },
+  { 'wellle/targets.vim' },
   -- Telescope
-  {'nvim-telescope/telescope.nvim'},
+  { 'nvim-telescope/telescope.nvim' },
   -- LSP
-  {'neovim/nvim-lspconfig'},
-  {'hrsh7th/nvim-cmp'},
-  {'hrsh7th/cmp-buffer'},
-  {'hrsh7th/cmp-path'},
-  {'saadparwaiz1/cmp_luasnip'},
-  {'hrsh7th/cmp-nvim-lsp'},
-  {'L3MON4D3/LuaSnip'},
-  {'rafamadriz/friendly-snippets'},
-  {'williamboman/mason.nvim'},
-  {'williamboman/mason-lspconfig.nvim'},
+  { 'neovim/nvim-lspconfig' },
+  { 'hrsh7th/nvim-cmp' },
+  { 'hrsh7th/cmp-buffer' },
+  { 'hrsh7th/cmp-path' },
+  { 'saadparwaiz1/cmp_luasnip' },
+  { 'hrsh7th/cmp-nvim-lsp' },
+  { 'L3MON4D3/LuaSnip' },
+  { 'rafamadriz/friendly-snippets' },
+  { 'williamboman/mason.nvim' },
+  { 'williamboman/mason-lspconfig.nvim' },
 })
 
 -- require('vim-fugitive').setup {}
@@ -96,10 +103,10 @@ require('toggleterm').setup({
 
 require('gitsigns').setup({
   signs = {
-    add = {text = '▎'},
-    change = {text = '▎'},
-    delete = {text = '➤'},
-    topdelete = {text = '➤'},
-    changedelete = {text = '➤'},
+    add = { text = '▎' },
+    change = { text = '▎' },
+    delete = { text = '➤' },
+    topdelete = { text = '➤' },
+    changedelete = { text = '➤' },
   }
 })

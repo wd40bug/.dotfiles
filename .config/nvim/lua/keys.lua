@@ -1,9 +1,9 @@
 -- Copy and paste from clipboard
-vim.keymap.set({'n', 'x'}, '<leader>y', '"+y')
-vim.keymap.set({'n', 'x'}, '<leader>p', '"+p')
+vim.keymap.set({ 'n', 'x' }, '<leader>y', '"+y')
+vim.keymap.set({ 'n', 'x' }, '<leader>p', '"+p')
 -- Delete without register
-vim.keymap.set({'n', 'x'}, 'x', '"_x') -- use x to delete character without putting it into register
-vim.keymap.set({'n', 'x'}, 'X', '"_d') -- use X to delete like with d without putting it into register 
+vim.keymap.set({ 'n', 'x' }, 'x', '"_x') -- use x to delete character without putting it into register
+vim.keymap.set({ 'n', 'x' }, 'X', '"_d') -- use X to delete like with d without putting it into register
 
 -- Select all text in current file
 -- vim.keymap.set('n', '<leader>a', ':keepjumps normal! ggVG<cr>')
@@ -21,5 +21,5 @@ vim.keymap.set('n', t_lead .. 'h', '<cmd>Telescope help_tags<cr>')
 vim.keymap.set('n', t_lead .. 's', '<cmd>Telescope lsp_document_symbols<cr>')
 vim.keymap.set('n', t_lead .. 'S', '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>')
 
-
-
+-- Other
+vim.keymap.set('n', '<leader>f', vim.lsp.buf.format)

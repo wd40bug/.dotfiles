@@ -1,3 +1,3 @@
-lspconfig.clangd.setup({
-  capabilities = lsp_capabilities
+Lspconfig.clangd.setup({
+  capabilities = Lsp_capabilities,
 })
