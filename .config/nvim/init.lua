@@ -1,2 +1,5 @@
 require("plug")
 require("theme")
+require("opts")
+require("treesitter")
+require("keys")
