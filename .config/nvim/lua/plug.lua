@@ -42,6 +42,7 @@ lazy.setup({
   {'akinsho/toggleterm.nvim'},
   {'lewis6991/gitsigns.nvim'},
   {'nvim-lua/plenary.nvim'},
+  {'jiangmiao/auto-pairs'},
   -- Treesitter
   {'nvim-treesitter/nvim-treesitter'}, -- Parses code as AST
   {'nvim-treesitter/nvim-treesitter-textobjects'},
@@ -49,6 +50,17 @@ lazy.setup({
   {'wellle/targets.vim'},
   -- Telescope
   {'nvim-telescope/telescope.nvim'},
+  -- LSP
+  {'neovim/nvim-lspconfig'},
+  {'hrsh7th/nvim-cmp'},
+  {'hrsh7th/cmp-buffer'},
+  {'hrsh7th/cmp-path'},
+  {'saadparwaiz1/cmp_luasnip'},
+  {'hrsh7th/cmp-nvim-lsp'},
+  {'L3MON4D3/LuaSnip'},
+  {'rafamadriz/friendly-snippets'},
+  {'williamboman/mason.nvim'},
+  {'williamboman/mason-lspconfig.nvim'},
 })
 
 -- require('vim-fugitive').setup {}

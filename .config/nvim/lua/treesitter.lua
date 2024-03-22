@@ -15,7 +15,6 @@ require('nvim-treesitter.configs').setup({
       ['.'] = 'textsubjects-smart',
       [';'] = 'textsubjects-container-outer',
       ['i;'] = 'textsubjects-container-inner',
-      ['i;'] = { 'textsubjects-container-inner', desc = "Select inside containers (classes, functions, etc.)" },
     },
   },
   textobjects = {
@@ -77,6 +76,6 @@ require('nvim-treesitter.configs').setup({
   },
 })
 
-local ts_utils = require 'nvim-treesitter.ts_utils'
+ -- local ts_utils = require 'nvim-treesitter.ts_utils'
 
 

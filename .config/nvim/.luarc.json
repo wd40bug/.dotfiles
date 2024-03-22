@@ -1,0 +1,10 @@
+{
+    "diagnostics.globals": [
+        "lspconfig",
+        "lsp_capabilities",
+        "vim"
+    ],
+    "diagnostics.disable": [
+        "trailing-space"
+    ]
+}
