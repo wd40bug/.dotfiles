@@ -3,6 +3,9 @@ theme = "onelight"
 [keys.normal]
 "g" = {"a" = "code_action"}
 
+[keys.insert]
+"`" = {"`" = "normal-mode"}
+
 [editor.lsp]
 display-inlay-hints = true
 display-messages = true

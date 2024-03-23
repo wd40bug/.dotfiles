@@ -8,6 +8,7 @@ indent = { tab-width = 2, unit = "t" }
 
 [language-server.rust-analyzer.config]
 check.command = "clippy"
+discriminantHints.enable = "never"
 
 [[language]]
 name = "python"
