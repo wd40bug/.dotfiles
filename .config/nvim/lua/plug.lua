@@ -86,16 +86,7 @@ lazy.setup({
 
 -- require('vim-fugitive').setup {}
 
-require('onedark').setup {
-  style = 'darker'
-}
 
-require('lualine').setup {
-  options = {
-    theme = 'onedark'
-    -- ... your lualine config
-  }
-}
 
 require('ibl').setup({
   enabled = true,
