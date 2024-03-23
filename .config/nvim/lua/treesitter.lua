@@ -73,6 +73,7 @@ require('nvim-treesitter.configs').setup({
     'toml',
     'verilog',
     'lua',
+    'markdown',
   },
 })
 

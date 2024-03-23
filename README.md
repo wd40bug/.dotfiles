@@ -12,6 +12,8 @@
 
 [Installation Guide](https://github.com/neovim/neovim/blob/master/INSTALL.md)
 [Most Recent Version](https://github.com/neovim/neovim/releases/latest/)
+Install nightly version
+`brew install --HEAD neovim`
 
 ### Homebrew
 [Installation Guide](https://brew.sh/)

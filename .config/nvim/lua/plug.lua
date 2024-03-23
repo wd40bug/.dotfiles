@@ -57,6 +57,8 @@ lazy.setup({
   { 'wellle/targets.vim' },
   -- Telescope
   { 'nvim-telescope/telescope.nvim' },
+  -- Completion for neovim internals
+  { 'folke/neodev.nvim' },
   -- LSP
   { 'neovim/nvim-lspconfig' },
   { 'hrsh7th/nvim-cmp' },
@@ -68,6 +70,18 @@ lazy.setup({
   { 'rafamadriz/friendly-snippets' },
   { 'williamboman/mason.nvim' },
   { 'williamboman/mason-lspconfig.nvim' },
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^4', -- Recommended
+    ft = { 'rust' },
+  },
+  -- Debug
+  { 'mfussenegger/nvim-dap' },
+  {
+    'rcarriga/nvim-dap-ui',
+    dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' }
+  },
+  { 'theHamsta/nvim-dap-virtual-text' },
 })
 
 -- require('vim-fugitive').setup {}
@@ -110,3 +124,12 @@ require('gitsigns').setup({
     changedelete = { text = '➤' },
   }
 })
+
+require('neodev').setup({
+  library = { plugins = { 'nvim-dap-ui' }, types = true },
+  lspconfig = false,
+})
+
+require('dapui').setup()
+
+
