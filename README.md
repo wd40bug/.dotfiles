@@ -8,8 +8,14 @@
 `rustup component add rustfmt`
 `rustup component add clippy`
 
-### Neovim
+### Python
+Install through package manager
 
+### TheFuck
+[Installation Guide](https://github.com/nvbn/thefuck?tab=readme-ov-file#installation)
+`pip install thefuck`
+
+### Neovim
 [Installation Guide](https://github.com/neovim/neovim/blob/master/INSTALL.md)
 [Most Recent Version](https://github.com/neovim/neovim/releases/latest/)
 Install nightly version
