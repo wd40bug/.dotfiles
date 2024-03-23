@@ -1,4 +1,4 @@
-theme = "dark_plus"
+theme = "onelight"
 
 [keys.normal]
 "g" = {"a" = "code_action"}
