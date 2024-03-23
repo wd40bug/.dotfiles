@@ -4,7 +4,7 @@ require('onedark').setup {
 
 require('lualine').setup {
   options = {
-    theme = 'light'
+    theme = 'onedark'
     -- ... your lualine config
   }
 }
