@@ -6,6 +6,9 @@ theme = "onelight"
 [keys.insert]
 "`" = {"`" = "normal_mode"}
 
+[editor]
+true-color = true
+
 [editor.lsp]
 display-inlay-hints = true
 display-messages = true
