@@ -39,6 +39,11 @@ lazy.setup({
   { 'tpope/vim-fugitive' },
   { 'tpope/vim-repeat' },
   { 'navarasu/onedark.nvim' },
+  { 
+    'catppuccin/nvim',
+    name = "catppuccin",
+    priority = 1000 
+  },
   {
     'lukas-reineke/indent-blankline.nvim',
     main = 'ibl',
@@ -85,8 +90,6 @@ lazy.setup({
 })
 
 -- require('vim-fugitive').setup {}
-
-
 
 require('ibl').setup({
   enabled = true,
