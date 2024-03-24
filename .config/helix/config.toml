@@ -3,6 +3,9 @@ theme = "dark_plus"
 [keys.normal]
 "g" = {"a" = "code_action"}
 
+[editor]
+true-color = true
+
 [editor.lsp]
 display-inlay-hints = true
 display-messages = true
