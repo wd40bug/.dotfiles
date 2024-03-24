@@ -20,6 +20,7 @@ Install through package manager
 [Most Recent Version](https://github.com/neovim/neovim/releases/latest/)
 Install nightly version
 `brew install --HEAD neovim`
+If that doesn't work, just install from the website and create a symbolic link into /usr/local/bin/ or install from source
 
 ### Homebrew
 [Installation Guide](https://brew.sh/)
