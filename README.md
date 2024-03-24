@@ -71,3 +71,8 @@ cd ~/.dotfiles
 stow .
 git commit -am "Message Describing addition of file"
 `
+
+
+## Windows
+For windows, install using usual method or build from source
+Then move build into ~/AppData/Local/
