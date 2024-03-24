@@ -39,6 +39,11 @@ lazy.setup({
   { 'tpope/vim-fugitive' },
   { 'tpope/vim-repeat' },
   { 'navarasu/onedark.nvim' },
+  { 
+    'catppuccin/nvim',
+    name = "catppuccin",
+    priority = 1000 
+  },
   {
     'lukas-reineke/indent-blankline.nvim',
     main = 'ibl',
@@ -86,16 +91,6 @@ lazy.setup({
 
 -- require('vim-fugitive').setup {}
 
-require('onedark').setup {
-  style = 'darker'
-}
-
-require('lualine').setup {
-  options = {
-    theme = 'onedark'
-    -- ... your lualine config
-  }
-}
 
 require('ibl').setup({
   enabled = true,
