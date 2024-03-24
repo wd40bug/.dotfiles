@@ -1,6 +1,6 @@
-require('onedark').setup {
-  style = 'darker'
-}
+-- require('onedark').setup {
+--   style = 'darker'
+-- }
 
 require('lualine').setup {
   options = {
@@ -10,4 +10,4 @@ require('lualine').setup {
 }
 
 vim.opt.termguicolors = true
-vim.cmd.colorscheme "onedark"
+vim.cmd.colorscheme "catppuccin-latte"
