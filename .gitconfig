@@ -1,5 +1,5 @@
 [credential "https://github.com"]
-	helper = 
+	helper = !/home/linuxbrew/.linuxbrew/bin/gh auth git-credential 
 	helper = !/usr/bin/gh auth git-credential
 [user]
 	email = wd40bug@gmail.com
