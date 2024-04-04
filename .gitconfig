@@ -7,6 +7,6 @@
 [pull]
 	rebase = false
 [core]
-	editor = gedit -s
+	editor = nvim
 [format]
 	pretty = %C(auto) %h %d %s
