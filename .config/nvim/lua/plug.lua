@@ -44,6 +44,7 @@ lazy.setup({
     name = "catppuccin",
     priority = 1000 
   },
+  {"rebelot/kanagawa.nvim"},
   {
     'lukas-reineke/indent-blankline.nvim',
     main = 'ibl',

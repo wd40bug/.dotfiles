@@ -10,4 +10,4 @@ require('lualine').setup {
 }
 
 vim.opt.termguicolors = true
-vim.cmd.colorscheme "catppuccin-latte"
+vim.cmd.colorscheme "kanagawa-lotus"
