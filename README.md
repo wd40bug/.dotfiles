@@ -41,6 +41,7 @@ Install nightly version
 ```bash
 brew install --HEAD neovim
 ```
+If that doesn't work, just install from the website and create a symbolic link into /usr/local/bin/ or install from source
 
 ### Homebrew
 [Installation Guide](https://brew.sh/)
