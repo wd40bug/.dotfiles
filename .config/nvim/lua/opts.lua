@@ -5,4 +5,3 @@ vim.opt.shiftwidth = 2 -- Makes the autoindent every two spaces
 vim.opt.expandtab = true -- Tabs as spaces
 vim.opt.wrap = false -- Don't wrap long lines
 vim.g.mapleader = ' ' -- Set mapleader to space
-
