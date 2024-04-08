@@ -55,6 +55,7 @@ lazy.setup({
   { 'lewis6991/gitsigns.nvim' },
   { 'nvim-lua/plenary.nvim' },
   { 'jiangmiao/auto-pairs' },
+  { "mistricky/codesnap.nvim", build = "make" },
   -- Treesitter
   { 'nvim-treesitter/nvim-treesitter' }, -- Parses code as AST
   { 'nvim-treesitter/nvim-treesitter-textobjects' },
@@ -128,4 +129,10 @@ require('neodev').setup({
 
 require('dapui').setup()
 
-
+require("codesnap").setup({
+  save_path = "~/Coding/Snaps/",
+  has_breadcrumbs = true,
+  bg_color = "#535c68",
+  watermark = "",
+  code_font_family = "JetBrainsMono Nerd Font Mono",
+})
