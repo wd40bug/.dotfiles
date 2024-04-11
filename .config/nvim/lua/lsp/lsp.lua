@@ -13,6 +13,7 @@ require('lsp.rust')
 require('lsp.lua')
 require('lsp.python')
 require('lsp.c')
+require("lsp.powershell")
 
 require('luasnip.loaders.from_vscode').lazy_load()
 

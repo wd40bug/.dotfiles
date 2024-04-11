@@ -77,6 +77,15 @@ require('nvim-treesitter.configs').setup({
   },
 })
 
- -- local ts_utils = require 'nvim-treesitter.ts_utils'
-
+local parser_config = require 'nvim-treesitter.parsers'.get_parser_configs()
+parser_config.powershell = {
+    install_info = {
+        url = "~/Downloads/tree-sitter-powershell",
+        files = { "src/parser.c", "src/scanner.c" },                 
+        branch = "main",                            
+        generate_requires_npm = false,              
+        requires_generate_from_grammar = false,     
+    },
+    filetype = "ps1",                               
+}
 

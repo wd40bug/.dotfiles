@@ -107,7 +107,8 @@ require('Comment').setup({})
 require('toggleterm').setup({
   open_mapping = '<C-g>',
   direction = 'horizontal',
-  shade_terminals = true
+  shade_terminals = true,
+  shell = "pwsh"
 })
 
 require('gitsigns').setup({
