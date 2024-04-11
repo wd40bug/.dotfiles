@@ -1,0 +1,7 @@
+DOCUMENTATION/ -> Test/DOCUMENTATION/
+.gitconfig -> Test/.gitconfig
+Microsoft.PowerShell_profile.ps1 -> Test/Documents/PowerShell/Microsoft.PowerShell_profile.ps1
+.config/nvim/ -> Test/Local/nvim/
+.config/helix/ -> Test/Roaming/helix/
+.config/gh -> Test/Roaming/Github CLI/
+.config/rustfmt -> Test/Roaming/rustfmt/

@@ -1,0 +1,7 @@
+DOCUMENTATION/ -> ~/DOCUMENTATION/
+.gitconfig -> ~/.gitconfig
+Microsoft.PowerShell_profile.ps1 -> ~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1
+.config/nvim/ -> ~/AppData/Local/nvim/
+.config/helix/ -> ~/AppData/Roaming/helix/
+.config/gh -> ~/AppData/Roaming/Github CLI/
+.config/rustfmt -> ~/AppData/Roaming/rustfmt/
