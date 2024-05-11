@@ -3,6 +3,7 @@
 SETUVAR --export C51ASMINC:/home/wd40bug/\x2ewine/drive_c/SiLabs/MCU/INC/
 SETUVAR --export C51INC:/home/wd40bug/\x2ewine/drive_c/Keil_v5/C51/INC/
 SETUVAR --export C51LIB:/home/wd40bug/\x2ewine/drive_c/Keil_v5/C51/LIB/
+SETUVAR --export PYENV_ROOT:/home/wd40bug/\x2epyenv
 SETUVAR --export TMP:/tmp/
 SETUVAR --export --path WINEPATH:C\x1e\x5cKeil_v5\x5cC51\x5cBIN
 SETUVAR __fish_initialized:3400

@@ -9,6 +9,7 @@ if status is-interactive
   thefuck --alias | source
 
   abbr --add cl clear
+  bass source /etc/profile
+  pyenv init - | source
 end
-
 
