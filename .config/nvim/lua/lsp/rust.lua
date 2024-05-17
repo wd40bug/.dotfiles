@@ -10,7 +10,7 @@ vim.g.rustaceanvim = {
   server = {
     ---@diagnostic disable-next-line: unused-local
     on_attach = function(client, bufnr)
-      vim.lsp.inlay_hint.enable(bufnr, true)
+      vim.lsp.inlay_hint.enable(true, {bufnr = bufnr}, true)
 
       vim.keymap.set('n', '<leader>a', function()
         vim.cmd.RustLsp('codeAction')
@@ -50,3 +50,5 @@ vim.g.rustaceanvim = {
   dap = {
   },
 }
+
+vim.g.rust_recommended_style = false

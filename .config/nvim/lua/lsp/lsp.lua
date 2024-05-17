@@ -8,18 +8,12 @@ require('mason-lspconfig').setup {
 Lspconfig = require('lspconfig')
 Lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
--- LSP setups
-require('lsp.rust')
-require('lsp.lua')
-require('lsp.python')
-require('lsp.c')
-
 require('luasnip.loaders.from_vscode').lazy_load()
 
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
 local cmp = require('cmp')
-local luasnip = require('luasnip')
+Luasnip = require('luasnip')
 local select_opts = { behavior = cmp.SelectBehavior.Select }
 
 local sign = function(opts)
@@ -40,7 +34,7 @@ vim.diagnostic.config({
   severity_sort = true,
   float = {
     border = 'rounded',
-    source = 'always',
+    source = true, --always show window when diagnostics are available
   },
 })
 
@@ -57,7 +51,7 @@ vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
 cmp.setup({
   snippet = {
     expand = function(args)
-      luasnip.lsp_expand(args.body)
+      Luasnip.lsp_expand(args.body)
     end
   },
   sources = {
@@ -101,8 +95,8 @@ cmp.setup({
     --
     ['<C-f>'] = cmp.mapping(
       function(fallback)
-        if luasnip.jumpable(1) then
-          luasnip.jump(1)
+        if Luasnip.jumpable(1) then
+          Luasnip.jump(1)
         else
           fallback()
         end
@@ -111,8 +105,8 @@ cmp.setup({
 
     ['<C-b>'] = cmp.mapping(
       function(fallback)
-        if luasnip.jumpable(-1) then
-          luasnip.jump(-1)
+        if Luasnip.jumpable(-1) then
+          Luasnip.jump(-1)
         else
           fallback()
         end
@@ -146,45 +140,61 @@ cmp.setup({
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
   callback = function()
-    local bufmap = function(mode, lhs, rhs)
-      local opts = { buffer = true }
+    ---@param mode string
+    ---@param lhs string
+    ---@param rhs string | function
+    ---@param desc string
+    local bufmap = function(mode, lhs, rhs, desc)
+      local opts = { buffer = true, desc = desc }
       vim.keymap.set(mode, lhs, rhs, opts)
     end
 
     -- Displays hover information about the symbol under the cursor
-    bufmap('n', '<leader>k', '<cmd>lua vim.lsp.buf.hover()<cr>')
+    bufmap('n', '<leader>k', '<cmd>lua vim.lsp.buf.hover()<cr>', "Hover")
 
     -- Jump to the definition
-    bufmap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
+    bufmap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', "Go to definition")
 
     -- Jump to declaration
-    bufmap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
+    bufmap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', "Go to declaration")
 
     -- Lists all the implementations for the symbol under the cursor
-    bufmap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
+    bufmap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', "List implementations")
 
     -- Jumps to the definition of the type symbol
-    bufmap('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
+    bufmap('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', "Go to type definition")
 
     -- Lists all the references
-    bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
+    bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', "List references")
 
     -- Displays a function's signature information
-    bufmap('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
+    bufmap('n', '<leader>s', '<cmd>lua vim.lsp.buf.signature_help()<cr>', "Show function signature")
 
     -- Renames all references to the symbol under the cursor
-    bufmap('n', '<leader>r', '<cmd>lua vim.lsp.buf.rename()<cr>')
+    bufmap('n', '<leader>r', '<cmd>lua vim.lsp.buf.rename()<cr>', "Rename")
 
     -- Selects a code action available at the current cursor position
-    bufmap('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<cr>')
+    bufmap('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<cr>', "Code action")
 
     -- Show diagnostics in a floating window
-    bufmap('n', '<leader>l', '<cmd>lua vim.diagnostic.open_float()<cr>')
+    bufmap('n', '<leader>l', '<cmd>lua vim.diagnostic.open_float()<cr>', "Diagnostic")
 
     -- Move to the previous diagnostic
-    bufmap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
+    bufmap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', "Go to prev. diagnostic")
 
     -- Move to the next diagnostic
-    bufmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
+    bufmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', "Go to next diagnostic")
+
+    AddHintKey("g")
+    AddHintKey("[")
+    AddHintKey("]")
   end
 })
+
+-- LSP setups
+require('lsp.rust')
+require('lsp.lua')
+require('lsp.python')
+require('lsp.c')
+
+

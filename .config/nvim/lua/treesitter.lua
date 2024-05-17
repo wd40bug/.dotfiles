@@ -74,6 +74,7 @@ require('nvim-treesitter.configs').setup({
     'verilog',
     'lua',
     'markdown',
+    'vimdoc',
   },
 })
 
