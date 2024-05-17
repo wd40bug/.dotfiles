@@ -1,8 +1,16 @@
 {
-    "diagnostics.globals": [
-        "vim"
+  // "diagnostics.globals": [
+  //    "vim"
+  //],
+  "workspace": {
+    "library": [
+      "lua",
+      "$VIMRUNTIME/lua",
+      "${3rd}/luv/library",
     ],
-    "diagnostics.disable": [
-        "trailing-space"
-    ]
+    "checkThirdParty": false
+  },
+  "diagnostics.disable": [
+      "trailing-space"
+  ]
 }
