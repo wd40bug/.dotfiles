@@ -1,3 +1,8 @@
+--TODO: Allow to call :Hint functions from dialogue 
+--TODO: Only allow to focus :Hint calls
+
+
+
 ---@type integer?
 HintWindow = nil
 local max_width = 50
@@ -29,8 +34,6 @@ local function all_keymaps_starting_with(...)
   return keymap_iter
 end
 
-
-
 ---returns the name, replacing it with the special name if one's listed
 ---@param name string
 ---@return string
@@ -44,6 +47,7 @@ local function map_special_names(name)
   return name
 end
 
+
 ---Creates a window showing hint dialogue for a given key with a given title
 ---Only works for normal mode keymaps
 ---@param lead string
@@ -55,24 +59,35 @@ function CreateWindow(lead)
   local longest_lhs = keymap_iter:fold(0, function(acc, val)
     return math.max(acc, #val.lhs)
   end)
+  
+  local mark_namespace = vim.api.nvim_create_namespace("Hints")
 
   local keymap_strings = keymap_iter:map( -- Add desc to text
     function(value)
       local str = value.lhs .. string.rep(' ', 3 + longest_lhs - #value.lhs) .. tostring(value.desc)
-      if #str < max_width - 3 then
-        return str
-      else
-        return string.sub(str, 1,max_width-(10 + longest_lhs)) .. "... :Hint ".. value.lhs
+      value.str_len = #str
+      if value.str_len > max_width - 3 then
+        str = string.sub(str, 1,max_width-(10 + longest_lhs)) .. "... :Hint ".. value.lhs
       end
+      value.str = str
+      return value
     end
   )
-  local keymap_table = keymap_strings:totable() -- write to buffer
+
+  local keymap_table = keymap_strings:totable()
+  vim.api.nvim_buf_set_lines(hint_buf, 0, #keymap_table, false, keymap_strings:fold({}, function (acc, val)
+    acc[#acc+1] = val.str
+    return acc
+  end))
   for i, key in ipairs(keymap_table) do
-    vim.api.nvim_buf_set_lines(hint_buf, i - 1, i, false, { tostring(key) })
+    if key.str_len > max_width - 3 then
+      vim.api.nvim_buf_add_highlight(hint_buf, -1, "Tag", i-1, max_width - (longest_lhs + 6), -1)
+    end
+   
   end
 
   local max_len = keymap_strings:map(function(value)  -- get size of text
-    return string.len(value)
+    return string.len(value.str)
   end):fold(0, function(acc, value)
     acc = math.max(value, acc)
     return acc
@@ -89,7 +104,8 @@ function CreateWindow(lead)
     anchor = 'SE',
     width = max_len,
     height = #keymap_table,
-    focusable = false,
+    -- focusable = false,
+    focusable = true,
     style = 'minimal',
     border = 'single',
     title = title,
@@ -111,6 +127,12 @@ vim.keymap.set('n', hintleader .. '/', function()
   end
 end, { desc = 'Clear hint text' })
 
+vim.keymap.set("n", hintleader .. ".", function ()
+  if HintWindow then
+    vim.api.nvim_set_current_win(HintWindow)
+  end
+end, {desc = "Focus hint window"})
+
 ---Add a key to get hints for
 ---@param key string
 function AddHintKey(key)
@@ -129,5 +151,5 @@ vim.api.nvim_create_user_command("Hint", function (value)
     print("'"..val.lhs.."'   "..tostring(val.desc))
   end)
 end, {desc = "Show description of keymap", nargs = 1, complete = function (argLead,_,_)
-  
+  return all_keymaps_starting_with(argLead):totable() 
 end })
