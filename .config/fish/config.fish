@@ -6,10 +6,10 @@ if status is-interactive
     set -gx COLS $(tput cols)
   end
 
-  thefuck --alias | source
 
   abbr --add cl clear
   bass source /etc/profile
   pyenv init - | source
+  thefuck --alias | source
 end
 
