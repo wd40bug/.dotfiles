@@ -1,8 +1,3 @@
---TODO: Allow to call :Hint functions from dialogue 
---TODO: Only allow to focus :Hint calls
-
-
-
 ---@type integer?
 HintWindow = nil
 local max_width = 50
@@ -126,12 +121,6 @@ vim.keymap.set('n', hintleader .. '/', function()
     HintWindow = nil
   end
 end, { desc = 'Clear hint text' })
-
-vim.keymap.set("n", hintleader .. ".", function ()
-  if HintWindow then
-    vim.api.nvim_set_current_win(HintWindow)
-  end
-end, {desc = "Focus hint window"})
 
 ---Add a key to get hints for
 ---@param key string
