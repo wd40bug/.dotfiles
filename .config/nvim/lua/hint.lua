@@ -1,5 +1,5 @@
 ---@type integer?
-HintWindow = nil
+local hint_window_handle = nil
 local max_width = 50
 
 ---Determines if string begins with start
@@ -46,7 +46,7 @@ end
 ---Creates a window showing hint dialogue for a given key with a given title
 ---Only works for normal mode keymaps
 ---@param lead string
-function CreateWindow(lead)
+local function hint_window(lead)
   local hint_buf = vim.api.nvim_create_buf(false, true)
   local ui = vim.api.nvim_list_uis()[1]
   local keymap_iter = all_keymaps_starting_with(lead):map(function(v) v.lhs = map_special_names(v.lhs); return v end) 
@@ -55,8 +55,6 @@ function CreateWindow(lead)
     return math.max(acc, #val.lhs)
   end)
   
-  local mark_namespace = vim.api.nvim_create_namespace("Hints")
-
   local keymap_strings = keymap_iter:map( -- Add desc to text
     function(value)
       local str = value.lhs .. string.rep(' ', 3 + longest_lhs - #value.lhs) .. tostring(value.desc)
@@ -88,19 +86,18 @@ function CreateWindow(lead)
     return acc
   end)
 
-  if HintWindow then
-    vim.api.nvim_win_close(HintWindow, false)
-    HintWindow = nil
+  if hint_window_handle then
+    vim.api.nvim_win_close(hint_window_handle, false)
+    hint_window_handle = nil
   end
   local title = map_special_names(lead) .. ' Hints'
   max_len = math.min(math.max(max_len, #title), max_width)
-  HintWindow = vim.api.nvim_open_win(hint_buf, false, {
+  hint_window_handle = vim.api.nvim_open_win(hint_buf, false, {
     relative = 'editor',
     anchor = 'SE',
     width = max_len,
     height = #keymap_table,
-    -- focusable = false,
-    focusable = true,
+    focusable = false,
     style = 'minimal',
     border = 'single',
     title = title,
@@ -116,9 +113,9 @@ SpecialNames = { [" "] = '<Space>' }
 local hint_keys = { vim.g.mapleader, 't', hintleader, '<F1>' }
 
 vim.keymap.set('n', hintleader .. '/', function()
-  if HintWindow then
-    vim.api.nvim_win_close(HintWindow, false)
-    HintWindow = nil
+  if hint_window_handle then
+    vim.api.nvim_win_close(hint_window_handle, false)
+    hint_window_handle = nil
   end
 end, { desc = 'Clear hint text' })
 
@@ -126,7 +123,7 @@ end, { desc = 'Clear hint text' })
 ---@param key string
 function AddHintKey(key)
   vim.keymap.set('n', hintleader .. key, function()
-    CreateWindow(key)
+    hint_window(key)
   end, { desc = 'Hints for ' .. key .. ' key'})
 
 end
