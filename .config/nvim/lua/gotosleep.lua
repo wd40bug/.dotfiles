@@ -2,6 +2,11 @@
 local sleep_window_handle
 local keep_sleep_window_handle
 
+---@type vim.SystemObj
+local sleep_timer_handle
+---@type vim.SystemObj
+local keep_timer_handle
+
 Strict = true
 SleepTime = '23:55'
 WakeTime = '00:05'
@@ -154,7 +159,7 @@ function keep_sleep_window()
   vim.cmd.center({ range = { 2, 5 }, args = { width } })
 
   vim.api.nvim_set_option_value('modifiable', false, { buf = keep_sleep_buf })
-  sleep_then(15, exit_nvim)
+  keep_timer_handle = sleep_then(15, exit_nvim)
 end
 
 ---Returns the time difference in seconds between now and the time given
@@ -187,9 +192,12 @@ end
 ---Execute function after a set amount of time
 ---@param time integer time to sleep in seconds
 ---@param fn fun() function to run after sleep
-function sleep_then(time, fn)
-  vim.system({ 'sleep', tostring(time) }, {}, function()
-    vim.schedule(fn)
+---@return vim.SystemObj
+local function sleep_then(time, fn)
+  return vim.system({ 'sleep', tostring(time) }, {}, function(out)
+    if out.signal == 0 then
+      vim.schedule(fn)
+    end
   end)
 end
 
@@ -200,7 +208,7 @@ function create_sleep_window_callback(strict)
     diff_sleep = time_diff_from_now(sleep_time, true)
   end
 
-  sleep_then(diff_sleep, function()
+  sleep_timer_handle = sleep_then(diff_sleep, function()
     if strict then
       exit_nvim()
     else
@@ -228,9 +236,18 @@ elseif diff_sleep < 0 and diff_wake > 0 then
 end
 
 vim.api.nvim_create_user_command('SleepExitCancel', function()
+  if sleep_timer_handle then
+    sleep_timer_handle:kill('sigint')
+    sleep_time = SleepTime
+    print("Canceled the exit")
+  end
 
 end, {})
 
-vim.api.nvim_create_user_command('SleepExitCancel', function()
+vim.api.nvim_create_user_command('KeepExitCancel', function()
+  if keep_timer_handle then
+    keep_timer_handle:kill('sigint')
+    print("Cancelled the exit")
+  end
 
 end, {})
