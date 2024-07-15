@@ -29,7 +29,13 @@ function lazy.setup(plugins)
 end
 
 lazy.path = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
-lazy.opts = {}
+lazy.opts = {
+  dev = {
+    path = "~/coding/lua_plugins/",
+    patters = {'wd40bug'},
+    fallback = true,
+  }
+}
 
 lazy.setup({
   {
@@ -50,6 +56,11 @@ lazy.setup({
     opts = {}
   },
   { 'numToStr/Comment.nvim' },
+    {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {}
+  },
   { 'tpope/vim-surround' },
   { 'akinsho/toggleterm.nvim' },
   { 'lewis6991/gitsigns.nvim' },
@@ -63,7 +74,7 @@ lazy.setup({
   -- Telescope
   { 'nvim-telescope/telescope.nvim' },
   -- Completion for neovim internals
-  { 'folke/neodev.nvim' },
+  { 'folke/neodev.nvim', opts={}},
   -- LSP
   { 'neovim/nvim-lspconfig' },
   { 'hrsh7th/nvim-cmp' },
@@ -85,10 +96,19 @@ lazy.setup({
     dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' }
   },
   { 'theHamsta/nvim-dap-virtual-text' },
+
+  --KeyHints
+  {'wd40bug/Hints.nvim', dev=true},
 })
 
--- require('vim-fugitive').setup {}
-
+Hints = require("Hints")
+Hints.setup({
+  hint_keys = {
+    vim.g.mapleader,
+    't',
+    '<F1>',
+  }
+})
 
 require('ibl').setup({
   enabled = true,
@@ -107,6 +127,7 @@ require('toggleterm').setup({
   direction = 'horizontal',
   shade_terminals = true,
   shell = "pwsh"
+  shell = "fish"
 })
 
 require('gitsigns').setup({

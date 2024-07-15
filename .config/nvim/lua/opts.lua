@@ -8,4 +8,5 @@ vim.g.mapleader = ' ' -- Set mapleader to space
 
 vim.opt.filetype = 'on'
 vim.cmd("filetype plugin on")
-
+vim.opt.tabstop = 2 -- Makes a tab worth two space
+vim.opt.shiftwidth = 2 -- Makes the autoindent every two spaces

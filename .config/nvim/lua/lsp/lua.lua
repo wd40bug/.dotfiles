@@ -1,5 +1,6 @@
 
 -- https://luals.github.io/wiki/settings/
+require("neodev").setup({})
 
 Lspconfig.lua_ls.setup({
   capabilities = Lsp_capabilities,
