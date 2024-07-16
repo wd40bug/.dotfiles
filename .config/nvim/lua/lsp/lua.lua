@@ -1,10 +1,8 @@
 
 -- https://luals.github.io/wiki/settings/
-require("neodev").setup({})
 
 Lspconfig.lua_ls.setup({
   capabilities = Lsp_capabilities,
-  before_init=require("neodev.lsp").before_init,
   settings = {
     Lua = {
       format = {
