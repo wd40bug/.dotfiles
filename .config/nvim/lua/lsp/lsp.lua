@@ -70,6 +70,7 @@ cmp.setup({
   window = {
     documentation = cmp.config.window.bordered()
   },
+  ---@diagnostic disable-next-line: missing-fields
   formatting = {
     fields = { 'menu', 'abbr', 'kind' },
     format = function(entry, item)
@@ -197,7 +198,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
     Hints.add_hint_key(']', true)
   end
 })
-
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+  pattern = "*.rs",
+  callback = function()
+    vim.keymap.set('n', ';', function ()
+      vim.cmd("norm! $a;")
+    end, {})
+  end
+})
 -- LSP setups
 require('lsp.rust')
 require('lsp.lua')
