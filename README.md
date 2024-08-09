@@ -77,6 +77,10 @@ Almost certainly available through package manager
 
 ## Configuration
 [Video Reference](https://youtu.be/y6XCebnB9gs?si=iZB0fwRJ_Zbfr7Ip)
+Install Stow with apt
+```bash
+sudo apt install stow
+```
 
 Move Dotfiles to ~/.dotfiles by using 
 ```bash

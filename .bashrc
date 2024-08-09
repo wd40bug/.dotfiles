@@ -121,6 +121,7 @@ eval "$(oh-my-posh init bash --config "~/.mytheme.toml")"
 . "$HOME/.cargo/env"
 alias clip='xsel -ib'
 export PATH="~/Downloads/clang+llvm-17.0.6-x86_64-linux-gnu-ubuntu-22.04//bin:$PATH"
+export PATH="~/.local/bin/:$PATH"
 eval $(thefuck --alias)
 function set_poshcontext() {
     export COLS=$(tput cols)

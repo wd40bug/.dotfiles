@@ -29,7 +29,13 @@ function lazy.setup(plugins)
 end
 
 lazy.path = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
-lazy.opts = {}
+lazy.opts = {
+  dev = {
+    path = '~/coding/lua_plugins/',
+    patters = { 'wd40bug' },
+    fallback = true,
+  }
+}
 
 lazy.setup({
   {
@@ -39,10 +45,10 @@ lazy.setup({
   { 'tpope/vim-fugitive' },
   { 'tpope/vim-repeat' },
   { 'navarasu/onedark.nvim' },
-  { 
+  {
     'catppuccin/nvim',
-    name = "catppuccin",
-    priority = 1000 
+    name = 'catppuccin',
+    priority = 1000
   },
   {
     'lukas-reineke/indent-blankline.nvim',
@@ -50,12 +56,19 @@ lazy.setup({
     opts = {}
   },
   { 'numToStr/Comment.nvim' },
+  {
+    'folke/todo-comments.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = {}
+  },
   { 'tpope/vim-surround' },
   { 'akinsho/toggleterm.nvim' },
   { 'lewis6991/gitsigns.nvim' },
   { 'nvim-lua/plenary.nvim' },
   { 'jiangmiao/auto-pairs' },
-  { "mistricky/codesnap.nvim", build = "make" },
+  {
+    'mistricky/codesnap.nvim', build = 'make'
+  },
   -- Treesitter
   { 'nvim-treesitter/nvim-treesitter' }, -- Parses code as AST
   { 'nvim-treesitter/nvim-treesitter-textobjects' },
@@ -64,7 +77,23 @@ lazy.setup({
   -- Telescope
   { 'nvim-telescope/telescope.nvim' },
   -- Completion for neovim internals
-  { 'folke/neodev.nvim' },
+  {
+    'folke/lazydev.nvim',
+    ft = 'lua', -- only load on lua files
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = 'luvit-meta/library', words = { 'vim%.uv' } },
+        'lazy.nvim',
+      },
+
+    },
+  },
+  {
+    'Bilal2453/luvit-meta',
+    lazy = true
+  }, -- optional `vim.uv` typings
   -- LSP
   { 'neovim/nvim-lspconfig' },
   { 'hrsh7th/nvim-cmp' },
@@ -88,10 +117,22 @@ lazy.setup({
     dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' }
   },
   { 'theHamsta/nvim-dap-virtual-text' },
+
+  --KeyHints
+  {
+    'wd40bug/Hints.nvim',
+    dev = true
+  },
 })
 
--- require('vim-fugitive').setup {}
-
+Hints = require('Hints')
+Hints.setup({
+  hint_keys = {
+    vim.g.mapleader,
+    't',
+    '<F1>',
+  }
+})
 
 require('ibl').setup({
   enabled = true,
@@ -103,13 +144,14 @@ require('ibl').setup({
   },
 })
 
+---@diagnostic disable-next-line: missing-fields
 require('Comment').setup({})
 
 require('toggleterm').setup({
   open_mapping = '<C-g>',
   direction = 'horizontal',
   shade_terminals = true,
-  shell = "fish"
+  shell = 'fish'
 })
 
 require('gitsigns').setup({
@@ -122,17 +164,12 @@ require('gitsigns').setup({
   }
 })
 
-require('neodev').setup({
-  library = { plugins = {"nvim-dap-ui"}, types = true },
-  lspconfig = false,
-})
-
 require('dapui').setup()
 
-require("codesnap").setup({
-  save_path = "~/Coding/Snaps/",
+require('codesnap').setup({
+  save_path = '~/Coding/Snaps/',
   has_breadcrumbs = true,
-  bg_color = "#535c68",
-  watermark = "",
-  code_font_family = "JetBrainsMono Nerd Font Mono",
+  bg_color = '#535c68',
+  watermark = '',
+  code_font_family = 'JetBrainsMono Nerd Font Mono',
 })
