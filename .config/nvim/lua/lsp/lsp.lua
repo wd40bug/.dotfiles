@@ -196,5 +196,7 @@ require('lsp.rust')
 require('lsp.lua')
 require('lsp.python')
 require('lsp.c')
+require('lsp.html')
+require('lsp.typescript')
 
 
