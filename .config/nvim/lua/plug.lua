@@ -69,7 +69,27 @@ lazy.setup({
   {
     'mistricky/codesnap.nvim', build = 'make'
   },
-  -- Treesitter
+  {
+    'AlejandroSuero/freeze-code.nvim',
+    opts = {
+      copy = true,
+      open = true,
+      freeze_config = {
+        background = '#535c68',
+        show_line_numbers = true,
+        font = {
+          family = 'JetBrainsMono Nerd Font Mono',
+          ligatures = 'true',
+        },
+        theme = 'onedark',
+        border = {
+          radius = 8
+        },
+        window = true,
+
+      }
+    },
+  },                                     -- Treesitter
   { 'nvim-treesitter/nvim-treesitter' }, -- Parses code as AST
   { 'nvim-treesitter/nvim-treesitter-textobjects' },
   { 'RRethy/nvim-treesitter-textsubjects' },
@@ -110,7 +130,7 @@ lazy.setup({
     version = '^4', -- Recommended
     ft = { 'rust' },
   },
-  -- Debug
+    -- Debug
   { 'mfussenegger/nvim-dap' },
   {
     'rcarriga/nvim-dap-ui',
@@ -122,6 +142,14 @@ lazy.setup({
   {
     'wd40bug/Hints.nvim',
     dev = true
+  },
+  {
+    'sudormrfbin/cheatsheet.nvim',
+    dependencies = {
+      'nvim-telescope/telescope.nvim',
+      'nvim-lua/popup.nvim',
+      'nvim-lua/plenary.nvim',
+    }
   },
 })
 
