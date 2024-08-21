@@ -173,3 +173,12 @@ require('codesnap').setup({
   watermark = '',
   code_font_family = 'JetBrainsMono Nerd Font Mono',
 })
+
+
+require("telescope").setup({
+  defaults = {
+    file_ignore_patterns = {
+      "target"
+    }
+  }
+})

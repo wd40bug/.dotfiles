@@ -202,7 +202,10 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
   pattern = "*.rs",
   callback = function()
     vim.keymap.set('n', ';', function ()
-      vim.cmd("norm! $a;")
+      local cursor = vim.api.nvim_win_get_cursor(0);
+      vim.cmd("norm! $a;")
+      vim.api.nvim_win_set_cursor(0, cursor)
+
     end, {})
   end
 })
