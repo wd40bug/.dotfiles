@@ -3,7 +3,7 @@ if status is-interactive
   eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
   oh-my-posh init fish --config ~/.mytheme.toml | source
   function set_poshcontext
-    set -gx COLS $(tput cols)
+    set -gx COLS (tput cols)
   end
 
 
