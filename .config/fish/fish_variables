@@ -3,6 +3,7 @@
 SETUVAR --export C51ASMINC:/home/wd40bug/\x2ewine/drive_c/SiLabs/MCU/INC/
 SETUVAR --export C51INC:/home/wd40bug/\x2ewine/drive_c/Keil_v5/C51/INC/
 SETUVAR --export C51LIB:/home/wd40bug/\x2ewine/drive_c/Keil_v5/C51/LIB/
+SETUVAR EDITOR:nvim
 SETUVAR --export PYENV_ROOT:/home/wd40bug/\x2epyenv
 SETUVAR --export TMP:/tmp/
 SETUVAR --export --path WINEPATH:C\x1e\x5cKeil_v5\x5cC51\x5cBIN
@@ -41,4 +42,4 @@ SETUVAR fish_pager_color_description:yellow\x1e\x2di
 SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
-SETUVAR fish_user_paths:/home/wd40bug/\x2elocal/bin\x1e/home/wd40bug/\x2ebin\x1e/home/wd40bug/\x2ecargo/bin\x1e/home/wd40bug/Downloads/clang\x2bllvm\x2d17\x2e0\x2e6\x2dx86_64\x2dlinux\x2dgnu\x2dubuntu\x2d22\x2e04/bin
+SETUVAR fish_user_paths:/home/wd40bug/\x2elocal/src/fish\x2dlsp/bin\x1e/home/wd40bug/\x2elocal/bin\x1e/home/wd40bug/\x2ebin\x1e/home/wd40bug/\x2ecargo/bin\x1e/home/wd40bug/Downloads/clang\x2bllvm\x2d17\x2e0\x2e6\x2dx86_64\x2dlinux\x2dgnu\x2dubuntu\x2d22\x2e04/bin
