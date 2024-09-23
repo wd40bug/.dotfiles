@@ -65,7 +65,23 @@ lazy.setup({
   { 'akinsho/toggleterm.nvim' },
   { 'lewis6991/gitsigns.nvim' },
   { 'nvim-lua/plenary.nvim' },
-  { 'jiangmiao/auto-pairs' },
+  {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    config = {
+      enable_moveright = false,
+    }
+    -- use opts = {} for passing setup options
+    -- this is equivalent to setup({}) function
+  },
+  {
+    'stevearc/conform.nvim',
+    opts = {
+      format_by_ft = {
+        xml = "xmlformat",
+      }
+    },
+  },
   {
     'mistricky/codesnap.nvim', build = 'make'
   },
@@ -130,7 +146,7 @@ lazy.setup({
     version = '^4', -- Recommended
     ft = { 'rust' },
   },
-    -- Debug
+  -- Debug
   { 'mfussenegger/nvim-dap' },
   {
     'rcarriga/nvim-dap-ui',
@@ -203,10 +219,10 @@ require('codesnap').setup({
 })
 
 
-require("telescope").setup({
+require('telescope').setup({
   defaults = {
     file_ignore_patterns = {
-      "target"
+      'target'
     }
   }
 })

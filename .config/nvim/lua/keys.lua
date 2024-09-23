@@ -48,11 +48,22 @@ dap.listeners.before.event_exited.dapui_config = function()
 end
 
 -- Other
-vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, { desc = 'Format buffer' }) -- Format
+vim.keymap.set('n', '<leader>f', function ()
+  require("conform").format({lsp_format = "fallback"})
+end, { desc = 'Format buffer' }) -- Format
 vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
   pattern = { '*.json' },
   callback = function()
     vim.keymap.set('n', '<leader>f', ":%!jq '.'<CR>", { desc = 'Format JSON', buffer = 0 })
+  end
+})
+vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
+  pattern = { '*.py', '*.ipynb' },
+  callback = function()
+    vim.keymap.set('n', '<leader>f', ':%! black - --quiet <CR>', {
+      desc = 'Format Python with Black',
+      buffer = 0
+    })
   end
 })
 

@@ -1,7 +1,7 @@
 -- Mason.nvim
 require('mason').setup()
 require('mason-lspconfig').setup {
-  ensure_installed = { 'lua_ls', 'rust_analyzer', 'clangd', 'pyright' },
+  ensure_installed = { 'lua_ls', 'rust_analyzer', 'pyright' },
 }
 
 -- Config variables
@@ -198,14 +198,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
     Hints.add_hint_key(']', true)
   end
 })
-vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
-  pattern = "*.rs",
+vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
+  pattern = '*.rs',
   callback = function()
-    vim.keymap.set('n', ';', function ()
+    vim.keymap.set('n', ';', function()
       local cursor = vim.api.nvim_win_get_cursor(0);
-      vim.cmd("norm! $a;")
+      vim.cmd('norm! $a;')
       vim.api.nvim_win_set_cursor(0, cursor)
-
     end, {})
   end
 })
@@ -216,3 +215,7 @@ require('lsp.python')
 require('lsp.c')
 require('lsp.html')
 require('lsp.typescript')
+require('lsp.fish')
+require('lsp.java')
+require('lsp.svelte')
+require('lsp.arduino')

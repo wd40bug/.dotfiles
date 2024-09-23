@@ -128,3 +128,11 @@ function set_poshcontext() {
 }
 HELIX_RUNTIME=~/src/helix/runtime
 
+
+# pnpm
+export PNPM_HOME="/home/wd40bug/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

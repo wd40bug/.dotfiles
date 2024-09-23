@@ -75,6 +75,8 @@ require('nvim-treesitter.configs').setup({
     'lua',
     'markdown',
     'vimdoc',
+    'java',
+    'svelte',
   },
 })
 
