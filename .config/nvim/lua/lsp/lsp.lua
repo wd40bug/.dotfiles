@@ -99,6 +99,7 @@ cmp.setup({
     --Completion selection
     ['<C-y>'] = cmp.mapping.confirm({ select = true }),
     ['<CR>'] = cmp.mapping.confirm({ select = false }),
+    ['<C-CR>'] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
     --Functions for luasnip snippets
     --
     ['<C-f>'] = cmp.mapping(
