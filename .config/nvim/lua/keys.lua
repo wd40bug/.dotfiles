@@ -21,6 +21,42 @@ vim.keymap.set('n', t_lead .. 'h', '<cmd>Telescope help_tags<cr>', { desc = 'Hel
 vim.keymap.set('n', t_lead .. 's', '<cmd>Telescope lsp_document_symbols<cr>', { desc = 'Symbols document' })
 vim.keymap.set('n', t_lead .. 'S', '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>', { desc = 'Symbols workspace' })
 
+-- Hop
+local hop = require('hop')
+local directions = require('hop.hint').HintDirection
+local hop_leader = 'h'
+vim.keymap.set('', hop_leader .. 'f', function()
+  hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
+end, { remap = true })
+vim.keymap.set('', hop_leader .. 'F', function()
+  hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
+end, { remap = true })
+vim.keymap.set('', hop_leader .. 't', function()
+  hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
+end, { remap = true })
+vim.keymap.set('', hop_leader .. 'T', function()
+  hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
+end, { remap = true })
+vim.keymap.set('', hop_leader .. hop_leader, function()
+  ---@diagnostic disable-next-line
+  hop.hint_words({})
+end, { remap = true })
+vim.keymap.set('', hop_leader .. 'a', function()
+  hop.hint_anywhere({ direction = directions.AFTER_CURSOR })
+end, { remap = true })
+vim.keymap.set('', hop_leader .. 'A', function()
+  hop.hint_anywhere({ direction = directions.BEFORE_CURSOR })
+end, { remap = true })
+vim.keymap.set('', hop_leader .. 'l', function()
+  hop.hint_lines({ direction = directions.AFTER_CURSOR })
+end, { remap = true })
+vim.keymap.set('', hop_leader .. 'L', function()
+  hop.hint_lines({ direction = directions.BEFORE_CURSOR })
+end, { remap = true })
+vim.keymap.set('', hop_leader .. 'p', function()
+  vim.cmd(":HopPattern")
+end, { remap = true })
+
 --Debug
 local d_lead = '<f1>'
 local dap = require('dap')
@@ -48,8 +84,8 @@ dap.listeners.before.event_exited.dapui_config = function()
 end
 
 -- Other
-vim.keymap.set('n', '<leader>f', function ()
-  require("conform").format({lsp_format = "fallback"})
+vim.keymap.set('n', '<leader>f', function()
+  require('conform').format({ lsp_format = 'fallback' })
 end, { desc = 'Format buffer' }) -- Format
 vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
   pattern = { '*.json' },

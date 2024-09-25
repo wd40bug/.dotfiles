@@ -126,6 +126,13 @@ lazy.setup({
       'nvim-lua/plenary.nvim',
     }
   },
+  {
+    'smoka7/hop.nvim',
+    version = '*',
+    opts = {
+      keys = 'etovxqpdygfblzhckisuran'
+    }
+  }
 })
 
 Hints = require('Hints')
@@ -134,6 +141,7 @@ Hints.setup({
     vim.g.mapleader,
     't',
     '<F1>',
+    'h'
   }
 })
 
