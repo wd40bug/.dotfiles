@@ -38,16 +38,33 @@ vim.g.rustaceanvim = {
       end, { buffer = bufnr, desc = 'Expand macro' })
 
       vim.keymap.set('n', '<leader>h', function()
-        vim.cmd.RustLsp({'hover', 'actions'})
+        vim.cmd.RustLsp({ 'hover', 'actions' })
       end, { buffer = bufnr, desc = 'Hover actions' })
 
       vim.keymap.set('n', '<leader>u', function()
-        vim.cmd.RustLsp({'moveItem', 'up'})
+        vim.cmd.RustLsp({ 'moveItem', 'up' })
       end, { buffer = bufnr, desc = 'Move item up' })
 
       vim.keymap.set('n', '<leader>d', function()
-        vim.cmd.RustLsp({'moveItem', 'down'})
+        vim.cmd.RustLsp({ 'moveItem', 'down' })
       end, { buffer = bufnr, desc = 'Move item down' })
+
+      vim.keymap.set('n', '<leader>d', function()
+        vim.cmd.RustLsp({ 'renderDiagnostic', 'current' })
+      end, { buffer = bufnr, desc = 'Render diagnostic' })
+
+      vim.keymap.set('n', '<leader>e', function()
+        vim.cmd.RustLsp({ 'explainError', 'current' })
+      end, { buffer = bufnr, desc = 'Explain error' })
+
+      vim.keymap.set('n', '<leader>c', function()
+        vim.cmd.RustLsp({ 'openCargo' })
+      end, { buffer = bufnr, desc = 'Open Cargo.toml' })
+
+      vim.keymap.set('n', '<leader>D', function()
+        vim.cmd.RustLsp({ 'openDocs' })
+      end, { buffer = bufnr, desc = 'Open Docs.rs' })
+
       -- you can also put keymaps in here
     end,
     default_settings = {
