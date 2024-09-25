@@ -54,9 +54,9 @@ cmp.setup({
     end
   },
   sources = {
-    { name = 'path' },
-    { name = 'nvim_lsp', keyword_length = 1 },
-    { name = 'buffer',   keyword_length = 3 },
+    { name = 'path',     keyword_length = 3 },
+    { name = 'nvim_lsp', keyword_length = 2 },
+    { name = 'buffer',   keyword_length = 5 },
     { name = 'luasnip',  keyword_length = 2 },
   },
   window = {
@@ -188,7 +188,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end
 })
 vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
-  pattern = '*.rs',
+  pattern = { '*.rs', '*.cpp', '*.c', '*.ts', '*.js' },
   callback = function()
     vim.keymap.set('n', ';', function()
       local cursor = vim.api.nvim_win_get_cursor(0);
