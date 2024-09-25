@@ -10,34 +10,44 @@ vim.g.rustaceanvim = {
   server = {
     ---@diagnostic disable-next-line: unused-local
     on_attach = function(client, bufnr)
-      vim.lsp.inlay_hint.enable(true, {bufnr = bufnr})
+      vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 
       vim.keymap.set('n', '<leader>a', function()
         vim.cmd.RustLsp('codeAction')
-      end, { buffer = bufnr, desc = "Code action" })
+      end, { buffer = bufnr, desc = 'Code action' })
 
       vim.keymap.set('n', '<leader>e', function()
         vim.cmd.RustLsp('explainError')
-      end, {buffer = bufnr, desc = "Explain error"})
+      end, { buffer = bufnr, desc = 'Explain error' })
 
       vim.keymap.set('n', '<f5>', function()
         vim.cmd.RustLsp('runnables')
-      end, { buffer = bufnr, desc="Run" })
+      end, { buffer = bufnr, desc = 'Run' })
 
       vim.keymap.set('n', '<f6>', function()
         vim.cmd.RustLsp('debuggables')
-      end, { buffer = bufnr, desc = "Debug" })
+      end, { buffer = bufnr, desc = 'Debug' })
 
 
       vim.keymap.set('n', '<f7>', function()
         vim.cmd.RustLsp('testables')
-      end, { buffer = bufnr, desc = "Test" })
+      end, { buffer = bufnr, desc = 'Test' })
 
       vim.keymap.set('n', '<leader>m', function()
         vim.cmd.RustLsp('expandMacro')
-      end, { buffer = bufnr, desc = "Expand macro"})
+      end, { buffer = bufnr, desc = 'Expand macro' })
 
+      vim.keymap.set('n', '<leader>h', function()
+        vim.cmd.RustLsp({'hover', 'actions'})
+      end, { buffer = bufnr, desc = 'Hover actions' })
 
+      vim.keymap.set('n', '<leader>u', function()
+        vim.cmd.RustLsp({'moveItem', 'up'})
+      end, { buffer = bufnr, desc = 'Move item up' })
+
+      vim.keymap.set('n', '<leader>d', function()
+        vim.cmd.RustLsp({'moveItem', 'down'})
+      end, { buffer = bufnr, desc = 'Move item down' })
       -- you can also put keymaps in here
     end,
     default_settings = {
