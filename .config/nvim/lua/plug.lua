@@ -141,7 +141,15 @@ lazy.setup({
   }, -- optional `vim.uv` typings
   -- LSP
   { 'neovim/nvim-lspconfig' },
-  { 'hrsh7th/nvim-cmp' },
+  {
+    'hrsh7th/nvim-cmp',
+    dependencies = {
+      'zjp-CN/nvim-cmp-lsp-rs',
+      opts = {
+
+      }
+    }
+  },
   { 'hrsh7th/cmp-buffer' },
   { 'hrsh7th/cmp-path' },
   { 'saadparwaiz1/cmp_luasnip' },
@@ -161,6 +169,7 @@ lazy.setup({
       require('crates').setup()
     end,
   },
+  { 'p00f/clangd_extensions.nvim' },
   -- Debug
   { 'mfussenegger/nvim-dap' },
   {
@@ -188,6 +197,9 @@ lazy.setup({
     opts = {
       keys = 'etovxqpdygfblzhckisuran'
     }
+  },
+  {
+    'mbbill/undotree'
   }
 })
 
