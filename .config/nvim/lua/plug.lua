@@ -111,6 +111,7 @@ lazy.setup({
       require('crates').setup()
     end,
   },
+  { 'p00f/clangd_extensions.nvim' },
   -- Debug
   { 'mfussenegger/nvim-dap' },
   {
