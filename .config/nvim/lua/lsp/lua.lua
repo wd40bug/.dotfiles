@@ -1,9 +1,7 @@
-
 -- https://luals.github.io/wiki/settings/
 
 Lspconfig.lua_ls.setup({
   capabilities = Lsp_capabilities,
-  before_init=require("neodev.lsp").before_init,
   settings = {
     Lua = {
       format = {
@@ -14,9 +12,18 @@ Lspconfig.lua_ls.setup({
       },
       completion = {
         enable = true,
-        callSnippet = 'Both'
-        
+        callSnippet = 'Replace'
+
       }
-    } 
+    }
   }
+})
+
+Luasnip.add_snippets('lua', {
+  Luasnip.snippet(
+    '---@type', {
+      Luasnip.text_node('---@type '),
+      Luasnip.insert_node(1, 'type')
+    }
+  )
 })

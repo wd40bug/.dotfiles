@@ -1,6 +1,7 @@
 "$schema" = "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json"
 version = 2
 final_space = true
+auto_upgrade = true
 console_title_template = "{{ .Shell }} in {{ .Folder }}"
 
 [[blocks]]
@@ -12,34 +13,22 @@ alignment = "left"
 # style="plain"
 # foreground="p:white"
 # template="{{ .Env.COLS }} {{if atoi .Env.COLS | lt 75}} true {{else}} false {{end}}"
-
+# Symbols:   
 [[blocks.segments]]
 type = "session"
 style = "diamond"
-foreground = "p:black"
-background = "p:yellow"
+foreground = "p:text"
+background = "#8AADF4"
 leading_diamond = ""
-trailing_diamond = ""
+powerline_symbol = ""
 template = "{{if atoi .Env.COLS | lt 75}} {{ if .SSHSession }} {{ end }}{{ .UserName }} {{end}}"
-
-[[blocks.segments]]
-type = "ytm"
-style = "diamond"
-leading_diamond = ""
-trailing_diamond = ""
-foreground = "p:white"
-background = "#ff0000"
-template = "{{if atoi .Env.COLS | lt 75}} {{ .Icon }}{{ if ne .Status \"stopped\"}}{{ if lt (len .Track) 18 }}{{ .Track }}{{ else }}...{{ end }}{{ end }}{{end}}"
-
-[blocks.segments.properties]
-paused_icon = "󰏤 "
 
 [[blocks.segments]]
 type = "path"
 style = "powerline"
-powerline_symbol = ""
-foreground = "p:white"
-background = "p:orange"
+powerline_symbol = ""
+foreground = "p:text"
+background = "#B7BDF8"
 template = "{{if atoi .Env.COLS | lt 75}}  {{ path .Path .Location }}{{end}}"
 
 [blocks.segments.properties]
@@ -48,7 +37,7 @@ style = "unique"
 [[blocks.segments]]
 type="path"
 style="plain"
-foreground="p:purple"
+foreground="p:tea-rose"
 template = "{{if atoi .Env.COLS | gt 75}}{{.Path}}{{end}}"
 
 [blocks.segments.properties]
@@ -57,19 +46,19 @@ style="folder"
 [[blocks.segments]]
 type = "git"
 style = "powerline"
-powerline_symbol = ""
-foreground = "p:black"
+powerline_symbol = ""
+foreground = "p:text"
 foreground_templates = [
-    "{{ if or (.Working.Changed) (.Staging.Changed) }}p:black{{ end }}",
-    "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:white{{ end }}",
-    "{{ if gt .Ahead 0 }}p:white{{ end }}",
+    "{{ if or (.Working.Changed) (.Staging.Changed) }}p:text{{ end }}",
+    "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:text{{ end }}",
+    "{{ if gt .Ahead 0 }}p:text{{ end }}",
 ]
-background = "p:green"
+background = "p:cambridge-blue"
 background_templates = [
-    "{{ if or (.Working.Changed) (.Staging.Changed) }}p:yellow{{ end }}",
+    "{{ if or (.Working.Changed) (.Staging.Changed) }}#e0d1cd{{ end }}",
     "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:red{{ end }}",
-    "{{ if gt .Ahead 0 }}#49416D{{ end }}",
-    "{{ if gt .Behind 0 }}#7A306C{{ end }}",
+    "{{ if gt .Ahead 0 }}p:lighter-green{{ end }}",
+    "{{ if gt .Behind 0 }}p:kinda-blue{{ end }}",
 ]
 template = "{{if atoi .Env.COLS | lt 75}} {{ if .UpstreamURL }}{{ url .UpstreamIcon .UpstreamURL }} {{ end }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }} {{end}}"
 
@@ -81,32 +70,19 @@ fetch_upstream_icon = true
 [[blocks.segments]]
 type = "root"
 style = "powerline"
-powerline_symbol = ""
-foreground = "p:white"
-background = "p:yellow"
+powerline_symbol = ""
+foreground = "p:text"
+background = "p:timberwolf"
 template = "{{if atoi .Env.COLS | lt 75}}  {{end}}"
 
 [[blocks.segments]]
-type = "executiontime"
-style = "diamond"
-foreground = "p:black"
-background = "p:white"
-leading_diamond = ""
-trailing_diamond = ""
-template = "{{if atoi .Env.COLS | lt 75}}󱎫 {{ .FormattedMs }}{{end}}"
-
-[blocks.segments.properties]
-threshhold = 2000
-style = "roundrock"
-
-[[blocks.segments]]
 type = "status"
-style = "diamond"
-foreground = "p:white"
-background = "p:blue"
+style = "powerline"
+foreground = "p:text"
+background = "#F5BDE6"
 background_templates = ["{{ if gt .Code 0 }}p:red{{ end }}"]
 leading_diamond = "<transparent,background></>"
-trailing_diamond = ""
+powerline_symbol = ""
 template = "{{if atoi .Env.COLS | lt 75}} {{ if gt .Code 0 }}{{ else }}{{ end }}{{end}}"
 
 [blocks.segments.properties]
@@ -141,46 +117,19 @@ template = "{{if atoi .Env.COLS | lt 75}}  {{ .Full }} {{end}}"
 display_mode = "files"
 
 [[blocks.segments]]
-type = "time"
-style = "powerline"
-powerline_symbol = ""
-foreground = "#100e23"
-background = "#72967e"
-template = "{{if atoi .Env.COLS | lt 75}} {{ .CurrentDate | date .Format }} {{end}}"
-
-[blocks.segments.properties]
-time_format = "3:04:05 PM"
-powerline_symbol = ""
-background = "#919672"
-foreground = "#2f3315"
-
-[[blocks.segments]]
 type="upgrade"
 style="powerline"
 template="{{if atoi .Env.COLS | lt 75}} {{ .Latest }}{{end}}"
 
-[[tooltips]]
-type = "az"
-tips = ["az"]
-style = "diamond"
-foreground = "p:white"
-background = "p:blue"
-leading_diamond = ""
-trailing_diamond = ""
-template = "{{if atoi .Env.COLS | lt 75}}  {{ .Name }} {{end}}"
-
-[tooltips.properties]
-display_default = true
-
 [transient_prompt]
-foreground = "p:white"
-background = "transparent"
-template = "<p:yellow,transparent></><,p:yellow> {{ .Folder }} </><p:yellow,transparent></>"
+foreground = "p:text"
+background = "p:tea-rose"
+template = "<#8AADF4,transparent></><,#8AADF4> {{ .Folder }} </><#8AADF4,transparent></>"
 
 [secondary_prompt]
-foreground = "p:black"
+foreground = "p:text"
 background = "transparent"
-template = "<p:yellow,transparent></><,p:yellow> > </><p:yellow,transparent></> "
+template = "<p:yellow,transparent> </><,p:yellow> > </><p:text,transparent> </> "
 
 [palette]
 black = "#262B44"
@@ -191,3 +140,16 @@ red = "#D81E5B"
 white = "#E0DEF4"
 yellow = "#F3AE35"
 purple = "#750EEB"
+
+tea-rose = "#EBBAB9"
+timberwolf = "#C9C5BA"
+cambridge-blue = "#97B1A6"
+air-force-blue = "#698996"
+carribean-current = "#407076"
+quinacridone-magenta = "#8E4162"
+feldgrau = "#466060"
+puce = "#C581A3"
+lighter-green = "#c7f0e1"
+light-pink = "#d57b9a"
+kinda-blue = "#59858b"
+text = "#494D64"

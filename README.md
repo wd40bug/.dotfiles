@@ -37,7 +37,9 @@ pip install thefuck
 ### Neovim
 [Installation Guide](https://github.com/neovim/neovim/blob/master/INSTALL.md)
 [Most Recent Version](https://github.com/neovim/neovim/releases/latest/)
+
 Install nightly version
+
 ```bash
 brew install --HEAD neovim
 ```
@@ -75,6 +77,10 @@ Almost certainly available through package manager
 
 ## Configuration
 [Video Reference](https://youtu.be/y6XCebnB9gs?si=iZB0fwRJ_Zbfr7Ip)
+Install Stow with apt
+```bash
+sudo apt install stow
+```
 
 Move Dotfiles to ~/.dotfiles by using 
 ```bash

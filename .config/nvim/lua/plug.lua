@@ -29,7 +29,13 @@ function lazy.setup(plugins)
 end
 
 lazy.path = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
-lazy.opts = {}
+lazy.opts = {
+  dev = {
+    path = '~/coding/lua_plugins/',
+    patters = { 'wd40bug' },
+    fallback = true,
+  }
+}
 
 lazy.setup({
   {
@@ -46,17 +52,66 @@ lazy.setup({
   },
   {"rebelot/kanagawa.nvim"},
   {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    priority = 1000
+  },
+  {
     'lukas-reineke/indent-blankline.nvim',
     main = 'ibl',
     opts = {}
   },
   { 'numToStr/Comment.nvim' },
+  {
+    'folke/todo-comments.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = {}
+  },
   { 'tpope/vim-surround' },
   { 'akinsho/toggleterm.nvim' },
   { 'lewis6991/gitsigns.nvim' },
   { 'nvim-lua/plenary.nvim' },
-  { 'jiangmiao/auto-pairs' },
-  -- Treesitter
+  {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    config = {
+      enable_moveright = false,
+    }
+    -- use opts = {} for passing setup options
+    -- this is equivalent to setup({}) function
+  },
+  {
+    'stevearc/conform.nvim',
+    opts = {
+      format_by_ft = {
+        xml = 'xmlformat',
+      }
+    },
+  },
+  {
+    'mistricky/codesnap.nvim', build = 'make'
+  },
+  {
+    'AlejandroSuero/freeze-code.nvim',
+    opts = {
+      copy = true,
+      open = true,
+      freeze_config = {
+        background = '#535c68',
+        show_line_numbers = true,
+        font = {
+          family = 'JetBrainsMono Nerd Font Mono',
+          ligatures = 'true',
+        },
+        theme = 'onedark',
+        border = {
+          radius = 8
+        },
+        window = true,
+
+      }
+    },
+  },                                     -- Treesitter
   { 'nvim-treesitter/nvim-treesitter' }, -- Parses code as AST
   { 'nvim-treesitter/nvim-treesitter-textobjects' },
   { 'RRethy/nvim-treesitter-textsubjects' },
@@ -64,7 +119,23 @@ lazy.setup({
   -- Telescope
   { 'nvim-telescope/telescope.nvim' },
   -- Completion for neovim internals
-  { 'folke/neodev.nvim' },
+  {
+    'folke/lazydev.nvim',
+    ft = 'lua', -- only load on lua files
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = 'luvit-meta/library', words = { 'vim%.uv' } },
+        'lazy.nvim',
+      },
+
+    },
+  },
+  {
+    'Bilal2453/luvit-meta',
+    lazy = true
+  }, -- optional `vim.uv` typings
   -- LSP
   { 'neovim/nvim-lspconfig' },
   { 'hrsh7th/nvim-cmp' },
@@ -88,9 +159,38 @@ lazy.setup({
     dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' }
   },
   { 'theHamsta/nvim-dap-virtual-text' },
+
+  --KeyHints
+  {
+    'wd40bug/Hints.nvim',
+    dev = true
+  },
+  {
+    'sudormrfbin/cheatsheet.nvim',
+    dependencies = {
+      'nvim-telescope/telescope.nvim',
+      'nvim-lua/popup.nvim',
+      'nvim-lua/plenary.nvim',
+    }
+  },
+  {
+    'smoka7/hop.nvim',
+    version = '*',
+    opts = {
+      keys = 'etovxqpdygfblzhckisuran'
+    }
+  }
 })
 
--- require('vim-fugitive').setup {}
+Hints = require('Hints')
+Hints.setup({
+  hint_keys = {
+    vim.g.mapleader,
+    't',
+    '<F1>',
+    'h'
+  }
+})
 
 require('ibl').setup({
   enabled = true,
@@ -102,12 +202,14 @@ require('ibl').setup({
   },
 })
 
+---@diagnostic disable-next-line: missing-fields
 require('Comment').setup({})
 
 require('toggleterm').setup({
   open_mapping = '<C-g>',
   direction = 'horizontal',
-  shade_terminals = true
+  shade_terminals = true,
+  shell = 'fish'
 })
 
 require('gitsigns').setup({
@@ -120,11 +222,21 @@ require('gitsigns').setup({
   }
 })
 
-require('neodev').setup({
-  library = { plugins = { 'nvim-dap-ui' }, types = true },
-  lspconfig = false,
-})
-
 require('dapui').setup()
 
+require('codesnap').setup({
+  save_path = '~/Coding/Snaps/',
+  has_breadcrumbs = true,
+  bg_color = '#535c68',
+  watermark = '',
+  code_font_family = 'JetBrainsMono Nerd Font Mono',
+})
 
+
+require('telescope').setup({
+  defaults = {
+    file_ignore_patterns = {
+      'target'
+    }
+  }
+})
