@@ -45,12 +45,12 @@ lazy.setup({
   { 'tpope/vim-fugitive' },
   { 'tpope/vim-repeat' },
   { 'navarasu/onedark.nvim' },
-  { 
+  {
     'catppuccin/nvim',
-    name = "catppuccin",
-    priority = 1000 
+    name = 'catppuccin',
+    priority = 1000
   },
-  {"rebelot/kanagawa.nvim"},
+  { 'rebelot/kanagawa.nvim' },
   {
     'catppuccin/nvim',
     name = 'catppuccin',
@@ -89,29 +89,32 @@ lazy.setup({
     },
   },
   {
-    'mistricky/codesnap.nvim', build = 'make'
+    'p00f/clangd_extensions.nvim'
   },
   {
-    'AlejandroSuero/freeze-code.nvim',
-    opts = {
-      copy = true,
-      open = true,
-      freeze_config = {
-        background = '#535c68',
-        show_line_numbers = true,
-        font = {
-          family = 'JetBrainsMono Nerd Font Mono',
-          ligatures = 'true',
-        },
-        theme = 'onedark',
-        border = {
-          radius = 8
-        },
-        window = true,
-
-      }
-    },
-  },                                     -- Treesitter
+    'mistricky/codesnap.nvim', build = 'make'
+  },
+  -- {
+  --   'AlejandroSuero/freeze-code.nvim',
+  --   opts = {
+  --     copy = true,
+  --     open = true,
+  --     freeze_config = {
+  --       background = '#535c68',
+  --       show_line_numbers = true,
+  --       font = {
+  --         family = 'JetBrainsMono Nerd Font Mono',
+  --         ligatures = 'true',
+  --       },
+  --       theme = 'onedark',
+  --       border = {
+  --         radius = 8
+  --       },
+  --       window = true,
+  --
+  --     }
+  --   },
+  -- },                                     -- Treesitter
   { 'nvim-treesitter/nvim-treesitter' }, -- Parses code as AST
   { 'nvim-treesitter/nvim-treesitter-textobjects' },
   { 'RRethy/nvim-treesitter-textsubjects' },
