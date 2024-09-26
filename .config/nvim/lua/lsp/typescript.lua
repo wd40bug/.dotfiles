@@ -1,4 +1,4 @@
-Lspconfig.ts_ls.setup({
+Lspconfig.tsserver.setup({
   cmd = {"typescript-language-server", "--stdio"},
   capabilities = Lsp_capabilities,
 })
