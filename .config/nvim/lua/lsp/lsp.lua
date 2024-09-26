@@ -13,6 +13,8 @@ require('luasnip.loaders.from_vscode').lazy_load()
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
 local cmp = require('cmp')
+local cmp_lsp_rs = require("cmp_lsp_rs")
+local comparators_rs = cmp_lsp_rs.comparators
 Luasnip = require('luasnip')
 local select_opts = { behavior = cmp.SelectBehavior.Select }
 
@@ -143,6 +145,21 @@ cmp.setup({
         end
       end,
       { 'i', 's' }),
+  },
+  sorting = {
+    comparators = {
+      cmp.config.compare.exact,
+      cmp.config.compare.scopes,
+      comparators_rs.inscope_inherent_import,
+      comparators_rs.sort_by_label_but_underscore_last,
+      require('clangd_extensions.cmp_scores'),
+      cmp.config.compare.offset,
+      cmp.config.compare.recently_used,
+      cmp.config.compare.kind,
+      cmp.config.compare.sort_text,
+      cmp.config.compare.length,
+    },
+    priority_weight = 2.0
   }
 })
 
