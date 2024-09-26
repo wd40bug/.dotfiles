@@ -1,4 +1,4 @@
-function clip --wraps='xsel -ib' --description 'alias clip=xsel -ib'
-  xsel -ib $argv
+function clip --wraps=termux-clipboard-set --description 'alias clip=termux-clipboard-set'
+  termux-clipboard-set $argv
         
 end
