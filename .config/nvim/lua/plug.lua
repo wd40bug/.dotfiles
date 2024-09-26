@@ -147,6 +147,9 @@ lazy.setup({
     opts = {
       keys = 'etovxqpdygfblzhckisuran'
     }
+  },
+  {
+    'mbbill/undotree'
   }
 })
 
