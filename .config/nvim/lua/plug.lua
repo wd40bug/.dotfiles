@@ -152,6 +152,12 @@ lazy.setup({
     version = '^4', -- Recommended
     ft = { 'rust' },
   },
+  {
+    'saecki/crates.nvim',
+    config = function()
+      require('crates').setup()
+    end,
+  },
   -- Debug
   { 'mfussenegger/nvim-dap' },
   {
