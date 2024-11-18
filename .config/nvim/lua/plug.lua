@@ -74,7 +74,7 @@ lazy.setup({
   {
     'windwp/nvim-autopairs',
     event = 'InsertEnter',
-    config = {
+    opts = {
       enable_moveright = false,
     }
     -- use opts = {} for passing setup options
@@ -160,7 +160,7 @@ lazy.setup({
   { 'williamboman/mason-lspconfig.nvim' },
   {
     'mrcjkb/rustaceanvim',
-    version = '^4', -- Recommended
+    -- version = '^4', -- Recommended
     ft = { 'rust' },
   },
   {
