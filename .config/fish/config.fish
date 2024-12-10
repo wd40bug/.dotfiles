@@ -11,7 +11,5 @@ if status is-interactive
   bass source /etc/profile
   pyenv init - | source
   thefuck --alias | source
-
-  source "$HOME/.cargo/env.fish"
 end
 
