@@ -157,7 +157,15 @@ cmp.setup({
 
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
-  callback = function()
+  callback = function(args)
+    -- Default LSP config keybinds
+    pcall(function() vim.keymap.del('n', 'grr') end) -- Wow that was shockingly easy
+    pcall(function() vim.keymap.del('n', 'gra') end)
+    pcall(function() vim.keymap.del('n', 'grn') end)
+    ---@param mode string
+    ---@param lhs string
+    ---@param rhs string | function
+    ---@param desc string
     local bufmap = function(mode, lhs, rhs, desc)
       local opts = { buffer = true, desc = desc }
       vim.keymap.set(mode, lhs, rhs, opts)
@@ -205,7 +213,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end
 })
 vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
-  pattern = { '*.rs', '*.cpp', '*.c', '*.ts', '*.js' },
+  pattern = { '*.rs', '*.cpp', '*.c', '*.ts', '*.js', '*.dart' },
   callback = function()
     vim.keymap.set('n', ';', function()
       local cursor = vim.api.nvim_win_get_cursor(0);
@@ -224,3 +232,6 @@ require('lsp.typescript')
 require('lsp.fish')
 require('lsp.java')
 require('lsp.svelte')
+require('lsp.kotlin')
+require('lsp.dart')
+require('lsp.asm')

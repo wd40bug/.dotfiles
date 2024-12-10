@@ -1,6 +1,7 @@
 local tln = ']' -- Tree Leader Next
 local tlp = '[' -- Tree Leader Previous
 
+---@diagnostic disable-next-line: missing-fields
 require('nvim-treesitter.configs').setup({
   highlight = {
     enable = true, -- Better syntax highlighting
@@ -26,41 +27,41 @@ require('nvim-treesitter.configs').setup({
         ['ip'] = '@parameter.inner',
         ['l'] = '@assignment.lhs',
         ['r'] = '@assignment.rhs',
-        
+
       }
     },
     move = {
       enable = true,
       set_jumps = true,
       goto_next_start = {
-        [tln .. 'f'] = "@function.outer",
-        [tln .. 't'] = "@class.outer",
-        [tln .. 'p'] = "@parameter.outer",
-        [tln .. 'r'] = "@return.outer",
+        [tln .. 'f'] = '@function.outer',
+        [tln .. 't'] = '@class.outer',
+        [tln .. 'p'] = '@parameter.outer',
+        [tln .. 'r'] = '@return.outer',
 
 
       },
       goto_next_end = {
-        [tln .. 'F'] = "@function.outer",
-        [tln .. 'T'] = "@class.outer",
-        [tln .. 'P'] = "@parameter.outer",
-        [tln .. 'R'] = "@return.outer",
+        [tln .. 'F'] = '@function.outer',
+        [tln .. 'T'] = '@class.outer',
+        [tln .. 'P'] = '@parameter.outer',
+        [tln .. 'R'] = '@return.outer',
 
 
       },
       goto_previous_start = {
-        [tlp .. 'f'] = "@function.outer",
-        [tlp .. 't'] = "@class.outer",
-        [tlp .. 'p'] = "@parameter.outer",
-        [tlp .. 'r'] = "@return.outer",
+        [tlp .. 'f'] = '@function.outer',
+        [tlp .. 't'] = '@class.outer',
+        [tlp .. 'p'] = '@parameter.outer',
+        [tlp .. 'r'] = '@return.outer',
 
 
       },
       goto_previous_end = {
-        [tlp .. 'F'] = "@function.outer",
-        [tlp .. 'T'] = "@class.outer",
-        [tlp .. 'P'] = "@parameter.outer",
-        [tlp .. 'R'] = "@return.outer",
+        [tlp .. 'F'] = '@function.outer',
+        [tlp .. 'T'] = '@class.outer',
+        [tlp .. 'P'] = '@parameter.outer',
+        [tlp .. 'R'] = '@return.outer',
 
 
       },
@@ -91,4 +92,3 @@ parser_config.powershell = {
     },
     filetype = "ps1",                               
 }
-

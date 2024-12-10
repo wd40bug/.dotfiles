@@ -107,4 +107,5 @@ vim.keymap.set('n', '<leader>/', function()
   vim.cmd(':nohlsearch')
 end, { desc = 'Clear previous search' })
 
-vim.keymap.set('n', '<F5>', vim.cmd.UndotreeToggle)
+vim.keymap.set('n', '<F4>', vim.cmd.UndotreeToggle)
+vim.keymap.set('n', '<leader>`', vim.cmd.Oil, {desc="Open the oil file explorer"})
