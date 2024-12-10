@@ -165,9 +165,7 @@ lazy.setup({
   },
   {
     'saecki/crates.nvim',
-    config = function()
-      require('crates').setup()
-    end,
+    opts = {},
   },
   { 'p00f/clangd_extensions.nvim' },
   -- Debug
@@ -200,7 +198,24 @@ lazy.setup({
   },
   {
     'mbbill/undotree'
-  }
+  },
+  {
+    'stevearc/oil.nvim',
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {},
+    -- Optional dependencies
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+  },
+  {
+    'akinsho/flutter-tools.nvim',
+    lazy = false,
+    commit = '6610090a4e68d10fd73b68450004dafd26e7cc34',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+  },
+  { 'henry-hsieh/riscv-asm-vim',      ft = { 'riscv_asm' } }
 })
 
 Hints = require('Hints')
@@ -257,7 +272,14 @@ require('codesnap').setup({
 require('telescope').setup({
   defaults = {
     file_ignore_patterns = {
-      'target'
+      'target',
+      -- 'android', --dart
+      -- 'build',
+      -- 'ios',
+      -- 'macos',
+      -- 'linux',
+      -- 'windows',
+      -- 'web'
     }
   }
 })
