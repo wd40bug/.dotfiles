@@ -68,7 +68,7 @@ lazy.setup({
   {
     'windwp/nvim-autopairs',
     event = 'InsertEnter',
-    config = {
+    opts = {
       enable_moveright = false,
     }
     -- use opts = {} for passing setup options
