@@ -2,6 +2,7 @@ vim.opt.number = true -- Line Numbers
 vim.opt.smartcase = true -- Searches case sensitive only when there are multi-case strings
 vim.opt.expandtab = true -- Tabs as spaces
 vim.opt.wrap = false -- Don't wrap long lines
+vim.opt.splitright = true
 vim.g.mapleader = ' ' -- Set mapleader to space
 
 vim.opt.filetype = 'on'
@@ -17,4 +18,8 @@ end
 vim.opt.undodir = undo_path
 vim.opt.undofile = true
 
-
+if vim.g.neovide then
+  vim.o.guifont = "JetBrainsMono Nerd Font Mono:h11"
+  vim.g.neovide_hide_mouse_when_typing = true
+  vim.g.neovide_position_animation_length = 0.05
+end
