@@ -151,7 +151,7 @@ lazy.setup({
   { 'williamboman/mason-lspconfig.nvim' },
   {
     'mrcjkb/rustaceanvim',
-    version = '^4', -- Recommended
+    version = '^5', -- Recommended
     ft = { 'rust' },
   },
   {
