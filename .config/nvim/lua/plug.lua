@@ -68,7 +68,7 @@ lazy.setup({
   {
     'windwp/nvim-autopairs',
     event = 'InsertEnter',
-    config = {
+    opts = {
       enable_moveright = false,
     }
     -- use opts = {} for passing setup options
@@ -132,7 +132,15 @@ lazy.setup({
   }, -- optional `vim.uv` typings
   -- LSP
   { 'neovim/nvim-lspconfig' },
-  { 'hrsh7th/nvim-cmp' },
+  {
+    'hrsh7th/nvim-cmp',
+    dependencies = {
+      'zjp-CN/nvim-cmp-lsp-rs',
+      opts = {
+
+      }
+    }
+  },
   { 'hrsh7th/cmp-buffer' },
   { 'hrsh7th/cmp-path' },
   { 'saadparwaiz1/cmp_luasnip' },
@@ -143,14 +151,12 @@ lazy.setup({
   { 'williamboman/mason-lspconfig.nvim' },
   {
     'mrcjkb/rustaceanvim',
-    version = '^4', -- Recommended
+    version = '^5', -- Recommended
     ft = { 'rust' },
   },
   {
     'saecki/crates.nvim',
-    config = function()
-      require('crates').setup()
-    end,
+    opts = {},
   },
   { 'p00f/clangd_extensions.nvim' },
   -- Debug
@@ -179,6 +185,38 @@ lazy.setup({
     version = '*',
     opts = {
       keys = 'etovxqpdygfblzhckisuran'
+    }
+  },
+  {
+    'mbbill/undotree'
+  },
+  {
+    'stevearc/oil.nvim',
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {},
+    -- Optional dependencies
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+  },
+  {
+    'akinsho/flutter-tools.nvim',
+    lazy = false,
+    commit = '6610090a4e68d10fd73b68450004dafd26e7cc34',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+  },
+  { 'henry-hsieh/riscv-asm-vim',      ft = { 'riscv_asm' } },
+  {
+    'rmagatti/auto-session',
+    lazy = false,
+
+    ---enables autocomplete for opts
+    ---@module "auto-session"
+    ---@type AutoSession.Config
+    opts = {
+      suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
+      -- log_level = 'debug',
     }
   }
 })
@@ -237,7 +275,14 @@ require('codesnap').setup({
 require('telescope').setup({
   defaults = {
     file_ignore_patterns = {
-      'target'
+      'target',
+      -- 'android', --dart
+      -- 'build',
+      -- 'ios',
+      -- 'macos',
+      -- 'linux',
+      -- 'windows',
+      -- 'web'
     }
   }
 })

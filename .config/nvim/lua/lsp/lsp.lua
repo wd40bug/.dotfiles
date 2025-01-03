@@ -13,6 +13,8 @@ require('luasnip.loaders.from_vscode').lazy_load()
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
 local cmp = require('cmp')
+local cmp_lsp_rs = require('cmp_lsp_rs')
+local comparators_rs = cmp_lsp_rs.comparators
 Luasnip = require('luasnip')
 local select_opts = { behavior = cmp.SelectBehavior.Select }
 
@@ -143,12 +145,31 @@ cmp.setup({
         end
       end,
       { 'i', 's' }),
+  },
+  sorting = {
+    comparators = {
+      cmp.config.compare.exact,
+      cmp.config.compare.scopes,
+      comparators_rs.inscope_inherent_import,
+      comparators_rs.sort_by_label_but_underscore_last,
+      require('clangd_extensions.cmp_scores'),
+      cmp.config.compare.offset,
+      cmp.config.compare.recently_used,
+      cmp.config.compare.kind,
+      cmp.config.compare.sort_text,
+      cmp.config.compare.length,
+    },
+    priority_weight = 2.0
   }
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
-  callback = function()
+  callback = function(args)
+    -- Default LSP config keybinds
+    pcall(function() vim.keymap.del('n', 'grr') end) -- Wow that was shockingly easy
+    pcall(function() vim.keymap.del('n', 'gra') end)
+    pcall(function() vim.keymap.del('n', 'grn') end)
     ---@param mode string
     ---@param lhs string
     ---@param rhs string | function
@@ -200,7 +221,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end
 })
 vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
-  pattern = { '*.rs', '*.cpp', '*.c', '*.ts', '*.js' },
+  pattern = { '*.rs', '*.cpp', '*.c', '*.ts', '*.js', '*.dart' },
   callback = function()
     vim.keymap.set('n', ';', function()
       local cursor = vim.api.nvim_win_get_cursor(0);
@@ -220,3 +241,6 @@ require('lsp.fish')
 require('lsp.java')
 require('lsp.svelte')
 require('lsp.arduino')
+require('lsp.kotlin')
+require('lsp.dart')
+require('lsp.asm')

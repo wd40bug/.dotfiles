@@ -5,6 +5,9 @@ SETUVAR --export C51INC:/home/wd40bug/\x2ewine/drive_c/Keil_v5/C51/INC/
 SETUVAR --export C51LIB:/home/wd40bug/\x2ewine/drive_c/Keil_v5/C51/LIB/
 SETUVAR EDITOR:nvim
 SETUVAR --path LD_LIBRARY_PATH:/usr/local/lib/
+SETUVAR --path LIBRARY_PATH:/usr/local/lib/x86_64\x2dunknown\x2dlinux\x2dgnu/
+SETUVAR --export --path PATH:/home/wd40bug/\x2epyenv/shims\x1e/home/linuxbrew/\x2elinuxbrew/bin\x1e/home/linuxbrew/\x2elinuxbrew/sbin\x1e/home/wd40bug/src/flutter/bin\x1e/home/wd40bug/Android/Sdk/cmdline\x2dtools/latest/bin\x1e/home/wd40bug/src/android\x2dstudio/bin\x1e/home/wd40bug/Documents/college/24Fall/2305ECE/tutorials/tutorial_formatter/target/release\x1e/home/wd40bug/\x2elocal/src/llvm\x2dproject/build/bin\x1e/home/wd40bug/\x2elocal/src/fish\x2dlsp/bin\x1e/home/wd40bug/\x2elocal/bin\x1e/home/wd40bug/\x2ebin\x1e/home/wd40bug/\x2ecargo/bin\x1e/home/wd40bug/Downloads/clang\x2bllvm\x2d17\x2e0\x2e6\x2dx86_64\x2dlinux\x2dgnu\x2dubuntu\x2d22\x2e04/bin\x1e/usr/local/sbin\x1e/usr/local/bin\x1e/usr/sbin\x1e/usr/bin\x1e/sbin\x1e/bin\x1e/usr/games\x1e/usr/local/games\x1e/snap/bin\x1e/snap/bin
+SETUVAR --export --path PKG_CONFIG_PATH:/usr/lib/x86_64\x2dlinux\x2dgnu/pkgconfig/\x1e/usr/lib/x86_64\x2dlinux\x2dgnu/
 SETUVAR --export PYENV_ROOT:/home/wd40bug/\x2epyenv
 SETUVAR --export TMP:/tmp/
 SETUVAR --export --path WINEPATH:C\x1e\x5cKeil_v5\x5cC51\x5cBIN
@@ -43,4 +46,4 @@ SETUVAR fish_pager_color_description:yellow\x1e\x2di
 SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
-SETUVAR fish_user_paths:/home/wd40bug/Documents/college/24Fall/2305ECE/tutorials/tutorial_formatter/target/release\x1e/home/wd40bug/\x2elocal/src/llvm\x2dproject/build/bin\x1e/home/wd40bug/\x2elocal/src/fish\x2dlsp/bin\x1e/home/wd40bug/\x2elocal/bin\x1e/home/wd40bug/\x2ebin\x1e/home/wd40bug/\x2ecargo/bin\x1e/home/wd40bug/Downloads/clang\x2bllvm\x2d17\x2e0\x2e6\x2dx86_64\x2dlinux\x2dgnu\x2dubuntu\x2d22\x2e04/bin
+SETUVAR fish_user_paths:/home/wd40bug/coding/rust/stars/target/debug\x1e/home/wd40bug/Documents/college/24Fall/2305ECE/tutorial_formatter/target/release\x1e/home/wd40bug/\x2eluarocks/bin\x1e/home/wd40bug/Downloads/avr8\x2dgnu\x2dtoolchain\x2d3\x2e7\x2e0\x2e1796\x2dlinux\x2eany\x2ex86_64/avr8\x2dgnu\x2dtoolchain\x2dlinux_x86_64/bin\x1e/home/wd40bug/src/flutter/bin\x1e/home/wd40bug/Android/Sdk/cmdline\x2dtools/latest/bin\x1e/home/wd40bug/src/android\x2dstudio/bin\x1e/home/wd40bug/Documents/college/24Fall/2305ECE/tutorials/tutorial_formatter/target/release\x1e/home/wd40bug/\x2elocal/src/llvm\x2dproject/build/bin\x1e/home/wd40bug/\x2elocal/src/fish\x2dlsp/bin\x1e/home/wd40bug/\x2elocal/bin\x1e/home/wd40bug/\x2ebin\x1e/home/wd40bug/\x2ecargo/bin\x1e/home/wd40bug/Downloads/clang\x2bllvm\x2d17\x2e0\x2e6\x2dx86_64\x2dlinux\x2dgnu\x2dubuntu\x2d22\x2e04/bin
