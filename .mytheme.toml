@@ -1,5 +1,6 @@
 console_title_template = '{{ .Shell }} in {{ .Folder }}'
 version = 3
+auto_upgrade = true
 final_space = true
 
 [palette]
