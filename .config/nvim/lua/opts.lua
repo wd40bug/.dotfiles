@@ -2,6 +2,7 @@ vim.opt.number = true -- Line Numbers
 vim.opt.smartcase = true -- Searches case sensitive only when there are multi-case strings
 vim.opt.expandtab = true -- Tabs as spaces
 vim.opt.wrap = false -- Don't wrap long lines
+vim.opt.splitright = true
 vim.g.mapleader = ' ' -- Set mapleader to space
 
 vim.opt.filetype = 'on'
