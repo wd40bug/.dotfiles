@@ -115,7 +115,7 @@ lazy.setup({
   --     }
   --   },
   -- },                                     -- Treesitter
-  { 'nvim-treesitter/nvim-treesitter' }, -- Parses code as AST
+  { 'nvim-treesitter/nvim-treesitter', build = ":TSUpdate" }, -- Parses code as AST
   { 'nvim-treesitter/nvim-treesitter-textobjects' },
   { 'RRethy/nvim-treesitter-textsubjects' },
   { 'wellle/targets.vim' },
