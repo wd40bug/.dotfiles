@@ -1,155 +1,157 @@
-"$schema" = "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json"
-version = 2
+console_title_template = '{{ .Shell }} in {{ .Folder }}'
+version = 3
 final_space = true
-auto_upgrade = true
-console_title_template = "{{ .Shell }} in {{ .Folder }}"
-
-[[blocks]]
-type = "prompt"
-alignment = "left"
-# Debug COLS
-# [[blocks.segments]]
-# type="text"
-# style="plain"
-# foreground="p:white"
-# template="{{ .Env.COLS }} {{if atoi .Env.COLS | lt 75}} true {{else}} false {{end}}"
-# Symbols:   
-[[blocks.segments]]
-type = "session"
-style = "diamond"
-foreground = "p:text"
-background = "#8AADF4"
-leading_diamond = ""
-powerline_symbol = ""
-template = "{{if atoi .Env.COLS | lt 75}} {{ if .SSHSession }} {{ end }}{{ .UserName }} {{end}}"
-
-[[blocks.segments]]
-type = "path"
-style = "powerline"
-powerline_symbol = ""
-foreground = "p:text"
-background = "#B7BDF8"
-template = "{{if atoi .Env.COLS | lt 75}}  {{ path .Path .Location }}{{end}}"
-
-[blocks.segments.properties]
-style = "unique"
-
-[[blocks.segments]]
-type="path"
-style="plain"
-foreground="p:tea-rose"
-template = "{{if atoi .Env.COLS | gt 75}}{{.Path}}{{end}}"
-
-[blocks.segments.properties]
-style="folder"
-
-[[blocks.segments]]
-type = "git"
-style = "powerline"
-powerline_symbol = ""
-foreground = "p:text"
-foreground_templates = [
-    "{{ if or (.Working.Changed) (.Staging.Changed) }}p:text{{ end }}",
-    "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:text{{ end }}",
-    "{{ if gt .Ahead 0 }}p:text{{ end }}",
-]
-background = "p:cambridge-blue"
-background_templates = [
-    "{{ if or (.Working.Changed) (.Staging.Changed) }}#e0d1cd{{ end }}",
-    "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:red{{ end }}",
-    "{{ if gt .Ahead 0 }}p:lighter-green{{ end }}",
-    "{{ if gt .Behind 0 }}p:kinda-blue{{ end }}",
-]
-template = "{{if atoi .Env.COLS | lt 75}} {{ if .UpstreamURL }}{{ url .UpstreamIcon .UpstreamURL }} {{ end }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }} {{end}}"
-
-[blocks.segments.properties]
-branch_max_length = 25
-fetch_status = true
-fetch_upstream_icon = true
-
-[[blocks.segments]]
-type = "root"
-style = "powerline"
-powerline_symbol = ""
-foreground = "p:text"
-background = "p:timberwolf"
-template = "{{if atoi .Env.COLS | lt 75}}  {{end}}"
-
-[[blocks.segments]]
-type = "status"
-style = "powerline"
-foreground = "p:text"
-background = "#F5BDE6"
-background_templates = ["{{ if gt .Code 0 }}p:red{{ end }}"]
-leading_diamond = "<transparent,background></>"
-powerline_symbol = ""
-template = "{{if atoi .Env.COLS | lt 75}} {{ if gt .Code 0 }}{{ else }}{{ end }}{{end}}"
-
-[blocks.segments.properties]
-always_enabled = true
-
-[[blocks.segments]]
-type="text"
-style="plain"
-foreground="p:purple"
-template="{{if atoi .Env.COLS | gt 75 }}>{{end}}"
-
-[[blocks]]
-type = "rprompt"
-
-[[blocks.segments]]
-type = "rust"
-style = "powerline"
-powerline_symbol = ""
-foreground = "#193549"
-background = "#99908a"
-template = "{{if atoi .Env.COLS | lt 75}}  {{ .Full }} {{end}}"
-
-[[blocks.segments]]
-type = "python"
-style = "powerline"
-powerline_symbol = ""
-foreground = "#100e23"
-background = "#906cff"
-template = "{{if atoi .Env.COLS | lt 75}}  {{ .Full }} {{end}}"
-
-[blocks.segments.properties]
-display_mode = "files"
-
-[[blocks.segments]]
-type="upgrade"
-style="powerline"
-template="{{if atoi .Env.COLS | lt 75}} {{ .Latest }}{{end}}"
-
-[transient_prompt]
-foreground = "p:text"
-background = "p:tea-rose"
-template = "<#8AADF4,transparent></><,#8AADF4> {{ .Folder }} </><#8AADF4,transparent></>"
-
-[secondary_prompt]
-foreground = "p:text"
-background = "transparent"
-template = "<p:yellow,transparent> </><,p:yellow> > </><p:text,transparent> </> "
 
 [palette]
-black = "#262B44"
-blue = "#4B95E9"
-green = "#59C9A5"
-orange = "#F07623"
-red = "#D81E5B"
-white = "#E0DEF4"
-yellow = "#F3AE35"
-purple = "#750EEB"
+  air-force-blue = '#698996'
+  black = '#262B44'
+  blue = '#4B95E9'
+  cambridge-blue = '#97B1A6'
+  carribean-current = '#407076'
+  feldgrau = '#466060'
+  green = '#59C9A5'
+  kinda-blue = '#59858b'
+  light-pink = '#d57b9a'
+  lighter-green = '#c7f0e1'
+  orange = '#F07623'
+  puce = '#C581A3'
+  purple = '#750EEB'
+  quinacridone-magenta = '#8E4162'
+  red = '#D81E5B'
+  tea-rose = '#EBBAB9'
+  text = '#494D64'
+  timberwolf = '#C9C5BA'
+  white = '#E0DEF4'
+  yellow = '#F3AE35'
 
-tea-rose = "#EBBAB9"
-timberwolf = "#C9C5BA"
-cambridge-blue = "#97B1A6"
-air-force-blue = "#698996"
-carribean-current = "#407076"
-quinacridone-magenta = "#8E4162"
-feldgrau = "#466060"
-puce = "#C581A3"
-lighter-green = "#c7f0e1"
-light-pink = "#d57b9a"
-kinda-blue = "#59858b"
-text = "#494D64"
+[secondary_prompt]
+  template = '<p:yellow,transparent> </><,p:yellow> > </><p:text,transparent> </> '
+  foreground = 'p:text'
+  background = 'transparent'
+
+[transient_prompt]
+  template = '<#8AADF4,transparent></><,#8AADF4> {{ .Folder }} </><#8AADF4,transparent></>'
+  foreground = 'p:text'
+  background = 'p:tea-rose'
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+
+  [[blocks.segments]]
+    leading_diamond = ''
+    template = '{{if atoi .Env.COLS | lt 75}} {{ if .SSHSession }} {{ end }}{{ .UserName }} {{end}}'
+    foreground = 'p:text'
+    powerline_symbol = ''
+    background = '#8AADF4'
+    type = 'session'
+    style = 'diamond'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+
+  [[blocks.segments]]
+    template = '{{if atoi .Env.COLS | lt 75}}  {{ path .Path .Location }}{{end}}'
+    foreground = 'p:text'
+    powerline_symbol = ''
+    background = '#B7BDF8'
+    type = 'path'
+    style = 'powerline'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+      style = 'unique'
+
+  [[blocks.segments]]
+    template = '{{if atoi .Env.COLS | gt 75}}{{.Path}}{{end}}'
+    foreground = 'p:tea-rose'
+    type = 'path'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+      style = 'folder'
+
+  [[blocks.segments]]
+    template = '{{if atoi .Env.COLS | lt 75}} {{ if .UpstreamURL }}{{ url .UpstreamIcon .UpstreamURL }} {{ end }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }} {{end}}'
+    foreground = 'p:text'
+    powerline_symbol = ''
+    background = 'p:cambridge-blue'
+    type = 'git'
+    style = 'powerline'
+    foreground_templates = ['{{ if or (.Working.Changed) (.Staging.Changed) }}p:text{{ end }}', '{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:text{{ end }}', '{{ if gt .Ahead 0 }}p:text{{ end }}']
+    background_templates = ['{{ if or (.Working.Changed) (.Staging.Changed) }}#e0d1cd{{ end }}', '{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:red{{ end }}', '{{ if gt .Ahead 0 }}p:lighter-green{{ end }}', '{{ if gt .Behind 0 }}p:kinda-blue{{ end }}']
+
+    [blocks.segments.properties]
+      branch_max_length = 25
+      cache_duration = 'none'
+      fetch_status = true
+      fetch_upstream_icon = true
+
+  [[blocks.segments]]
+    template = '{{if atoi .Env.COLS | lt 75}}  {{end}}'
+    foreground = 'p:text'
+    powerline_symbol = ''
+    background = 'p:timberwolf'
+    type = 'root'
+    style = 'powerline'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+
+  [[blocks.segments]]
+    leading_diamond = '<transparent,background></>'
+    template = '{{if atoi .Env.COLS | lt 75}} {{ if gt .Code 0 }}{{ else }}{{ end }}{{end}}'
+    foreground = 'p:text'
+    powerline_symbol = ''
+    background = '#F5BDE6'
+    type = 'status'
+    style = 'powerline'
+    background_templates = ['{{ if gt .Code 0 }}p:red{{ end }}']
+
+    [blocks.segments.properties]
+      always_enabled = true
+      cache_duration = 'none'
+
+  [[blocks.segments]]
+    template = '{{if atoi .Env.COLS | gt 75 }}>{{end}}'
+    foreground = 'p:purple'
+    type = 'text'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+
+[[blocks]]
+  type = 'rprompt'
+
+  [[blocks.segments]]
+    template = '{{if atoi .Env.COLS | lt 75}}  {{ .Full }} {{end}}'
+    foreground = '#193549'
+    powerline_symbol = ''
+    background = '#99908a'
+    type = 'rust'
+    style = 'powerline'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+
+  [[blocks.segments]]
+    template = '{{if atoi .Env.COLS | lt 75}}  {{ .Full }} {{end}}'
+    foreground = '#100e23'
+    powerline_symbol = ''
+    background = '#906cff'
+    type = 'python'
+    style = 'powerline'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+      display_mode = 'files'
+
+  [[blocks.segments]]
+    template = '{{if atoi .Env.COLS | lt 75}} {{ .Latest }}{{end}}'
+    type = 'upgrade'
+    style = 'powerline'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
