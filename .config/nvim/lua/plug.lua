@@ -44,6 +44,7 @@ lazy.setup({
   },
   { 'tpope/vim-fugitive' },
   { 'tpope/vim-repeat' },
+  { 'tpope/vim-sleuth' },
   { 'navarasu/onedark.nvim' },
   {
     'catppuccin/nvim',
@@ -218,7 +219,10 @@ lazy.setup({
       suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
       -- log_level = 'debug',
     }
-  }
+  },
+
+  { 'normen/vim-pio' },
+  { 'embear/vim-localvimrc'},
 })
 
 Hints = require('Hints')
@@ -227,7 +231,8 @@ Hints.setup({
     vim.g.mapleader,
     't',
     '<F1>',
-    'h'
+    'h',
+    'z'
   }
 })
 
@@ -260,8 +265,6 @@ require('gitsigns').setup({
     changedelete = { text = '➤' },
   }
 })
-
-require('dapui').setup()
 
 require('codesnap').setup({
   save_path = '~/Coding/Snaps/',
