@@ -44,6 +44,7 @@ lazy.setup({
   },
   { 'tpope/vim-fugitive' },
   { 'tpope/vim-repeat' },
+  { 'tpope/vim-sleuth' },
   { 'navarasu/onedark.nvim' },
   {
     'catppuccin/nvim',
@@ -65,7 +66,23 @@ lazy.setup({
   { 'akinsho/toggleterm.nvim' },
   { 'lewis6991/gitsigns.nvim' },
   { 'nvim-lua/plenary.nvim' },
-  { 'jiangmiao/auto-pairs' },
+  {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    opts = {
+      enable_moveright = false,
+    }
+    -- use opts = {} for passing setup options
+    -- this is equivalent to setup({}) function
+  },
+  {
+    'stevearc/conform.nvim',
+    opts = {
+      format_by_ft = {
+        xml = 'xmlformat',
+      }
+    },
+  },
   {
     'mistricky/codesnap.nvim', build = 'make'
   },
@@ -116,7 +133,15 @@ lazy.setup({
   }, -- optional `vim.uv` typings
   -- LSP
   { 'neovim/nvim-lspconfig' },
-  { 'hrsh7th/nvim-cmp' },
+  {
+    'hrsh7th/nvim-cmp',
+    dependencies = {
+      'zjp-CN/nvim-cmp-lsp-rs',
+      opts = {
+
+      }
+    }
+  },
   { 'hrsh7th/cmp-buffer' },
   { 'hrsh7th/cmp-path' },
   { 'saadparwaiz1/cmp_luasnip' },
@@ -127,10 +152,15 @@ lazy.setup({
   { 'williamboman/mason-lspconfig.nvim' },
   {
     'mrcjkb/rustaceanvim',
-    version = '^4', -- Recommended
+    version = '^5', -- Recommended
     ft = { 'rust' },
   },
-    -- Debug
+  {
+    'saecki/crates.nvim',
+    opts = {},
+  },
+  { 'p00f/clangd_extensions.nvim' },
+  -- Debug
   { 'mfussenegger/nvim-dap' },
   {
     'rcarriga/nvim-dap-ui',
@@ -151,6 +181,48 @@ lazy.setup({
       'nvim-lua/plenary.nvim',
     }
   },
+  {
+    'smoka7/hop.nvim',
+    version = '*',
+    opts = {
+      keys = 'etovxqpdygfblzhckisuran'
+    }
+  },
+  {
+    'mbbill/undotree'
+  },
+  {
+    'stevearc/oil.nvim',
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {},
+    -- Optional dependencies
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+  },
+  {
+    'akinsho/flutter-tools.nvim',
+    lazy = false,
+    commit = '6610090a4e68d10fd73b68450004dafd26e7cc34',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+  },
+  { 'henry-hsieh/riscv-asm-vim',      ft = { 'riscv_asm' } },
+  {
+    'rmagatti/auto-session',
+    lazy = false,
+
+    ---enables autocomplete for opts
+    ---@module "auto-session"
+    ---@type AutoSession.Config
+    opts = {
+      suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
+      -- log_level = 'debug',
+    }
+  },
+
+  { 'normen/vim-pio' },
+  { 'embear/vim-localvimrc'},
 })
 
 Hints = require('Hints')
@@ -159,6 +231,8 @@ Hints.setup({
     vim.g.mapleader,
     't',
     '<F1>',
+    'h',
+    'z'
   }
 })
 
@@ -192,12 +266,26 @@ require('gitsigns').setup({
   }
 })
 
-require('dapui').setup()
-
 require('codesnap').setup({
   save_path = '~/Coding/Snaps/',
   has_breadcrumbs = true,
   bg_color = '#535c68',
   watermark = '',
   code_font_family = 'JetBrainsMono Nerd Font Mono',
+})
+
+
+require('telescope').setup({
+  defaults = {
+    file_ignore_patterns = {
+      'target',
+      -- 'android', --dart
+      -- 'build',
+      -- 'ios',
+      -- 'macos',
+      -- 'linux',
+      -- 'windows',
+      -- 'web'
+    }
+  }
 })

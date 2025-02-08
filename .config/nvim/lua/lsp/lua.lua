@@ -1,4 +1,3 @@
-
 -- https://luals.github.io/wiki/settings/
 
 Lspconfig.lua_ls.setup({
@@ -14,17 +13,17 @@ Lspconfig.lua_ls.setup({
       completion = {
         enable = true,
         callSnippet = 'Replace'
-        
+
       }
-    } 
+    }
   }
 })
 
-Luasnip.add_snippets("lua", {
+Luasnip.add_snippets('lua', {
   Luasnip.snippet(
-    "---@type",{
-      Luasnip.text_node("---@type "),
-      Luasnip.insert_node(1, "type")
+    '---@type', {
+      Luasnip.text_node('---@type '),
+      Luasnip.insert_node(1, 'type')
     }
   )
 })
