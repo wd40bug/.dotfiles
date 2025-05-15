@@ -1,9 +1,3 @@
--- Mason.nvim
-require('mason').setup()
-require('mason-lspconfig').setup {
-  ensure_installed = { 'lua_ls', 'rust_analyzer', 'clangd', 'pyright' }, --TODO: Config for clangd and pyright
-}
-
 -- Config variables
 Lspconfig = require('lspconfig')
 Lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()

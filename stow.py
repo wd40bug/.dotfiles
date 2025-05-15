@@ -1,5 +1,5 @@
 ## Linking Philosophy:
-## I don't anticipate adding that many configs, so I should just be able to handle it this way
+# I don't anticipate adding that many configs, so I should just be able to handle it this way
 import os
 import sys
 from pathlib import Path
