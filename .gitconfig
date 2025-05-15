@@ -1,6 +1,6 @@
 [credential "https://github.com"]
-	helper = !/home/linuxbrew/.linuxbrew/bin/gh auth git-credential 
-	helper = !/usr/bin/gh auth git-credential
+	helper = 
+	helper = !'C:\\Program Files\\GitHub CLI\\gh.exe' auth git-credential
 [user]
 	email = wd40bug@gmail.com
 	name = William Dale
@@ -10,3 +10,6 @@
 	editor = gedit -s
 [format]
 	pretty = %C(auto) %h %d %s
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !'C:\\Program Files\\GitHub CLI\\gh.exe' auth git-credential
