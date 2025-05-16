@@ -21,7 +21,6 @@ vim.opt.undodir = undo_path
 vim.opt.undofile = true
 
 if vim.g.neovide then
-  vim.o.guifont = "JetBrainsMono Nerd Font Mono:h11"
   vim.g.neovide_hide_mouse_when_typing = true
   vim.g.neovide_position_animation_length = 0.05
 end
