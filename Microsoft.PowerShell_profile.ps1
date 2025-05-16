@@ -3,3 +3,4 @@ function Set-EnvVar {
     $env:COLS=$(&{$H=get-host;$H.ui.rawui.WindowSize.Width;})
 }
 New-Alias -Name 'Set-PoshContext' -Value 'Set-EnvVar' -Scope Global -Force
+New-Alias -Name 'nvide' -Value 'neovide' -Scope Global -Force

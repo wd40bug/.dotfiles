@@ -19,7 +19,6 @@ function lazy.setup(plugins)
     return
   end
 
-  -- You can "comment out" the line below after lazy.nvim is installed
   lazy.install(lazy.path)
 
   vim.opt.rtp:prepend(lazy.path)
@@ -152,7 +151,6 @@ lazy.setup({
   {
     'stevearc/oil.nvim',
     ---@module 'oil'
-    ---@type oil.SetupOpts
     opts = {},
     -- Optional dependencies
     dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -167,16 +165,27 @@ lazy.setup({
   },
   { 'henry-hsieh/riscv-asm-vim',      ft = { 'riscv_asm' } },
   {
-    'rmagatti/auto-session',
-    lazy = false,
-
-    ---enables autocomplete for opts
-    ---@module "auto-session"
-    ---@type AutoSession.Config
-    opts = {
-      suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
-      -- log_level = 'debug',
-    }
+    'startup-nvim/startup.nvim',
+    dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-file-browser.nvim' },
+    config = function()
+      require 'startup'.setup({ theme = 'startify' })
+    end
+  },
+  { 'echasnovski/mini.nvim', version = '*' },
+  {
+    'ahmedkhalf/project.nvim',
+    version = '*',
+    config = function()
+      require('project_nvim').setup({
+        sync_root_with_cwd = true,
+        respect_buf_cwd = true,
+        update_focused_file = {
+          enable = true,
+          update_root = true
+        },
+        patterns = { '.git', '_darcs', '.hg', '.bzr', '.svn', 'Makefile', 'package.json', '.luarc.json', 'Cargo.toml' },
+      })
+    end
   }
 })
 
@@ -239,3 +248,5 @@ require('telescope').setup({
     }
   }
 })
+
+require('telescope').load_extension('projects')

@@ -20,6 +20,9 @@ vim.keymap.set('n', t_lead .. 'c', '<cmd>Telescope commands<cr>', { desc = 'Tele
 vim.keymap.set('n', t_lead .. 'h', '<cmd>Telescope help_tags<cr>', { desc = 'Help' })
 vim.keymap.set('n', t_lead .. 's', '<cmd>Telescope lsp_document_symbols<cr>', { desc = 'Symbols document' })
 vim.keymap.set('n', t_lead .. 'S', '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>', { desc = 'Symbols workspace' })
+vim.keymap.set('n', t_lead .. 'p', function()
+  require 'telescope'.extensions.projects.projects {}
+end, { desc = 'Projects' })
 
 -- Hop
 local hop = require('hop')
@@ -108,4 +111,4 @@ vim.keymap.set('n', '<leader>/', function()
 end, { desc = 'Clear previous search' })
 
 vim.keymap.set('n', '<F4>', vim.cmd.UndotreeToggle)
-vim.keymap.set('n', '<leader>`', vim.cmd.Oil, {desc="Open the oil file explorer"})
+vim.keymap.set('n', '<leader>`', vim.cmd.Oil, { desc = 'Open the oil file explorer' })
