@@ -106,3 +106,5 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
 vim.keymap.set('n', '<leader>/', function()
   vim.cmd(':nohlsearch')
 end, { desc = 'Clear previous search' })
+
+vim.keymap.set('n', '<F5>', vim.cmd.UndotreeToggle)
