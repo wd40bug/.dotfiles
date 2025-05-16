@@ -127,7 +127,6 @@ require('toggleterm').setup({
   direction = 'horizontal',
   shade_terminals = true,
   shell = "pwsh"
-  shell = "fish"
 })
 
 require('gitsigns').setup({

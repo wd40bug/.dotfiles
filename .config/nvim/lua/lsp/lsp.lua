@@ -73,7 +73,7 @@ cmp.setup({
       }
 
       item.menu = menu_icon[entry.source.name]
-      return item$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
+      return item    
     end,
   },
   mapping = {
