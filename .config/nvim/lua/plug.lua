@@ -66,7 +66,6 @@ lazy.setup({
   { 'lewis6991/gitsigns.nvim' },
   { 'nvim-lua/plenary.nvim' },
   { 'jiangmiao/auto-pairs' },
-  -- Treesitter
   { 'nvim-treesitter/nvim-treesitter' }, -- Parses code as AST
   { 'nvim-treesitter/nvim-treesitter-textobjects' },
   { 'RRethy/nvim-treesitter-textsubjects' },
@@ -89,7 +88,7 @@ lazy.setup({
     version = '^4', -- Recommended
     ft = { 'rust' },
   },
-  -- Debug
+    -- Debug
   { 'mfussenegger/nvim-dap' },
   {
     'rcarriga/nvim-dap-ui',
@@ -98,7 +97,18 @@ lazy.setup({
   { 'theHamsta/nvim-dap-virtual-text' },
 
   --KeyHints
-  {'wd40bug/Hints.nvim', dev=true},
+  {
+    'wd40bug/Hints.nvim',
+    dev = true
+  },
+  {
+    'sudormrfbin/cheatsheet.nvim',
+    dependencies = {
+      'nvim-telescope/telescope.nvim',
+      'nvim-lua/popup.nvim',
+      'nvim-lua/plenary.nvim',
+    }
+  },
 })
 
 Hints = require("Hints")
