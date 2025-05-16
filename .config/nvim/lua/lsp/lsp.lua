@@ -7,7 +7,9 @@ require('luasnip.loaders.from_vscode').lazy_load()
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
 local cmp = require('cmp')
-local luasnip = require('luasnip')
+local cmp_lsp_rs = require('cmp_lsp_rs')
+local comparators_rs = cmp_lsp_rs.comparators
+Luasnip = require('luasnip')
 local select_opts = { behavior = cmp.SelectBehavior.Select }
 
 
@@ -16,7 +18,7 @@ vim.diagnostic.config({
   severity_sort = true,
   float = {
     border = 'rounded',
-    source = 'always',
+    source = true,
   },
   signs = {
     text = {
@@ -50,7 +52,7 @@ vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
 cmp.setup({
   snippet = {
     expand = function(args)
-      luasnip.lsp_expand(args.body)
+      Luasnip.lsp_expand(args.body)
     end
   },
   sources = {
@@ -74,7 +76,7 @@ cmp.setup({
       }
 
       item.menu = menu_icon[entry.source.name]
-      return item    
+      return item
     end,
   },
   mapping = {
@@ -96,8 +98,8 @@ cmp.setup({
     --
     ['<C-f>'] = cmp.mapping(
       function(fallback)
-        if luasnip.jumpable(1) then
-          luasnip.jump(1)
+        if Luasnip.jumpable(1) then
+          Luasnip.jump(1)
         else
           fallback()
         end
@@ -106,8 +108,8 @@ cmp.setup({
 
     ['<C-b>'] = cmp.mapping(
       function(fallback)
-        if luasnip.jumpable(-1) then
-          luasnip.jump(-1)
+        if Luasnip.jumpable(-1) then
+          Luasnip.jump(-1)
         else
           fallback()
         end
@@ -135,14 +137,29 @@ cmp.setup({
         end
       end,
       { 'i', 's' }),
+  },
+  sorting = {
+    comparators = {
+      cmp.config.compare.exact,
+      cmp.config.compare.scopes,
+      comparators_rs.inscope_inherent_import,
+      comparators_rs.sort_by_label_but_underscore_last,
+      require('clangd_extensions.cmp_scores'),
+      cmp.config.compare.offset,
+      cmp.config.compare.recently_used,
+      cmp.config.compare.kind,
+      cmp.config.compare.sort_text,
+      cmp.config.compare.length,
+    },
+    priority_weight = 2.0
   }
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
   callback = function()
-    local bufmap = function(mode, lhs, rhs)
-      local opts = { buffer = true }
+    local bufmap = function(mode, lhs, rhs, desc)
+      local opts = { buffer = true, desc = desc }
       vim.keymap.set(mode, lhs, rhs, opts)
     end
 
