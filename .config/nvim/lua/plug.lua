@@ -31,8 +31,8 @@ end
 lazy.path = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 lazy.opts = {
   dev = {
-    path = "~/coding/lua_plugins/",
-    patters = {'wd40bug'},
+    path = '~/coding/lua_plugins/',
+    patters = { 'wd40bug' },
     fallback = true,
   }
 }
@@ -45,10 +45,10 @@ lazy.setup({
   { 'tpope/vim-fugitive' },
   { 'tpope/vim-repeat' },
   { 'navarasu/onedark.nvim' },
-  { 
+  {
     'catppuccin/nvim',
-    name = "catppuccin",
-    priority = 1000 
+    name = 'catppuccin',
+    priority = 1000
   },
   {
     'lukas-reineke/indent-blankline.nvim',
@@ -56,16 +56,33 @@ lazy.setup({
     opts = {}
   },
   { 'numToStr/Comment.nvim' },
-    {
-    "folke/todo-comments.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
+  {
+    'folke/todo-comments.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
     opts = {}
   },
   { 'tpope/vim-surround' },
   { 'akinsho/toggleterm.nvim' },
   { 'lewis6991/gitsigns.nvim' },
   { 'nvim-lua/plenary.nvim' },
-  { 'jiangmiao/auto-pairs' },
+  {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    config = {
+      enable_moveright = false,
+    }
+    -- use opts = {} for passing setup options
+    -- this is equivalent to setup({}) function
+  },
+  {
+    'stevearc/conform.nvim',
+    opts = {
+      format_by_ft = {
+        xml = 'xmlformat',
+      }
+    },
+  },
+  -- Treesitter
   { 'nvim-treesitter/nvim-treesitter' }, -- Parses code as AST
   { 'nvim-treesitter/nvim-treesitter-textobjects' },
   { 'RRethy/nvim-treesitter-textsubjects' },
@@ -73,7 +90,7 @@ lazy.setup({
   -- Telescope
   { 'nvim-telescope/telescope.nvim' },
   -- Completion for neovim internals
-  { 'folke/neodev.nvim', opts={}},
+  { 'folke/neodev.nvim',                          opts = {} },
   -- LSP
   { 'neovim/nvim-lspconfig' },
   { 'hrsh7th/nvim-cmp' },
@@ -88,7 +105,7 @@ lazy.setup({
     version = '^4', -- Recommended
     ft = { 'rust' },
   },
-    -- Debug
+  -- Debug
   { 'mfussenegger/nvim-dap' },
   {
     'rcarriga/nvim-dap-ui',
@@ -111,7 +128,7 @@ lazy.setup({
   },
 })
 
-Hints = require("Hints")
+Hints = require('Hints')
 Hints.setup({
   hint_keys = {
     vim.g.mapleader,
@@ -136,7 +153,7 @@ require('toggleterm').setup({
   open_mapping = '<C-g>',
   direction = 'horizontal',
   shade_terminals = true,
-  shell = "pwsh"
+  shell = 'pwsh'
 })
 
 require('gitsigns').setup({
@@ -155,10 +172,10 @@ require('neodev').setup({
 })
 
 
-require("telescope").setup({
+require('telescope').setup({
   defaults = {
     file_ignore_patterns = {
-      "target"
+      'target'
     }
   }
 })
