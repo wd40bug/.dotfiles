@@ -154,4 +154,11 @@ require('neodev').setup({
   lspconfig = false,
 })
 
-require('dapui').setup()
+
+require("telescope").setup({
+  defaults = {
+    file_ignore_patterns = {
+      "target"
+    }
+  }
+})
