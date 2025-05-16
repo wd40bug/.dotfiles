@@ -165,7 +165,19 @@ lazy.setup({
       'nvim-lua/plenary.nvim',
     },
   },
-  { 'henry-hsieh/riscv-asm-vim',      ft = { 'riscv_asm' } }
+  { 'henry-hsieh/riscv-asm-vim',      ft = { 'riscv_asm' } },
+  {
+    'rmagatti/auto-session',
+    lazy = false,
+
+    ---enables autocomplete for opts
+    ---@module "auto-session"
+    ---@type AutoSession.Config
+    opts = {
+      suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
+      -- log_level = 'debug',
+    }
+  }
 })
 
 Hints = require('Hints')
