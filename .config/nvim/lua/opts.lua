@@ -29,4 +29,6 @@ end
 
 vim.g.startup_bookmarks = {
   ["N"] = '~/.dotfiles/.config/nvim/',
+  ["S"] = '~/Projects/Organicam/software/sw/',
+  ["O"] = '~/Projects/Organicam/'
 }
