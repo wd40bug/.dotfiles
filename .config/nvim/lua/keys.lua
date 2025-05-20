@@ -111,4 +111,5 @@ vim.keymap.set('n', '<leader>/', function()
 end, { desc = 'Clear previous search' })
 
 vim.keymap.set('n', '<F4>', vim.cmd.UndotreeToggle)
-vim.keymap.set('n', '<leader>`', vim.cmd.Oil, { desc = 'Open the oil file explorer' })
+vim.keymap.set('n', '<leader>`', vim.cmd.Oil, { desc = 'Oil file explorer' })
+vim.keymap.set('n', '<leader>m', ':Startup display<CR>', {desc = 'Main menu'})

@@ -151,7 +151,12 @@ lazy.setup({
   {
     'stevearc/oil.nvim',
     ---@module 'oil'
-    opts = {},
+    opts = {
+      view_options = {
+        -- Show files and directories that start with "."
+        show_hidden = true
+      }
+    },
     -- Optional dependencies
     dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
@@ -195,7 +200,8 @@ Hints.setup({
     vim.g.mapleader,
     't',
     '<F1>',
-    'h'
+    'h',
+    'T'
   }
 })
 

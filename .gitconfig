@@ -13,3 +13,7 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !'C:\\Program Files\\GitHub CLI\\gh.exe' auth git-credential
+[http]
+	sslbackend = schannel
+[credential "https://isr-gitlab-prod.lanl.gov"]
+	provider = generic

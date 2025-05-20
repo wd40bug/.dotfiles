@@ -22,6 +22,7 @@ vim.opt.undofile = true
 vim.o.visualbell = true
 
 if vim.g.neovide then
+  vim.o.guifont = "JetBrainsMono Nerd Font:h14"
   vim.g.neovide_hide_mouse_when_typing = true
   vim.g.neovide_position_animation_length = 0.05
 end
