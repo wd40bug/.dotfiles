@@ -129,6 +129,33 @@
                 "hidden": true,
                 "name": "Developer PowerShell for VS 2019",
                 "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
+                "hidden": false,
+                "name": "Git Bash",
+                "source": "Git"
+            },
+            {
+                "commandline": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\"",
+                "elevate": true,
+                "guid": "{28a39ac6-a983-45b3-8dc0-fb5c0930eebe}",
+                "hidden": false,
+                "icon": "ms-appx:///ProfileIcons/pwsh.png",
+                "name": "Admin Powershell",
+                "startingDirectory": "%USERPROFILE%"
+            },
+            {
+                "guid": "{08817974-76c1-5813-a81c-1221ae4af396}",
+                "hidden": false,
+                "name": "Developer Command Prompt for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{22a8f550-3762-5d2f-9530-c17151a3af03}",
+                "hidden": false,
+                "name": "Developer PowerShell for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
             }
         ]
     },
