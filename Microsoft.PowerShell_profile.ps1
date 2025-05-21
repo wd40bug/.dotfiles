@@ -4,3 +4,4 @@ function Set-EnvVar {
 }
 New-Alias -Name 'Set-PoshContext' -Value 'Set-EnvVar' -Scope Global -Force
 New-Alias -Name 'nvide' -Value 'neovide' -Scope Global -Force
+Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1
