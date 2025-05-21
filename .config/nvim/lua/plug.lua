@@ -76,8 +76,9 @@ lazy.setup({
   {
     'stevearc/conform.nvim',
     opts = {
-      format_by_ft = {
-        xml = 'xmlformat',
+      formatters_by_ft = {
+        xml = { 'xmlformat' },
+        python = { 'ruff_format' }
       }
     },
   },
@@ -104,7 +105,7 @@ lazy.setup({
   { 'hrsh7th/cmp-buffer' },
   { 'hrsh7th/cmp-path' },
   { 'saadparwaiz1/cmp_luasnip' },
-  { 'hrsh7th/cmp-nvim-lsp' },
+  { 'hrsh7th/cmp-nvim-lsp',        commit = '99c4e3e' },
   { 'L3MON4D3/LuaSnip' },
   { 'rafamadriz/friendly-snippets' },
   {
