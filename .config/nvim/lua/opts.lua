@@ -30,7 +30,7 @@ end
 vim.g.startup_bookmarks = {
   ["N"] = '~/.dotfiles/.config/nvim/',
   ["S"] = '~/Projects/Organicam/software/sw/',
-  ["O"] = '~/Projects/Organicam/'
-  ["B"] = '~/Projects/Organicam/software/GSE/backend/'
-  ["F"] = '~/Projects/Organicam/software/GSE/frontend/'
+  ["O"] = '~/Projects/Organicam/',
+  ["B"] = '~/Projects/Organicam/software/GSE/backend/',
+  ["F"] = '~/Projects/Organicam/software/GSE/frontend/',
 }
