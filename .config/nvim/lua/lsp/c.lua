@@ -7,6 +7,6 @@ Lspconfig.clangd.setup({
     end, {buffer=bufnr, desc="Switch to header file"})
     vim.keymap.set('n', '<leader>i', function ()
       vim.cmd.ClangdTypeHierarchy()
-    end, {buffer=bufnr})
+    end, {buffer=bufnr, desc="Class Type Hierarchy"})
   end
 })

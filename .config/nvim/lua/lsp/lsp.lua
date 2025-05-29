@@ -2,6 +2,8 @@
 Lspconfig = require('lspconfig')
 Lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+
+require("luasnip.loaders.from_snipmate").lazy_load()
 require('luasnip.loaders.from_vscode').lazy_load()
 
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
@@ -59,7 +61,7 @@ cmp.setup({
     { name = 'path',     keyword_length = 3 },
     { name = 'nvim_lsp', keyword_length = 2 },
     { name = 'buffer',   keyword_length = 5 },
-    { name = 'luasnip',  keyword_length = 2 },
+    { name = 'luasnip',  keyword_length = 0 },
   },
   window = {
     documentation = cmp.config.window.bordered()

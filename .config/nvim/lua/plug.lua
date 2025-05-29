@@ -78,7 +78,8 @@ lazy.setup({
     opts = {
       formatters_by_ft = {
         xml = { 'xmlformat' },
-        python = { 'ruff_format' }
+        python = { 'ruff_format' },
+        c = {'clang-format'}
       }
     },
   },
@@ -257,3 +258,5 @@ require('telescope').setup({
 })
 
 require('telescope').load_extension('projects')
+
+vim.g.undotree_DiffCommand = "FC"
