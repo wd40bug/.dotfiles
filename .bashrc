@@ -116,18 +116,12 @@ if ! shopt -oq posix; then
   fi
 fi
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(oh-my-posh init bash --config "~/.mytheme.toml")"
-. "$HOME/.cargo/env"
 alias clip='xsel -ib'
-export PATH="~/Downloads/clang+llvm-17.0.6-x86_64-linux-gnu-ubuntu-22.04//bin:$PATH"
-export PATH="~/.local/bin/:$PATH"
-eval $(thefuck --alias)
 function set_poshcontext() {
     export COLS=$(tput cols)
 }
 HELIX_RUNTIME=~/src/helix/runtime
-
 
 # pnpm
 export PNPM_HOME="/home/wd40bug/.local/share/pnpm"
@@ -136,3 +130,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+export PATH="/tools/neovim/nvim-win64/bin/":"/tools/neovide/":"/tools/git/bin/":"/tools/nodejs/":$PATH
+export PATH="/opt/rcc-1.3-rc9-gcc/bin/":$PATH
