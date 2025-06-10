@@ -9,4 +9,5 @@ if status is-interactive
     abbr --add cl clear
 
     set -Ux MSYS "winsymlinks:nativestrict"
+    fish_config theme choose "fish default"
 end
