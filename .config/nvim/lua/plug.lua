@@ -115,7 +115,7 @@ lazy.setup({
   --     }
   --   },
   -- },                                     -- Treesitter
-  { 'nvim-treesitter/nvim-treesitter', build = ":TSUpdate" }, -- Parses code as AST
+  { 'nvim-treesitter/nvim-treesitter',            build = ':TSUpdate' }, -- Parses code as AST
   { 'nvim-treesitter/nvim-treesitter-textobjects' },
   { 'RRethy/nvim-treesitter-textsubjects' },
   { 'wellle/targets.vim' },
@@ -245,7 +245,8 @@ require('toggleterm').setup({
   open_mapping = '<C-g>',
   direction = 'horizontal',
   shade_terminals = true,
-  shell = 'fish'
+  shading_factor = 1,
+  shell = 'fish',
 })
 
 require('gitsigns').setup({
