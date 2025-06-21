@@ -227,7 +227,8 @@ lazy.setup({
       suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
       -- log_level = 'debug',
     }
-  }
+  },
+  { 'nvim-java/nvim-java', opts = {} }
 })
 
 Hints = require('Hints')
