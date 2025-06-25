@@ -1,7 +1,1 @@
-Lspconfig.jdtls.setup({
-  capabilities = Lsp_capabilities,
-  command="jdtls",
-  filetypes = {
-    "java"
-  }
-})
+-- Provided by ftplugin/java.lua

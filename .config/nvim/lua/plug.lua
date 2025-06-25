@@ -91,30 +91,7 @@ lazy.setup({
   {
     'p00f/clangd_extensions.nvim'
   },
-  {
-    'mistricky/codesnap.nvim', build = 'make'
-  },
-  -- {
-  --   'AlejandroSuero/freeze-code.nvim',
-  --   opts = {
-  --     copy = true,
-  --     open = true,
-  --     freeze_config = {
-  --       background = '#535c68',
-  --       show_line_numbers = true,
-  --       font = {
-  --         family = 'JetBrainsMono Nerd Font Mono',
-  --         ligatures = 'true',
-  --       },
-  --       theme = 'onedark',
-  --       border = {
-  --         radius = 8
-  --       },
-  --       window = true,
-  --
-  --     }
-  --   },
-  -- },                                     -- Treesitter
+  -- Treesitter
   { 'nvim-treesitter/nvim-treesitter',            build = ':TSUpdate' }, -- Parses code as AST
   { 'nvim-treesitter/nvim-treesitter-textobjects' },
   { 'RRethy/nvim-treesitter-textsubjects' },
@@ -203,7 +180,12 @@ lazy.setup({
     'stevearc/oil.nvim',
     ---@module 'oil'
     ---@type oil.SetupOpts
-    opts = {},
+    opts = {
+      default_file_explorer = true,
+      view_options = {
+        show_hidden = true,
+      }
+    },
     -- Optional dependencies
     dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
@@ -228,7 +210,12 @@ lazy.setup({
       -- log_level = 'debug',
     }
   },
-  { 'nvim-java/nvim-java', opts = {} }
+  {
+    'mfussenegger/nvim-jdtls',
+    dependencies = {
+      'mfussenegger/nvim-dap',
+    }
+  }
 })
 
 Hints = require('Hints')
@@ -236,8 +223,8 @@ Hints.setup({
   hint_keys = {
     vim.g.mapleader,
     't',
-    '<F1>',
-    'h'
+    '\'',
+    'H',
   }
 })
 
@@ -274,15 +261,6 @@ require('gitsigns').setup({
 
 require('dapui').setup()
 
-require('codesnap').setup({
-  save_path = '~/Coding/Snaps/',
-  has_breadcrumbs = true,
-  bg_color = '#535c68',
-  watermark = '',
-  code_font_family = 'JetBrainsMono Nerd Font Mono',
-})
-
-
 require('telescope').setup({
   defaults = {
     file_ignore_patterns = {
@@ -297,3 +275,5 @@ require('telescope').setup({
     }
   }
 })
+
+Dap = require('dap')
