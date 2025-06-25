@@ -153,6 +153,3 @@ final_space = true
     template = '{{if atoi .Env.COLS | lt 75}} {{ .Latest }}{{end}}'
     type = 'upgrade'
     style = 'powerline'
-
-    [blocks.segments.properties]
-      cache_duration = 'none'
