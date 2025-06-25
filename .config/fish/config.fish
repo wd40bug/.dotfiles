@@ -7,8 +7,6 @@ if status is-interactive
 
 
     abbr --add cl clear
-    TF_SHELL=fish thefuck --alias | source
-    bass source /etc/profile
     pyenv init - | source
     pyenv virtualenv-init - | source
     direnv hook fish | source
