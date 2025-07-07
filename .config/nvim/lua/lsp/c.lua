@@ -1,4 +1,5 @@
 Lspconfig.clangd.setup({
+  cmd = {'clangd', '--background-index', '--background-index-priority=normal', '--clang-tidy', '--log=verbose', '--pretty'},
   capabilities = Lsp_capabilities,
   on_attach = function (client, bufnr)
     vim.lsp.inlay_hint.enable(true, {bufnr=bufnr})

@@ -11,6 +11,7 @@ vim.opt.filetype = 'on'
 vim.cmd("filetype plugin on")
 vim.opt.tabstop = 2 -- Makes a tab worth two space
 vim.opt.shiftwidth = 2 -- Makes the autoindent every two spaces
+vim.o.exrc = false
 vim.g.c_syntax_for_h = true
 
 --persistant undo

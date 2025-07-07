@@ -38,6 +38,18 @@ lazy.opts = {
 
 lazy.setup({
   {
+    'jedrzejboczar/exrc.nvim',
+    dependencies = { 'neovim/nvim-lspconfig' }, -- (optional)
+    config = true,
+    opts = { --[[ your config ]] },
+  },
+  {
+    'danymat/neogen',
+    config = true,
+    -- Uncomment next line if you want to follow only stable versions
+    -- version = "*"
+  },
+  {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' }
   },
@@ -79,7 +91,8 @@ lazy.setup({
       formatters_by_ft = {
         xml = { 'xmlformat' },
         python = { 'ruff_format' },
-        c = {'clang-format'}
+        c = { 'clang-format' },
+        json = {'jq'}
       }
     },
   },
@@ -259,4 +272,4 @@ require('telescope').setup({
 
 require('telescope').load_extension('projects')
 
-vim.g.undotree_DiffCommand = "FC"
+vim.g.undotree_DiffCommand = 'FC'

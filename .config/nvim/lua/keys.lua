@@ -87,7 +87,7 @@ dap.listeners.before.event_exited.dapui_config = function()
 end
 
 -- Other
-vim.keymap.set('n', '<leader>f', function()
+vim.keymap.set({ 'n', 'v' }, '<leader>f', function()
   require('conform').format({ lsp_format = 'fallback' })
 end, { desc = 'Format buffer' }) -- Format
 
@@ -98,3 +98,4 @@ end, { desc = 'Clear previous search' })
 vim.keymap.set('n', '<F4>', vim.cmd.UndotreeToggle)
 vim.keymap.set('n', '<leader>`', vim.cmd.Oil, { desc = 'Oil file explorer' })
 vim.keymap.set('n', '<leader>m', ':Startup display<CR>', {desc = 'Main menu'})
+vim.keymap.set('n', '<leader>d', ':Neogen<CR>', {desc = 'Neogen documentation'})

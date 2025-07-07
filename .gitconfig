@@ -2,7 +2,7 @@
 	helper = 
 	helper = !'C:\\Program Files\\GitHub CLI\\gh.exe' auth git-credential
 [user]
-	email = wd40bug@gmail.com
+	email = wdale@lanl.gov
 	name = William Dale
 [pull]
 	rebase = false
