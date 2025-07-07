@@ -1,5 +1,6 @@
 [credential "https://github.com"]
-	helper = !/home/linuxbrew/.linuxbrew/bin/gh auth git-credential 
+	helper = 
+	helper = !'C:\\msys64\\ucrt64\\bin\\gh.exe' auth git-credential
 [user]
 	email = wd40bug@gmail.com
 	name = William Dale
@@ -9,3 +10,8 @@
 	editor = nvim
 [format]
 	pretty = %C(auto) %h %d %s
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !'C:\\msys64\\ucrt64\\bin\\gh.exe' auth git-credential
+[credential "https://isr-gitlab-prod.lanl.gov"]
+	provider = generic

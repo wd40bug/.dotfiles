@@ -1,51 +1,51 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR --export C51ASMINC:/home/wd40bug/\x2ewine/drive_c/SiLabs/MCU/INC/
-SETUVAR --export C51INC:/home/wd40bug/\x2ewine/drive_c/Keil_v5/C51/INC/
-SETUVAR --export C51LIB:/home/wd40bug/\x2ewine/drive_c/Keil_v5/C51/LIB/
-SETUVAR EDITOR:nvim
-SETUVAR --path LD_LIBRARY_PATH:/usr/local/lib/
-SETUVAR --path LIBRARY_PATH:/usr/local/lib/x86_64\x2dunknown\x2dlinux\x2dgnu/
+SETUVAR --export C51ASMINC:/home/wd40bug/\x2ewine/drive_c/SiLabs/MCU/INC/\x0d
+SETUVAR --export C51INC:/home/wd40bug/\x2ewine/drive_c/Keil_v5/C51/INC/\x0d
+SETUVAR --export C51LIB:/home/wd40bug/\x2ewine/drive_c/Keil_v5/C51/LIB/\x0d
+SETUVAR EDITOR:nvim\x0d
+SETUVAR --path LD_LIBRARY_PATH:/usr/local/lib/\x0d
+SETUVAR --path LIBRARY_PATH:/usr/local/lib/x86_64\x2dunknown\x2dlinux\x2dgnu/\x0d
 SETUVAR --export MSYS:winsymlinks\x3anativestrict
-SETUVAR --export --path PATH:/home/wd40bug/\x2epyenv/shims\x1e/home/linuxbrew/\x2elinuxbrew/bin\x1e/home/linuxbrew/\x2elinuxbrew/sbin\x1e/home/wd40bug/src/flutter/bin\x1e/home/wd40bug/Android/Sdk/cmdline\x2dtools/latest/bin\x1e/home/wd40bug/src/android\x2dstudio/bin\x1e/home/wd40bug/Documents/college/24Fall/2305ECE/tutorials/tutorial_formatter/target/release\x1e/home/wd40bug/\x2elocal/src/llvm\x2dproject/build/bin\x1e/home/wd40bug/\x2elocal/src/fish\x2dlsp/bin\x1e/home/wd40bug/\x2elocal/bin\x1e/home/wd40bug/\x2ebin\x1e/home/wd40bug/\x2ecargo/bin\x1e/home/wd40bug/Downloads/clang\x2bllvm\x2d17\x2e0\x2e6\x2dx86_64\x2dlinux\x2dgnu\x2dubuntu\x2d22\x2e04/bin\x1e/usr/local/sbin\x1e/usr/local/bin\x1e/usr/sbin\x1e/usr/bin\x1e/sbin\x1e/bin\x1e/usr/games\x1e/usr/local/games\x1e/snap/bin\x1e/snap/bin
-SETUVAR --export --path PKG_CONFIG_PATH:/usr/lib/x86_64\x2dlinux\x2dgnu/pkgconfig/\x1e/usr/lib/x86_64\x2dlinux\x2dgnu/
-SETUVAR --export PYENV_ROOT:/home/wd40bug/\x2epyenv
-SETUVAR --export RTEMS_BASE:/opt/rcc\x2d1\x2e3\x2drc9\x2dgcc/
-SETUVAR --export TMP:/tmp/
-SETUVAR --export --path WINEPATH:C\x1e\x5cKeil_v5\x5cC51\x5cBIN
+SETUVAR --export --path PATH:/home/wd40bug/\x2epyenv/shims\x1e/home/linuxbrew/\x2elinuxbrew/bin\x1e/home/linuxbrew/\x2elinuxbrew/sbin\x1e/home/wd40bug/src/flutter/bin\x1e/home/wd40bug/Android/Sdk/cmdline\x2dtools/latest/bin\x1e/home/wd40bug/src/android\x2dstudio/bin\x1e/home/wd40bug/Documents/college/24Fall/2305ECE/tutorials/tutorial_formatter/target/release\x1e/home/wd40bug/\x2elocal/src/llvm\x2dproject/build/bin\x1e/home/wd40bug/\x2elocal/src/fish\x2dlsp/bin\x1e/home/wd40bug/\x2elocal/bin\x1e/home/wd40bug/\x2ebin\x1e/home/wd40bug/\x2ecargo/bin\x1e/home/wd40bug/Downloads/clang\x2bllvm\x2d17\x2e0\x2e6\x2dx86_64\x2dlinux\x2dgnu\x2dubuntu\x2d22\x2e04/bin\x1e/usr/local/sbin\x1e/usr/local/bin\x1e/usr/sbin\x1e/usr/bin\x1e/sbin\x1e/bin\x1e/usr/games\x1e/usr/local/games\x1e/snap/bin\x1e/snap/bin\x0d
+SETUVAR --export --path PKG_CONFIG_PATH:/usr/lib/x86_64\x2dlinux\x2dgnu/pkgconfig/\x1e/usr/lib/x86_64\x2dlinux\x2dgnu/\x0d
+SETUVAR --export PYENV_ROOT:/home/wd40bug/\x2epyenv\x0d
+SETUVAR --export RTEMS_BASE:/opt/rcc\x2d1\x2e3\x2drc9\x2dgcc/\x0d
+SETUVAR --export TMP:/tmp/\x0d
+SETUVAR --export --path WINEPATH:C\x1e\x5cKeil_v5\x5cC51\x5cBIN\x0d
 SETUVAR __fish_initialized:3400
-SETUVAR _fish_abbr_cl:clear
-SETUVAR _fisher_edc_2F_bass_files:\x7e/\x2econfig/fish/functions/__bass\x2epy\x1e\x7e/\x2econfig/fish/functions/bass\x2efish
-SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fisher\x2efish\x1e\x7e/\x2econfig/fish/completions/fisher\x2efish
-SETUVAR _fisher_plugins:jorgebucaran/fisher\x1eedc/bass
-SETUVAR _fisher_upgraded_to_4_4:\x1d
-SETUVAR fish_color_autosuggestion:brblack
-SETUVAR fish_color_cancel:\x2dr
-SETUVAR fish_color_command:blue
-SETUVAR fish_color_comment:red
-SETUVAR fish_color_cwd:green
-SETUVAR fish_color_cwd_root:red
-SETUVAR fish_color_end:green
-SETUVAR fish_color_error:brred
-SETUVAR fish_color_escape:brcyan
-SETUVAR fish_color_history_current:\x2d\x2dbold
-SETUVAR fish_color_host:normal
-SETUVAR fish_color_host_remote:yellow
-SETUVAR fish_color_normal:normal
-SETUVAR fish_color_operator:brcyan
-SETUVAR fish_color_param:cyan
-SETUVAR fish_color_quote:yellow
-SETUVAR fish_color_redirection:cyan\x1e\x2d\x2dbold
-SETUVAR fish_color_search_match:bryellow\x1e\x2d\x2dbackground\x3dbrblack
-SETUVAR fish_color_selection:white\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dbrblack
-SETUVAR fish_color_status:red
-SETUVAR fish_color_user:brgreen
-SETUVAR fish_color_valid_path:\x2d\x2dunderline
-SETUVAR fish_greeting:Welcome\x20to\x20fish\x2c\x20the\x20friendly\x20interactive\x20shell
+SETUVAR _fish_abbr_cl:clear\x0d
+SETUVAR _fisher_edc_2F_bass_files:\x7e/\x2econfig/fish/functions/__bass\x2epy\x1e\x7e/\x2econfig/fish/functions/bass\x2efish\x0d
+SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fisher\x2efish\x1e\x7e/\x2econfig/fish/completions/fisher\x2efish\x0d
+SETUVAR _fisher_plugins:jorgebucaran/fisher\x1eedc/bass\x0d
+SETUVAR _fisher_upgraded_to_4_4:\x1d\x0d
+SETUVAR fish_color_autosuggestion:brblack\x0d
+SETUVAR fish_color_cancel:\x2dr\x0d
+SETUVAR fish_color_command:blue\x0d
+SETUVAR fish_color_comment:red\x0d
+SETUVAR fish_color_cwd:green\x0d
+SETUVAR fish_color_cwd_root:red\x0d
+SETUVAR fish_color_end:green\x0d
+SETUVAR fish_color_error:brred\x0d
+SETUVAR fish_color_escape:brcyan\x0d
+SETUVAR fish_color_history_current:\x2d\x2dbold\x0d
+SETUVAR fish_color_host:normal\x0d
+SETUVAR fish_color_host_remote:yellow\x0d
+SETUVAR fish_color_normal:normal\x0d
+SETUVAR fish_color_operator:brcyan\x0d
+SETUVAR fish_color_param:cyan\x0d
+SETUVAR fish_color_quote:yellow\x0d
+SETUVAR fish_color_redirection:cyan\x1e\x2d\x2dbold\x0d
+SETUVAR fish_color_search_match:bryellow\x1e\x2d\x2dbackground\x3dbrblack\x0d
+SETUVAR fish_color_selection:white\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dbrblack\x0d
+SETUVAR fish_color_status:red\x0d
+SETUVAR fish_color_user:brgreen\x0d
+SETUVAR fish_color_valid_path:\x2d\x2dunderline\x0d
+SETUVAR fish_greeting:Welcome\x20to\x20fish\x2c\x20the\x20friendly\x20interactive\x20shell\x0d
 SETUVAR fish_key_bindings:fish_default_key_bindings
-SETUVAR fish_pager_color_completion:normal
-SETUVAR fish_pager_color_description:yellow\x1e\x2di
-SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
-SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
-SETUVAR fish_pager_color_selected_background:\x2dr
-SETUVAR fish_user_paths:/home/wd40bug/\x2eplatformio/penv/bin\x1e/home/wd40bug/\x2elocal/share/nvim/mason/bin\x1e/home/wd40bug/go/bin\x1e/home/wd40bug/coding/rust/stars/target/debug\x1e/home/wd40bug/Documents/college/24Fall/2305ECE/tutorial_formatter/target/release\x1e/home/wd40bug/\x2eluarocks/bin\x1e/home/wd40bug/Downloads/avr8\x2dgnu\x2dtoolchain\x2d3\x2e7\x2e0\x2e1796\x2dlinux\x2eany\x2ex86_64/avr8\x2dgnu\x2dtoolchain\x2dlinux_x86_64/bin\x1e/home/wd40bug/src/flutter/bin\x1e/home/wd40bug/Android/Sdk/cmdline\x2dtools/latest/bin\x1e/home/wd40bug/src/android\x2dstudio/bin\x1e/home/wd40bug/Documents/college/24Fall/2305ECE/tutorials/tutorial_formatter/target/release\x1e/home/wd40bug/\x2elocal/src/llvm\x2dproject/build/bin\x1e/home/wd40bug/\x2elocal/src/fish\x2dlsp/bin\x1e/home/wd40bug/\x2elocal/bin\x1e/home/wd40bug/\x2ebin\x1e/home/wd40bug/\x2ecargo/bin\x1e/home/wd40bug/Downloads/clang\x2bllvm\x2d17\x2e0\x2e6\x2dx86_64\x2dlinux\x2dgnu\x2dubuntu\x2d22\x2e04/bin
+SETUVAR fish_pager_color_completion:normal\x0d
+SETUVAR fish_pager_color_description:yellow\x1e\x2di\x0d
+SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline\x0d
+SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan\x0d
+SETUVAR fish_pager_color_selected_background:\x2dr\x0d
+SETUVAR fish_user_paths:/home/wd40bug/\x2eplatformio/penv/bin\x1e/home/wd40bug/\x2elocal/share/nvim/mason/bin\x1e/home/wd40bug/go/bin\x1e/home/wd40bug/coding/rust/stars/target/debug\x1e/home/wd40bug/Documents/college/24Fall/2305ECE/tutorial_formatter/target/release\x1e/home/wd40bug/\x2eluarocks/bin\x1e/home/wd40bug/Downloads/avr8\x2dgnu\x2dtoolchain\x2d3\x2e7\x2e0\x2e1796\x2dlinux\x2eany\x2ex86_64/avr8\x2dgnu\x2dtoolchain\x2dlinux_x86_64/bin\x1e/home/wd40bug/src/flutter/bin\x1e/home/wd40bug/Android/Sdk/cmdline\x2dtools/latest/bin\x1e/home/wd40bug/src/android\x2dstudio/bin\x1e/home/wd40bug/Documents/college/24Fall/2305ECE/tutorials/tutorial_formatter/target/release\x1e/home/wd40bug/\x2elocal/src/llvm\x2dproject/build/bin\x1e/home/wd40bug/\x2elocal/src/fish\x2dlsp/bin\x1e/home/wd40bug/\x2elocal/bin\x1e/home/wd40bug/\x2ebin\x1e/home/wd40bug/\x2ecargo/bin\x1e/home/wd40bug/Downloads/clang\x2bllvm\x2d17\x2e0\x2e6\x2dx86_64\x2dlinux\x2dgnu\x2dubuntu\x2d22\x2e04/bin\x0d
