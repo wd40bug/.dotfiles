@@ -96,8 +96,11 @@ lazy.setup({
       }
     },
   },
+  {
+    'p00f/clangd_extensions.nvim'
+  },
   -- Treesitter
-  { 'nvim-treesitter/nvim-treesitter' }, -- Parses code as AST
+  { 'nvim-treesitter/nvim-treesitter',            build = ':TSUpdate' }, -- Parses code as AST
   { 'nvim-treesitter/nvim-treesitter-textobjects' },
   { 'RRethy/nvim-treesitter-textsubjects' },
   { 'wellle/targets.vim' },
@@ -166,10 +169,11 @@ lazy.setup({
   {
     'stevearc/oil.nvim',
     ---@module 'oil'
+    ---@type oil.SetupOpts
     opts = {
+      default_file_explorer = true,
       view_options = {
-        -- Show files and directories that start with "."
-        show_hidden = true
+        show_hidden = true,
       }
     },
     -- Optional dependencies
@@ -214,9 +218,9 @@ Hints.setup({
   hint_keys = {
     vim.g.mapleader,
     't',
-    '<F1>',
-    'h',
-    'T'
+    'T',
+    '\'',
+    'H',
   }
 })
 
@@ -254,6 +258,7 @@ require('neodev').setup({
   lspconfig = false,
 })
 
+require('dapui').setup()
 
 require('telescope').setup({
   defaults = {
@@ -273,3 +278,4 @@ require('telescope').setup({
 require('telescope').load_extension('projects')
 
 vim.g.undotree_DiffCommand = 'FC'
+Dap = require('dap')

@@ -6,6 +6,7 @@ vim.opt.expandtab = true -- Tabs as spaces
 vim.opt.wrap = false -- Don't wrap long lines
 vim.opt.splitright = true
 vim.g.mapleader = ' ' -- Set mapleader to space
+vim.g.c_syntax_for_h = true;
 
 vim.opt.filetype = 'on'
 vim.cmd("filetype plugin on")

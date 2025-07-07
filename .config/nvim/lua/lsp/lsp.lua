@@ -1,6 +1,7 @@
 -- Config variables
 Lspconfig = require('lspconfig')
 Lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+Lsp_leader = "s"
 
 
 require("luasnip.loaders.from_snipmate").lazy_load()
@@ -13,7 +14,6 @@ local cmp_lsp_rs = require('cmp_lsp_rs')
 local comparators_rs = cmp_lsp_rs.comparators
 Luasnip = require('luasnip')
 local select_opts = { behavior = cmp.SelectBehavior.Select }
-
 
 vim.diagnostic.config({
   virtual_text = false,
@@ -224,6 +224,7 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
     end, {})
   end
 })
+
 -- LSP setups
 require('lsp.rust')
 require('lsp.lua')
@@ -232,7 +233,7 @@ require('lsp.c')
 require('lsp.powershell')
 require('lsp.typescript')
 require('lsp.fish')
-require('lsp.java')
+require('lsp.java') -- using jdtls-nvim
 require('lsp.svelte')
 require('lsp.kotlin')
 require('lsp.dart')

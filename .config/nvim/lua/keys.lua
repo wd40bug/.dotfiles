@@ -27,7 +27,7 @@ end, { desc = 'Projects' })
 -- Hop
 local hop = require('hop')
 local directions = require('hop.hint').HintDirection
-local hop_leader = 'h'
+local hop_leader = 'H'
 vim.keymap.set('', hop_leader .. 'f', function()
   hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
 end, { remap = true, desc = 'Hop to character (after cursor, current line)' })
@@ -61,28 +61,37 @@ vim.keymap.set('', hop_leader .. 'p', function()
 end, { remap = true, desc = 'Hop to pattern' })
 
 --Debug
-local d_lead = '<f1>'
-local dap = require('dap')
+local d_lead = '\''
 local dapui = require('dapui')
 
-vim.keymap.set('n', d_lead .. 'b', dap.toggle_breakpoint, { desc = 'Toggle breakpoint' })
-vim.keymap.set('n', d_lead .. 'c', dap.continue, { desc = 'Continue' })
-vim.keymap.set('n', d_lead .. 'o', dap.step_over, { desc = 'Step over' })
-vim.keymap.set('n', d_lead .. 'i', dap.step_into, { desc = 'Step into' })
-vim.keymap.set('n', d_lead .. 'r', dap.repl.open, { desc = 'Open repl' })
-vim.keymap.set('n', d_lead .. 't', dapui.toggle, { desc = 'Toggle dapui' })
+vim.keymap.set('n', d_lead .. 'b', Dap.toggle_breakpoint, { desc = 'Toggle breakpoint' })
+vim.keymap.set('n', d_lead .. 'l', function ()
+  Dap.toggle_breakpoint(nil, nil, vim.fn.input('Log point message: '))
+end, {desc = 'Log point'})
+vim.keymap.set('n', d_lead .. 'c', Dap.continue, { desc = 'Continue' })
+vim.keymap.set('n', d_lead .. 'C', Dap.run_to_cursor, { desc = 'Continue to cursor' })
+vim.keymap.set('n', d_lead .. 's', Dap.step_over, { desc = 'Step over' })
+vim.keymap.set('n', d_lead .. 'S', Dap.step_into, { desc = 'Step into' })
+vim.keymap.set('n', d_lead .. 'o', Dap.step_out, { desc = 'Step out' })
+vim.keymap.set('n', d_lead .. 'u', Dap.up, { desc = 'Up' })
+vim.keymap.set('n', d_lead .. 'd', Dap.down, { desc = 'Down' })
+vim.keymap.set('n', d_lead .. 'r', Dap.run_last, { desc = 'Run last' })
+vim.keymap.set('n', d_lead .. 'R', Dap.restart, { desc = 'Restart' })
+vim.keymap.set('n', d_lead .. 'k', require('dap.ui.widgets').hover, {desc = "Hover"})
+vim.api.nvim_set_keymap('n', d_lead .. '/', "<Cmd>DapTerminate<CR>", {desc = "Terminate DAP"} )
+vim.keymap.set('n', d_lead, dapui.toggle, { desc = 'Toggle dapui' })
 
 -- Auto open and close
-dap.listeners.before.attach.dapui_config = function()
+Dap.listeners.before.attach.dapui_config = function()
   dapui.open()
 end
-dap.listeners.before.launch.dapui_config = function()
+Dap.listeners.before.launch.dapui_config = function()
   dapui.open()
 end
-dap.listeners.before.event_terminated.dapui_config = function()
+Dap.listeners.before.event_terminated.dapui_config = function()
   dapui.close()
 end
-dap.listeners.before.event_exited.dapui_config = function()
+Dap.listeners.before.event_exited.dapui_config = function()
   dapui.close()
 end
 
