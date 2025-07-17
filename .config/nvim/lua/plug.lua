@@ -220,9 +220,7 @@ lazy.setup({
       -- log_level = 'debug',
     }
   },
-
-  { 'normen/vim-pio' },
-  { 'embear/vim-localvimrc'},
+  { 'nvim-java/nvim-java', opts = {} }
 })
 
 Hints = require('Hints')
