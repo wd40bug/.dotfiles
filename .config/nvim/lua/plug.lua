@@ -31,7 +31,7 @@ lazy.path = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 lazy.opts = {
   dev = {
     path = '~/coding/lua_plugins/',
-    patters = { 'wd40bug' },
+    patterns = { 'wd40bug' },
     fallback = true,
   }
 }
@@ -41,7 +41,12 @@ lazy.setup({
     'jedrzejboczar/exrc.nvim',
     dependencies = { 'neovim/nvim-lspconfig' }, -- (optional)
     config = true,
-    opts = { --[[ your config ]] },
+    opts = {
+      on_dir_changed = {
+        enabled = true,
+        use_ui_select = false
+      }
+    },
   },
   {
     'danymat/neogen',
@@ -92,8 +97,19 @@ lazy.setup({
         xml = { 'xmlformat' },
         python = { 'ruff_format' },
         c = { 'clang-format' },
-        json = {'jq'}
+        json = { 'jq' }
       }
+    },
+  },
+  {
+    'folke/lazydev.nvim',
+    ft = 'lua', -- only load on lua files
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+      },
     },
   },
   {
@@ -107,16 +123,19 @@ lazy.setup({
   -- Telescope
   { 'nvim-telescope/telescope.nvim' },
   -- Completion for neovim internals
-  { 'folke/neodev.nvim',                          opts = {} },
   -- LSP
   { 'neovim/nvim-lspconfig' },
   {
     'hrsh7th/nvim-cmp',
     dependencies = {
       'zjp-CN/nvim-cmp-lsp-rs',
-      opts = {
-
-      }
+      opts = function(_, opts)
+        opts.sources = opts.sources or {}
+        table.insert(opts.sources, {
+          name = 'lazydev',
+          group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+        })
+      end
     }
   },
   { 'hrsh7th/cmp-buffer' },
@@ -136,13 +155,13 @@ lazy.setup({
   },
   { 'p00f/clangd_extensions.nvim' },
   -- Debug
+  { 'epheien/termdbg', dev = true },
   { 'mfussenegger/nvim-dap' },
   {
     'rcarriga/nvim-dap-ui',
     dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' }
   },
   { 'theHamsta/nvim-dap-virtual-text' },
-
   --KeyHints
   {
     'wd40bug/Hints.nvim',
@@ -169,7 +188,6 @@ lazy.setup({
   {
     'stevearc/oil.nvim',
     ---@module 'oil'
-    ---@type oil.SetupOpts
     opts = {
       default_file_explorer = true,
       view_options = {
@@ -251,11 +269,6 @@ require('gitsigns').setup({
     topdelete = { text = '➤' },
     changedelete = { text = '➤' },
   }
-})
-
-require('neodev').setup({
-  library = { plugins = { 'nvim-dap-ui' }, types = true },
-  lspconfig = false,
 })
 
 require('dapui').setup()
