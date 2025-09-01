@@ -3,3 +3,6 @@
 EXISTS/
 Test/
 __pycache__/
+.config/fish/fish_variables
+.config/fish/completions
+.system

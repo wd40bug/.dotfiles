@@ -1,3 +1,4 @@
+import os
 from typing import assert_never, cast, Literal, get_args
 import inquirer
 from windows import windows
@@ -18,6 +19,9 @@ answers = cast(dict[str, str], inquirer.prompt(questions))
 
 system: System = cast(System, answers['system'])
 
+f = open(".system", 'w')
+f.write(system)
+
 match system:
     case "windows":
         windows()
@@ -27,3 +31,4 @@ match system:
         ubuntu()
     case _: 
         assert_never(system)
+

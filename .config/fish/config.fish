@@ -1,6 +1,8 @@
+set -gx SYSTEM $(cat ~/.system )
 if status is-interactive
-    # Commands to run in interactive sessions can go here
-    eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+    if SYSTEM = "ubuntu"
+        eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+    end
     oh-my-posh init fish --config ~/.mytheme.toml | source
     function set_poshcontext
         set -gx COLS (tput cols)
@@ -9,7 +11,6 @@ if status is-interactive
 
     abbr --add cl clear
     bass source /etc/profile
-    pyenv init - | source
     pyenv virtualenv-init - | source
     direnv hook fish | source
     thefuck --alias | source

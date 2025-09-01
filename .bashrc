@@ -1,3 +1,4 @@
+export SYSTEM=`cat ~/.system`
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -116,16 +117,20 @@ if ! shopt -oq posix; then
   fi
 fi
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-eval "$(oh-my-posh init bash --config "~/.mytheme.toml")"
-. "$HOME/.cargo/env"
-alias clip='xsel -ib'
-export PATH="~/Downloads/clang+llvm-17.0.6-x86_64-linux-gnu-ubuntu-22.04//bin:$PATH"
-export PATH="~/.local/bin/:$PATH"
-eval $(thefuck --alias)
-function set_poshcontext() {
-    export COLS=$(tput cols)
-}
+if [[ $SYSTEM == "ubuntu" ]]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    eval "$(oh-my-posh init bash --config "~/.mytheme.toml")"
+    . "$HOME/.cargo/env"
+    alias clip='xsel -ib'
+    export PATH="~/Downloads/clang+llvm-17.0.6-x86_64-linux-gnu-ubuntu-22.04//bin:$PATH"
+    export PATH="~/.local/bin/:$PATH"
+    eval $(thefuck --alias)
+    function set_poshcontext() {
+	export COLS=$(tput cols)
+    }
+elif [[ $SYSTEM == "termux" ]]; then
+    eval $(TF_SHELL=bash thefuck --alias)
+fi
 HELIX_RUNTIME=~/src/helix/runtime
 
 
