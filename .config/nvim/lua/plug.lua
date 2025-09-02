@@ -38,13 +38,13 @@ lazy.opts = {
 }
 
 lazy.setup({
+  -- Libraries
+  { 'nvim-lua/plenary.nvim' },
+  -- Visuals
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' }
   },
-  { 'tpope/vim-fugitive' },
-  { 'tpope/vim-repeat' },
-  { 'tpope/vim-sleuth' },
   { 'navarasu/onedark.nvim' },
   {
     'catppuccin/nvim',
@@ -54,37 +54,61 @@ lazy.setup({
   {
     'lukas-reineke/indent-blankline.nvim',
     main = 'ibl',
-    opts = {}
+    opts = {
+      enabled = true,
+      scope = {
+        enabled = false,
+      },
+      indent = {
+        char = '▏',
+      },
+    }
   },
-  { 'numToStr/Comment.nvim' },
+  {
+    'lewis6991/gitsigns.nvim',
+    opts = {
+      signs = {
+        add = { text = '▎' },
+        change = { text = '▎' },
+        delete = { text = '➤' },
+        topdelete = { text = '➤' },
+        changedelete = { text = '➤' },
+      }
+    }
+  },
+  {
+    'startup-nvim/startup.nvim',
+    dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-file-browser.nvim' },
+    config = function()
+      require 'startup'.setup({ theme = 'startify' })
+    end
+  },
+  -- Tools
+  { 'tpope/vim-fugitive' },
+  { 'tpope/vim-repeat' },
+  { 'tpope/vim-sleuth' },
+  { 'numToStr/Comment.nvim', opts = {} },
   {
     'folke/todo-comments.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
     opts = {}
   },
   { 'tpope/vim-surround' },
-  { 'akinsho/toggleterm.nvim' },
-  { 'lewis6991/gitsigns.nvim' },
-  { 'nvim-lua/plenary.nvim' },
+  {
+    'akinsho/toggleterm.nvim',
+    opts = {
+      open_mapping = '<C-g>',
+      direction = 'horizontal',
+      shade_terminals = true,
+      shell = 'fish'
+    }
+  },
   {
     'windwp/nvim-autopairs',
     event = 'InsertEnter',
     opts = {
       enable_moveright = false,
     }
-    -- use opts = {} for passing setup options
-    -- this is equivalent to setup({}) function
-  },
-  {
-    'stevearc/conform.nvim',
-    opts = {
-      format_by_ft = {
-        xml = 'xmlformat',
-      }
-    },
-  },
-  {
-    'mistricky/codesnap.nvim', build = 'make'
   },
   {
     'AlejandroSuero/freeze-code.nvim',
@@ -106,73 +130,27 @@ lazy.setup({
 
       }
     },
-  },                                     -- Treesitter
-  { 'nvim-treesitter/nvim-treesitter' }, -- Parses code as AST
-  { 'nvim-treesitter/nvim-treesitter-textobjects' },
-  { 'RRethy/nvim-treesitter-textsubjects' },
-  { 'wellle/targets.vim' },
-  -- Telescope
-  { 'nvim-telescope/telescope.nvim' },
-  -- Completion for neovim internals
-  {
-    'folke/lazydev.nvim',
-    ft = 'lua', -- only load on lua files
-    opts = {
-      library = {
-        -- See the configuration section for more details
-        -- Load luvit types when the `vim.uv` word is found
-        { path = 'luvit-meta/library', words = { 'vim%.uv' } },
-        'lazy.nvim',
-      },
-
-    },
   },
+  { 'wellle/targets.vim' },
   {
-    'Bilal2453/luvit-meta',
-    lazy = true
-  }, -- optional `vim.uv` typings
-  -- LSP
-  { 'neovim/nvim-lspconfig' },
-  {
-    'hrsh7th/nvim-cmp',
-    dependencies = {
-      'zjp-CN/nvim-cmp-lsp-rs',
-      opts = {
-
+    'nvim-telescope/telescope.nvim',
+    opts = {
+      defaults = {
+        file_ignore_patterns = {
+          'target',
+          -- 'android', --dart
+          -- 'build',
+          -- 'ios',
+          -- 'macos',
+          -- 'linux',
+          -- 'windows',
+          -- 'web'
+        }
       }
     }
   },
-  { 'hrsh7th/cmp-buffer' },
-  { 'hrsh7th/cmp-path' },
-  { 'saadparwaiz1/cmp_luasnip' },
-  { 'hrsh7th/cmp-nvim-lsp' },
-  { 'L3MON4D3/LuaSnip' },
-  { 'rafamadriz/friendly-snippets' },
   { 'williamboman/mason.nvim' },
   { 'williamboman/mason-lspconfig.nvim' },
-  {
-    'mrcjkb/rustaceanvim',
-    version = '^5', -- Recommended
-    ft = { 'rust' },
-  },
-  {
-    'saecki/crates.nvim',
-    opts = {},
-  },
-  { 'p00f/clangd_extensions.nvim' },
-  -- Debug
-  { 'mfussenegger/nvim-dap' },
-  {
-    'rcarriga/nvim-dap-ui',
-    dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' }
-  },
-  { 'theHamsta/nvim-dap-virtual-text' },
-
-  --KeyHints
-  {
-    'wd40bug/Hints.nvim',
-    dev = true
-  },
   {
     'sudormrfbin/cheatsheet.nvim',
     dependencies = {
@@ -181,6 +159,11 @@ lazy.setup({
       'nvim-lua/plenary.nvim',
     }
   },
+  {
+    'wd40bug/Hints.nvim',
+    dev = true
+  },
+
   {
     'smoka7/hop.nvim',
     version = '*',
@@ -204,15 +187,6 @@ lazy.setup({
     dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
   {
-    'akinsho/flutter-tools.nvim',
-    lazy = false,
-    commit = '6610090a4e68d10fd73b68450004dafd26e7cc34',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-    },
-  },
-  { 'henry-hsieh/riscv-asm-vim',      ft = { 'riscv_asm' } },
-  {
     'rmagatti/auto-session',
     lazy = false,
 
@@ -224,7 +198,128 @@ lazy.setup({
       -- log_level = 'debug',
     }
   },
-  { 'nvim-java/nvim-java', opts = {} }
+  {
+    'jedrzejboczar/exrc.nvim',
+    dependencies = { 'neovim/nvim-lspconfig' }, -- (optional)
+    config = true,
+    opts = {
+      on_dir_changed = {
+        enabled = true,
+        use_ui_select = false
+      }
+    },
+  },
+  { 'echasnovski/mini.nvim',      version = '*' },
+  {
+    'ahmedkhalf/project.nvim',
+    version = '*',
+    config = function()
+      require('project_nvim').setup({
+        sync_root_with_cwd = true,
+        respect_buf_cwd = true,
+        update_focused_file = {
+          enable = true,
+          update_root = true
+        },
+        patterns = { '.git', '_darcs', '.hg', '.bzr', '.svn', 'Makefile', 'package.json', '.luarc.json', 'Cargo.toml' },
+      })
+    end
+  },
+  -- Language support
+  {
+    'stevearc/conform.nvim',
+    opts = {
+      format_by_ft = {
+        xml = 'xmlformat',
+        python = { 'ruff_format' },
+        c = { 'clang-format' },
+        json = { 'jq' },
+      }
+    },
+  },
+  {
+    'folke/lazydev.nvim',
+    ft = 'lua', -- only load on lua files
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+        'lazy.nvim',
+      },
+
+    },
+  },
+  {
+    'Bilal2453/luvit-meta',
+    lazy = true
+  },
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^6', -- Recommended
+    ft = { 'rust' },
+    lazy = false
+  },
+  {
+    'saecki/crates.nvim',
+    opts = {},
+  },
+  { 'p00f/clangd_extensions.nvim' },
+  {
+    'akinsho/flutter-tools.nvim',
+    lazy = false,
+    commit = '6610090a4e68d10fd73b68450004dafd26e7cc34',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+  },
+  { 'henry-hsieh/riscv-asm-vim', ft = { 'riscv_asm' } },
+  { 'nvim-java/nvim-java',       opts = {} },
+  {
+    'danymat/neogen',
+    config = true,
+    -- Uncomment next line if you want to follow only stable versions
+    -- version = "*"
+  },
+
+
+  -- Treesitter
+  { 'nvim-treesitter/nvim-treesitter' }, -- Parses code as AST
+  { 'nvim-treesitter/nvim-treesitter-textobjects' },
+  { 'RRethy/nvim-treesitter-textsubjects' },
+
+  -- LSP
+  { 'neovim/nvim-lspconfig' },
+  {
+    'hrsh7th/nvim-cmp',
+    dependencies = {
+      'zjp-CN/nvim-cmp-lsp-rs',
+    },
+    opts = function(_, opts)
+      opts.sources = opts.sources or {}
+      table.insert(opts.sources, {
+        name = 'lazydev',
+        group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+      })
+    end
+  },
+  { 'hrsh7th/cmp-buffer' },
+  { 'hrsh7th/cmp-path' },
+  { 'saadparwaiz1/cmp_luasnip' },
+  { 'hrsh7th/cmp-nvim-lsp' },
+  {
+    'L3MON4D3/LuaSnip',
+    dependencies = { 'rafamadriz/friendly-snippets' }
+  },
+
+  -- Debug
+  { 'mfussenegger/nvim-dap' },
+  {
+    'rcarriga/nvim-dap-ui',
+    dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' }
+  },
+  { 'theHamsta/nvim-dap-virtual-text' },
+
 })
 
 Hints = require('Hints')
@@ -232,62 +327,13 @@ Hints.setup({
   hint_keys = {
     vim.g.mapleader,
     't',
-    '<F1>',
-    'h',
-    'z'
+    'T',
+    'H',
+    '\''
   }
 })
 
-require('ibl').setup({
-  enabled = true,
-  scope = {
-    enabled = false,
-  },
-  indent = {
-    char = '▏',
-  },
-})
+require('telescope').load_extension('projects')
 
----@diagnostic disable-next-line: missing-fields
-require('Comment').setup({})
-
-require('toggleterm').setup({
-  open_mapping = '<C-g>',
-  direction = 'horizontal',
-  shade_terminals = true,
-  shell = 'fish'
-})
-
-require('gitsigns').setup({
-  signs = {
-    add = { text = '▎' },
-    change = { text = '▎' },
-    delete = { text = '➤' },
-    topdelete = { text = '➤' },
-    changedelete = { text = '➤' },
-  }
-})
-
-require('codesnap').setup({
-  save_path = '~/Coding/Snaps/',
-  has_breadcrumbs = true,
-  bg_color = '#535c68',
-  watermark = '',
-  code_font_family = 'JetBrainsMono Nerd Font Mono',
-})
-
-
-require('telescope').setup({
-  defaults = {
-    file_ignore_patterns = {
-      'target',
-      -- 'android', --dart
-      -- 'build',
-      -- 'ios',
-      -- 'macos',
-      -- 'linux',
-      -- 'windows',
-      -- 'web'
-    }
-  }
-})
+vim.g.undotree_DiffCommand = 'FC'
+Dap = require('dap')

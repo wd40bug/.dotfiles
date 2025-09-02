@@ -68,6 +68,7 @@ cmp.setup({
     { name = 'nvim_lsp', keyword_length = 2 },
     { name = 'buffer',   keyword_length = 5 },
     { name = 'luasnip',  keyword_length = 2 },
+    { name = 'lazydev', group_index = 0}
   },
   window = {
     documentation = cmp.config.window.bordered()

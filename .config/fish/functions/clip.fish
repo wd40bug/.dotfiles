@@ -1,4 +1,8 @@
-function clip --wraps='xsel -ib' --description 'alias clip=xsel -ib'
-  xsel -ib $argv
+function clip  --description 'stdin -> clipboard'
+  if test "$SYSTEM" = "ubuntu"
+    xsel -ib $argv
+  else
+    termux-clipboard-set $argv
+  end
         
 end

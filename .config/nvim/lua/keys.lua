@@ -24,7 +24,7 @@ vim.keymap.set('n', t_lead .. 'S', '<cmd>Telescope lsp_dynamic_workspace_symbols
 -- Hop
 local hop = require('hop')
 local directions = require('hop.hint').HintDirection
-local hop_leader = 'h'
+local hop_leader = 'H'
 vim.keymap.set('', hop_leader .. 'f', function()
   hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
 end, { remap = true, desc = 'Hop to character (after cursor, current line)' })
@@ -62,21 +62,6 @@ end, { remap = true, desc = 'Hop to pattern' })
 vim.keymap.set('n', '<leader>f', function()
   require('conform').format({ lsp_format = 'fallback' })
 end, { desc = 'Format buffer' }) -- Format
-vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
-  pattern = { '*.json' },
-  callback = function()
-    vim.keymap.set('n', '<leader>f', ":%!jq '.'<CR>", { desc = 'Format JSON', buffer = 0 })
-  end
-})
-vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
-  pattern = { '*.py', '*.ipynb' },
-  callback = function()
-    vim.keymap.set('n', '<leader>f', ':%! black - --quiet <CR>', {
-      desc = 'Format Python with Black',
-      buffer = 0
-    })
-  end
-})
 
 vim.keymap.set('n', '<leader>/', function()
   vim.cmd(':nohlsearch')

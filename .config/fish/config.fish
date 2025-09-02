@@ -1,6 +1,6 @@
-set -gx SYSTEM $(cat ~/.system )
+set -gx SYSTEM $(ccat ~/.system )
 if status is-interactive
-    if SYSTEM = "ubuntu"
+    if test "$SYSTEM" = "ubuntu"
         eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
     end
     oh-my-posh init fish --config ~/.mytheme.toml | source
@@ -9,8 +9,8 @@ if status is-interactive
     end
 
 
-    abbr --add cl clear
     bass source /etc/profile
+    pyenv init - | source
     pyenv virtualenv-init - | source
     direnv hook fish | source
     thefuck --alias | source
