@@ -1,9 +1,9 @@
-.config/nvim/lazy-lock.json
-.config/gh/hosts.yml
+dot-config/nvim/lazy-lock.json
+dot-config/gh/hosts.yml
 EXISTS/
 Test/
 __pycache__/
-.config/fish/fish_variables
-.config/fish/completions
-.system
+dot-config/fish/fish_variables
+dot-config/fish/completions
+dot-system
 .luarc.json

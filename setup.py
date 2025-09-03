@@ -19,7 +19,7 @@ answers = cast(dict[str, str], inquirer.prompt(questions))
 
 system: System = cast(System, answers['system'])
 
-f = open(".system", 'w')
+f = open("dot-system", 'w')
 f.write(system)
 
 match system:

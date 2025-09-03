@@ -1,7 +1,7 @@
 import subprocess
 
 def stow():
-    result = subprocess.run(["stow", ".", "--adopt"], capture_output=True, text=True, check=False)
+    result = subprocess.run(["stow", ".", "--adopt", "--dotfiles"], capture_output=True, text=True, check=False)
     if result.stdout != "":
         print("STDOUT:")
         print(result.stdout)
