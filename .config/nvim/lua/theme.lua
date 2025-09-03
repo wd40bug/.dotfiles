@@ -19,4 +19,4 @@ require("kanagawa").setup({
 })
 
 vim.opt.termguicolors = true
-vim.cmd.colorscheme = System == 'termux' and 'kanagawa-lotus' or "onedark"
+vim.cmd.colorscheme (System == 'termux' and 'kanagawa-lotus' or "onedark")
