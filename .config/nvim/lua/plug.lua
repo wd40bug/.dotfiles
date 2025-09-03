@@ -51,6 +51,7 @@ lazy.setup({
     name = 'catppuccin',
     priority = 1000
   },
+  { 'rebelot/kanagawa.nvim' },
   {
     'lukas-reineke/indent-blankline.nvim',
     main = 'ibl',
@@ -149,8 +150,6 @@ lazy.setup({
       }
     }
   },
-  { 'williamboman/mason.nvim' },
-  { 'williamboman/mason-lspconfig.nvim' },
   {
     'sudormrfbin/cheatsheet.nvim',
     dependencies = {
@@ -273,8 +272,13 @@ lazy.setup({
       'nvim-lua/plenary.nvim',
     },
   },
-  { 'henry-hsieh/riscv-asm-vim', ft = { 'riscv_asm' } },
-  { 'nvim-java/nvim-java',       opts = {} },
+  { 'henry-hsieh/riscv-asm-vim',                  ft = { 'riscv_asm' } },
+  {
+    'mfussenegger/nvim-jdtls',
+    dependencies = {
+      'mfussenegger/nvim-dap',
+    }
+  },
   {
     'danymat/neogen',
     config = true,
@@ -315,7 +319,7 @@ lazy.setup({
   -- Debug
   { 'mfussenegger/nvim-dap' },
   {
-    'rcarriga/nvim-dap-ui',
+    'rcarriga/nvim-dap-ui', opts = {},
     dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' }
   },
   { 'theHamsta/nvim-dap-virtual-text' },
@@ -337,3 +341,4 @@ require('telescope').load_extension('projects')
 
 vim.g.undotree_DiffCommand = 'FC'
 Dap = require('dap')
+Dap.set_log_level('TRACE')

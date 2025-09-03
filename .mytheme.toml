@@ -49,7 +49,6 @@ final_space = true
     style = 'diamond'
 
     [blocks.segments.properties]
-      cache_duration = 'none'
 
   [[blocks.segments]]
     template = '{{if atoi .Env.COLS | lt 75}}  {{ path .Path .Location }}{{end}}'
@@ -60,7 +59,6 @@ final_space = true
     style = 'powerline'
 
     [blocks.segments.properties]
-      cache_duration = 'none'
       style = 'unique'
 
   [[blocks.segments]]
@@ -70,7 +68,6 @@ final_space = true
     style = 'plain'
 
     [blocks.segments.properties]
-      cache_duration = 'none'
       style = 'folder'
 
   [[blocks.segments]]
@@ -85,7 +82,6 @@ final_space = true
 
     [blocks.segments.properties]
       branch_max_length = 25
-      cache_duration = 'none'
       fetch_status = true
       fetch_upstream_icon = true
 
@@ -98,7 +94,6 @@ final_space = true
     style = 'powerline'
 
     [blocks.segments.properties]
-      cache_duration = 'none'
 
   [[blocks.segments]]
     leading_diamond = '<transparent,background></>'
@@ -112,16 +107,12 @@ final_space = true
 
     [blocks.segments.properties]
       always_enabled = true
-      cache_duration = 'none'
 
   [[blocks.segments]]
     template = '{{if atoi .Env.COLS | gt 75 }}>{{end}}'
     foreground = 'p:purple'
     type = 'text'
     style = 'plain'
-
-    [blocks.segments.properties]
-      cache_duration = 'none'
 
 [[blocks]]
   type = 'rprompt'
@@ -134,9 +125,6 @@ final_space = true
     type = 'rust'
     style = 'powerline'
 
-    [blocks.segments.properties]
-      cache_duration = 'none'
-
   [[blocks.segments]]
     template = '{{if atoi .Env.COLS | lt 75}}  {{ .Full }} {{end}}'
     foreground = '#100e23'
@@ -146,13 +134,9 @@ final_space = true
     style = 'powerline'
 
     [blocks.segments.properties]
-      cache_duration = 'none'
       display_mode = 'files'
 
   [[blocks.segments]]
     template = '{{if atoi .Env.COLS | lt 75}} {{ .Latest }}{{end}}'
     type = 'upgrade'
     style = 'powerline'
-
-    [blocks.segments.properties]
-      cache_duration = 'none'

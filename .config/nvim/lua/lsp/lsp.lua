@@ -1,12 +1,7 @@
--- Mason.nvim
-require('mason').setup()
-require('mason-lspconfig').setup {
-  ensure_installed = { 'lua_ls', 'rust_analyzer', 'pyright' },
-}
-
 -- Config variables
 Lspconfig = require('lspconfig')
 Lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+Lsp_leader = 's'
 
 require('luasnip.loaders.from_vscode').lazy_load()
 
@@ -239,7 +234,7 @@ require('lsp.c')
 require('lsp.html')
 require('lsp.typescript')
 require('lsp.fish')
-require('lsp.java')
+require('lsp.java') -- using nvim-jdtls
 require('lsp.svelte')
 require('lsp.arduino')
 require('lsp.kotlin')
