@@ -11,9 +11,6 @@ vim.opt.tabstop = 2 -- Makes a tab worth two space
 vim.opt.shiftwidth = 2 -- Makes the autoindent every two spaces
 vim.o.exrc = false
 
--- Persistent sessions
-vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
-
 -- Sandbox 
 vim.g.localvimrc_sandbox = 0
 vim.g.localvimrc_ask = 1

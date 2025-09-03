@@ -101,7 +101,8 @@ lazy.setup({
       open_mapping = '<C-g>',
       direction = 'horizontal',
       shade_terminals = true,
-      shell = 'fish'
+      shading_factor = System == 'termux' and 1 or nil,
+      shell = ( System == 'termux' or System == 'ubuntu' ) and 'fish' or 'pwsh'
     }
   },
   {
@@ -184,18 +185,6 @@ lazy.setup({
     },
     -- Optional dependencies
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-  },
-  {
-    'rmagatti/auto-session',
-    lazy = false,
-
-    ---enables autocomplete for opts
-    ---@module "auto-session"
-    ---@type AutoSession.Config
-    opts = {
-      suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
-      -- log_level = 'debug',
-    }
   },
   {
     'jedrzejboczar/exrc.nvim',
