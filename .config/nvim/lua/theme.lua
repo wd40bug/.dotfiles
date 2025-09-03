@@ -9,8 +9,8 @@ require('lualine').setup {
   }
 }
 
-require("kanagawa").setup({
-  overrides = function (colors)
+require('kanagawa').setup({
+  overrides = function(colors)
     local theme = colors.theme;
     return {
       NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
@@ -19,4 +19,4 @@ require("kanagawa").setup({
 })
 
 vim.opt.termguicolors = true
-vim.cmd.colorscheme (System == 'termux' and 'kanagawa-lotus' or "onedark")
+vim.cmd.colorscheme(System == 'termux' and 'kanagawa-lotus' or 'onedark')
