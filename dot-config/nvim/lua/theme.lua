@@ -4,7 +4,7 @@ require('onedark').setup {
 
 require('lualine').setup {
   options = {
-    theme = System == 'termux' and 'auto' or 'onedark'
+    theme = 'auto'
     -- ... your lualine config
   }
 }
