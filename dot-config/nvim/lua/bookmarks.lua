@@ -1,6 +1,6 @@
 local bookmarks = {
-  ["N"] = "~/.dotfiles/.config/nvim/",
-  ["I"] = "~/coding/CraftingInterpreters/"
-  --TODO: Rest of the bookmarks
+  ["N"] = "~/.dotfiles/dot-config/nvim/",
+  -- TODO: Rest of the bookmarks
+  -- make sure to `git update-index --skip-worktree ~/.dotfiles/dot-config/nvim/lua/bookmarks.lua`
 }
 return bookmarks
