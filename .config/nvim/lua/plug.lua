@@ -319,7 +319,8 @@ lazy.setup({
   -- Debug
   { 'mfussenegger/nvim-dap' },
   {
-    'rcarriga/nvim-dap-ui', opts = {},
+    'rcarriga/nvim-dap-ui',
+    opts = {},
     dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' }
   },
   { 'theHamsta/nvim-dap-virtual-text' },
@@ -330,10 +331,6 @@ Hints = require('Hints')
 Hints.setup({
   hint_keys = {
     vim.g.mapleader,
-    't',
-    'T',
-    'H',
-    '\''
   }
 })
 

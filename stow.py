@@ -1,7 +1,6 @@
 ## Linking Philosophy:
 # I don't anticipate adding that many configs, so I should just be able to handle it this way
 import os
-import sys
 from pathlib import Path
 import ctypes
 
@@ -26,7 +25,7 @@ def stow(test = False, exists_dir = Path("windows/EXISTS/")):
                 print("Invalid Input")
 
 
-    stow_list_path = "windows/stow-list.txt" if not test else "windows/stow-list-test.txt"
+    stow_list_path = "stow_files/stow-list.txt" if not test else "stow_files/stow-list-test.txt"
     f = open(stow_list_path, "r")
 
     contents: list[str] = f.read().splitlines()

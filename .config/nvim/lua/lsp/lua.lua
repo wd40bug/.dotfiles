@@ -12,8 +12,7 @@ Lspconfig.lua_ls.setup({
       },
       completion = {
         enable = true,
-        callSnippet = 'Replace'
-
+        callSnippet = 'Both'
       }
     }
   }

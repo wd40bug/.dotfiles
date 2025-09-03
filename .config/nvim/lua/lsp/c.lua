@@ -7,37 +7,37 @@ Lspconfig.clangd.setup({
     end, { buffer = bufnr, desc = 'Switch to header file' })
     vim.keymap.set('n', '<leader>i', function()
       vim.cmd.ClangdTypeHierarchy()
-    end, { buffer = bufnr })
+    end, { buffer = bufnr, desc = 'Class Type Hierarchy' })
   end
 })
 
 Dap.adapters.gdb = {
-  type = "executable",
-  command = "gdb",
-  args = { "--interpreter=dap", "--eval-command", "set print pretty on" }
+  type = 'executable',
+  command = 'gdb',
+  args = { '--interpreter=dap', '--eval-command', 'set print pretty on' }
 }
 
 Dap.configurations.c = {
   {
-    name = "Launch",
-    type = "gdb",
-    request = "launch",
+    name = 'Launch',
+    type = 'gdb',
+    request = 'launch',
     program = function()
       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
     end,
-    cwd = "${workspaceFolder}",
+    cwd = '${workspaceFolder}',
     stopAtBeginningOfMainSubprogram = false,
   },
   {
-    name = "Select and attach to process",
-    type = "gdb",
-    request = "attach",
+    name = 'Select and attach to process',
+    type = 'gdb',
+    request = 'attach',
     program = function()
-       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
     end,
     pid = function()
-       local name = vim.fn.input('Executable name (filter): ')
-       return require("dap.utils").pick_process({ filter = name })
+      local name = vim.fn.input('Executable name (filter): ')
+      return require('dap.utils').pick_process({ filter = name })
     end,
     cwd = '${workspaceFolder}'
   },
@@ -47,7 +47,7 @@ Dap.configurations.c = {
     request = 'attach',
     target = 'localhost:1234',
     program = function()
-       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
     end,
     cwd = '${workspaceFolder}'
   },

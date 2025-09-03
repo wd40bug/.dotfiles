@@ -10,6 +10,7 @@ vim.keymap.set({ 'n', 'x' }, 'X', '"_d') -- use X to delete like with d without 
 
 -- Telescope
 local t_lead = 't' -- Telescope leader
+Hints.add_hint_key(t_lead, false)
 vim.keymap.set('n', t_lead .. '<leader>', '<cmd>Telescope buffers<cr>', { desc = 'Buffers' })
 vim.keymap.set('n', t_lead .. 'o', '<cmd>Telescope oldfiles<cr>', { desc = 'Old files' })
 vim.keymap.set('n', t_lead .. 'ff', '<cmd>Telescope find_files follow=true<cr>', { desc = 'File finder' })
@@ -20,11 +21,15 @@ vim.keymap.set('n', t_lead .. 'c', '<cmd>Telescope commands<cr>', { desc = 'Tele
 vim.keymap.set('n', t_lead .. 'h', '<cmd>Telescope help_tags<cr>', { desc = 'Help' })
 vim.keymap.set('n', t_lead .. 's', '<cmd>Telescope lsp_document_symbols<cr>', { desc = 'Symbols document' })
 vim.keymap.set('n', t_lead .. 'S', '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>', { desc = 'Symbols workspace' })
+vim.keymap.set('n', t_lead .. 'p', function()
+  require 'telescope'.extensions.projects.projects {}
+end, { desc = 'Projects' })
 
 -- Hop
 local hop = require('hop')
 local directions = require('hop.hint').HintDirection
 local hop_leader = 'H'
+Hints.add_hint_key(hop_leader, false)
 vim.keymap.set('', hop_leader .. 'f', function()
   hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
 end, { remap = true, desc = 'Hop to character (after cursor, current line)' })
@@ -67,9 +72,9 @@ vim.keymap.set('n', d_lead .. 'l', function()
 end, { desc = 'Log point' })
 vim.keymap.set('n', d_lead .. 'c', Dap.continue, { desc = 'Continue' })
 vim.keymap.set('n', d_lead .. 'C', Dap.run_to_cursor, { desc = 'Continue to cursor' })
-vim.keymap.set('n', d_lead .. 's', Dap.step_over, { desc = 'Step over' })
-vim.keymap.set('n', d_lead .. 'S', Dap.step_into, { desc = 'Step into' })
-vim.keymap.set('n', d_lead .. 'o', Dap.step_out, { desc = 'Step out' })
+vim.keymap.set('n', d_lead .. 'n', Dap.step_over, { desc = 'Step over' })
+vim.keymap.set('n', d_lead .. 's', Dap.step_into, { desc = 'Step into' })
+vim.keymap.set('n', d_lead .. 'f', Dap.step_out, { desc = 'Finish function' })
 vim.keymap.set('n', d_lead .. 'u', Dap.up, { desc = 'Up' })
 vim.keymap.set('n', d_lead .. 'd', Dap.down, { desc = 'Down' })
 vim.keymap.set('n', d_lead .. 'r', Dap.run_last, { desc = 'Run last' })
@@ -93,7 +98,7 @@ Dap.listeners.before.event_exited.dapui_config = function()
 end
 
 -- Other
-vim.keymap.set('n', '<leader>f', function()
+vim.keymap.set({'n', 'v'}, '<leader>f', function()
   require('conform').format({ lsp_format = 'fallback' })
 end, { desc = 'Format buffer' }) -- Format
 
@@ -103,3 +108,5 @@ end, { desc = 'Clear previous search' })
 
 vim.keymap.set('n', '<F4>', vim.cmd.UndotreeToggle)
 vim.keymap.set('n', '<leader>`', vim.cmd.Oil, { desc = 'Open the oil file explorer' })
+vim.keymap.set('n', '<leader>m', ':Startup display<CR>', {desc = 'Main menu'})
+vim.keymap.set('n', '<leader>d', ':Neogen<CR>', {desc = 'Neogen documentation'})

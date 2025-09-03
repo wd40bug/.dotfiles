@@ -2,7 +2,9 @@
 Lspconfig = require('lspconfig')
 Lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 Lsp_leader = 's'
+Hints.add_hint_key(Lsp_leader, false)
 
+require("luasnip.loaders.from_snipmate").lazy_load()
 require('luasnip.loaders.from_vscode').lazy_load()
 
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
@@ -29,14 +31,14 @@ vim.diagnostic.config({
       [vim.diagnostic.severity.INFO] = '»'
     },
     linehl = {
-      -- [vim.diagnostic.severity.ERROR] = 'DiagnosticSignError',
-      [vim.diagnostic.severity.ERROR] = '',
-      -- [vim.diagnostic.severity.WARN] = 'DiagnosticSignWarn',
-      [vim.diagnostic.severity.WARN] = '',
-      -- [vim.diagnostic.severity.HINT] = 'DiagnosticSignHint',
-      [vim.diagnostic.severity.HINT] = '',
-      -- [vim.diagnostic.severity.INFO] = 'DiagnosticSignInfo'
-      [vim.diagnostic.severity.INFO] = '',
+      [vim.diagnostic.severity.ERROR] = 'DiagnosticSignError',
+      -- [vim.diagnostic.severity.ERROR] = '',
+      [vim.diagnostic.severity.WARN] = 'DiagnosticSignWarn',
+      -- [vim.diagnostic.severity.WARN] = '',
+      [vim.diagnostic.severity.HINT] = 'DiagnosticSignHint',
+      -- [vim.diagnostic.severity.HINT] = '',
+      [vim.diagnostic.severity.INFO] = 'DiagnosticSignInfo'
+      -- [vim.diagnostic.severity.INFO] = '',
     }
   }
 })
@@ -62,7 +64,7 @@ cmp.setup({
     { name = 'path',     keyword_length = 3 },
     { name = 'nvim_lsp', keyword_length = 2 },
     { name = 'buffer',   keyword_length = 5 },
-    { name = 'luasnip',  keyword_length = 2 },
+    { name = 'luasnip',  keyword_length = 0 },
     { name = 'lazydev', group_index = 0}
   },
   window = {
@@ -231,6 +233,7 @@ require('lsp.rust')
 require('lsp.lua')
 require('lsp.python')
 require('lsp.c')
+require('lsp.csharp')
 require('lsp.html')
 require('lsp.typescript')
 require('lsp.fish')
@@ -241,3 +244,7 @@ require('lsp.kotlin')
 require('lsp.dart')
 require('lsp.asm')
 require('lsp.verilog')
+require('lsp.csharp')
+require('lsp.json')
+require('lsp.go')
+require('lsp.powershell')
