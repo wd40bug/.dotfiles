@@ -15,7 +15,9 @@ require('kanagawa').setup({
     return {
       NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
     }
-  end
+  end,
+  commentStyle = { italic = false },
+  keywordStyle = { italic = false },
 })
 
 vim.opt.termguicolors = true
