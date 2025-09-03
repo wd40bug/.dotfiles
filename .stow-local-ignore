@@ -24,4 +24,5 @@ _darcs
 Microsoft\.PowerShell_profile.ps1
 windows
 windows_terminal_settings.json
-\*.py
+.*\.py
+__pycache__
