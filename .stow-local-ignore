@@ -21,7 +21,7 @@ _darcs
 ^/LICENSE.*
 ^/COPYING
 
-\\Microsoft.PowerShell_profile.ps1
-\windows
-\windows_terminal_settings.json
+Microsoft\.PowerShell_profile.ps1
+windows
+windows_terminal_settings.json
 \*.py
