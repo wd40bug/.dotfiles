@@ -102,7 +102,7 @@ lazy.setup({
       direction = 'horizontal',
       shade_terminals = true,
       shading_factor = System == 'termux' and 1 or nil,
-      shell = ( System == 'termux' or System == 'ubuntu' ) and 'fish' or 'pwsh'
+      shell = (System == 'termux' or System == 'ubuntu') and 'fish' or 'pwsh'
     }
   },
   {
@@ -214,6 +214,10 @@ lazy.setup({
     end
   },
   -- Language support
+  System == 'termux' and {
+    'mason-org/mason.nvim',
+    opts = {}
+  } or nil,
   {
     'stevearc/conform.nvim',
     opts = {
