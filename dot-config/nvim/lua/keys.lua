@@ -66,6 +66,8 @@ end, { remap = true, desc = 'Hop to pattern' })
 local d_lead = '\''
 local dapui = require('dapui')
 
+Hints.add_hint_key(d_lead, false)
+
 vim.keymap.set('n', d_lead .. 'b', Dap.toggle_breakpoint, { desc = 'Toggle breakpoint' })
 vim.keymap.set('n', d_lead .. 'l', function()
   Dap.toggle_breakpoint(nil, nil, vim.fn.input('Log point message: '))

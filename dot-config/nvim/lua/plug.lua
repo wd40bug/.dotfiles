@@ -102,7 +102,7 @@ lazy.setup({
       direction = 'horizontal',
       shade_terminals = true,
       shading_factor = System == 'termux' and 1 or nil,
-      shell = ( System == 'termux' or System == 'ubuntu' ) and 'fish' or 'pwsh'
+      shell = (System == 'termux' or System == 'ubuntu') and 'fish' or 'pwsh'
     }
   },
   {
@@ -198,21 +198,6 @@ lazy.setup({
     },
   },
   { 'echasnovski/mini.nvim',      version = '*' },
-  {
-    'ahmedkhalf/project.nvim',
-    version = '*',
-    config = function()
-      require('project_nvim').setup({
-        sync_root_with_cwd = true,
-        respect_buf_cwd = true,
-        update_focused_file = {
-          enable = true,
-          update_root = true
-        },
-        patterns = { '.git', '_darcs', '.hg', '.bzr', '.svn', 'Makefile', 'package.json', '.luarc.json', 'Cargo.toml' },
-      })
-    end
-  },
   -- Language support
   {
     'stevearc/conform.nvim',
@@ -322,8 +307,6 @@ Hints.setup({
     vim.g.mapleader,
   }
 })
-
-require('telescope').load_extension('projects')
 
 vim.g.undotree_DiffCommand = 'FC'
 Dap = require('dap')

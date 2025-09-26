@@ -3,6 +3,7 @@ vim.opt.smartcase = true -- Searches case sensitive only when there are multi-ca
 vim.opt.expandtab = true -- Tabs as spaces
 vim.opt.wrap = false -- Don't wrap long lines
 vim.opt.splitright = true
+-- vim.cmd("set autochdir")
 vim.g.mapleader = ' ' -- Set mapleader to space
 vim.g.c_syntax_for_h = true;
 vim.opt.filetype = 'on'
