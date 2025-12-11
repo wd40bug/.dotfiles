@@ -26,11 +26,8 @@ Dap.configurations.c = {
     program = function()
       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
     end,
-    -- args = {},
-    -- cwd = '${workspaceFolder}',
-    -- stopAtBeginningOfMainSubprogram = true,
-    -- console = 'integratedTerminal',
-    -- externalConsole = true,
+    cwd = '${workspaceFolder}',
+    stopAtBeginningOfMainSubprogram = true,
   },
   {
     name = 'Select and attach to process',

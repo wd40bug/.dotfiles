@@ -207,6 +207,10 @@ lazy.setup({
   },
   { 'echasnovski/mini.nvim',      version = '*' },
   -- Language support
+  System == 'termux' and {
+    'mason-org/mason.nvim',
+    opts = {}
+  } or nil,
   {
     'stevearc/conform.nvim',
     opts = {
