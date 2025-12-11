@@ -210,7 +210,7 @@ lazy.setup({
   System == 'termux' and {
     'mason-org/mason.nvim',
     opts = {}
-  } or nil,
+  } or {},
   {
     'stevearc/conform.nvim',
     opts = {
