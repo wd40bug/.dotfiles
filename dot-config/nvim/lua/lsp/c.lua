@@ -8,18 +8,19 @@ Lspconfig.clangd.setup({
     vim.keymap.set('n', '<leader>i', function()
       vim.cmd.ClangdTypeHierarchy()
     end, { buffer = bufnr, desc = 'Class Type Hierarchy' })
-  end
+  end,
+  -- cmd = {'clangd', '--query-driver=~/Downloads/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-gcc'}
 })
 
 Dap.adapters.gdb = {
   type = 'executable',
   command = 'gdb',
-  args = { '--interpreter=dap', '--eval-command', 'set print pretty on' }
+  args = { '--interpreter=dap', '--eval-command', 'set print pretty on' },
 }
 
 Dap.configurations.c = {
   {
-    name = 'Launch',
+    name = 'Run Executable',
     type = 'gdb',
     request = 'launch',
     program = function()

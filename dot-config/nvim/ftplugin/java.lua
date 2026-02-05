@@ -8,6 +8,28 @@ local bundles = {
 };
 vim.list_extend(bundles, vim.split(vim.fn.glob('~/repos/vscode-java-test/server/*.jar', true), '\n'))
 
+-- runtimes
+---@type table<SystemType, table>
+local runtimes_dict = {
+  termux = {
+    {
+      name = 'JavaSE-21',
+      path = '/data/data/com.termux/files/usr/lib/jvm/java-21-openjdk'
+    },
+    {
+      name = 'JavaSE-17',
+      path = '/data/data/com.termux/files/usr/lib/jvm/java-17-openjdk'
+    },
+  },
+  ubuntu = {
+    {
+      name = 'JavaSE-21',
+      path = "/usr/lib/jvm/java-21-openjdk-amd64"
+    }
+  }
+}
+
+
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
   -- The command that starts the language server
@@ -36,16 +58,7 @@ local config = {
         enabled = true
       },
       configuration = {
-        runtimes = {
-          {
-            name = 'JavaSE-21',
-            path = '/data/data/com.termux/files/usr/lib/jvm/java-21-openjdk'
-          },
-          {
-            name = 'JavaSE-17',
-            path = '/data/data/com.termux/files/usr/lib/jvm/java-17-openjdk'
-          },
-        }
+        runtimes = runtimes_dict[System]
       },
       inlayhints = {
         parameterNames = {

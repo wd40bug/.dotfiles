@@ -84,6 +84,9 @@ lazy.setup({
       require 'startup'.setup({ theme = 'startify' })
     end
   },
+  {
+    'HiPhish/rainbow-delimiters.nvim'
+  },
   -- Tools
   { 'tpope/vim-fugitive' },
   { 'tpope/vim-repeat' },
@@ -194,6 +197,11 @@ lazy.setup({
       on_dir_changed = {
         enabled = true,
         use_ui_select = false
+      },
+      trust_on_write = true,
+      use_telescope = true,
+      lsp = {
+        auto_setup = true,
       }
     },
   },
@@ -202,12 +210,12 @@ lazy.setup({
   System == 'termux' and {
     'mason-org/mason.nvim',
     opts = { PATH = 'append' }
-  } or nil,
+  } or {},
   {
     'stevearc/conform.nvim',
     opts = {
-      format_by_ft = {
-        xml = 'xmlformat',
+      formatters_by_ft = {
+        xml = { 'xmlformat' },
         python = { 'ruff_format' },
         c = { 'clang-format' },
         json = { 'jq' },
@@ -298,7 +306,7 @@ lazy.setup({
   { 'mfussenegger/nvim-dap' },
   {
     'rcarriga/nvim-dap-ui',
-    opts = {},
+    -- opts = {},
     dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' }
   },
   { 'theHamsta/nvim-dap-virtual-text' },
@@ -313,5 +321,7 @@ Hints.setup({
 })
 
 vim.g.undotree_DiffCommand = 'FC'
+
+require('dapui').setup()
 Dap = require('dap')
 Dap.set_log_level('TRACE')
