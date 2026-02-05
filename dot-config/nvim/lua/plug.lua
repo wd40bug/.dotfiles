@@ -201,7 +201,7 @@ lazy.setup({
   -- Language support
   System == 'termux' and {
     'mason-org/mason.nvim',
-    opts = {}
+    opts = { PATH = 'append' }
   } or nil,
   {
     'stevearc/conform.nvim',
