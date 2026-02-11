@@ -1,3 +1,6 @@
-Lspconfig.kotlin_language_server.setup{
-  capabilities = Lsp_capabilities
-}
+vim.lsp.config('kotlin_language_server',{
+    capabilities = Lsp_capabilities
+  }
+)
+
+vim.lsp.enable('kotlin_language_server')

@@ -1,4 +1,4 @@
-Lspconfig.pyright.setup({
+vim.lsp.config('pyright',{
   capabilities = Lsp_capabilities,
   settings = {
     python = {
@@ -6,3 +6,5 @@ Lspconfig.pyright.setup({
     }
   }
 })
+
+vim.lsp.enable('pyright')

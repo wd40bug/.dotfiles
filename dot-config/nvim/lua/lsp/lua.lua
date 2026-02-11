@@ -1,6 +1,6 @@
 -- https://luals.github.io/wiki/settings/
 
-Lspconfig.lua_ls.setup({
+vim.lsp.config('lua_ls',{
   capabilities = Lsp_capabilities,
   settings = {
     Lua = {
@@ -18,6 +18,8 @@ Lspconfig.lua_ls.setup({
   }
 })
 
+vim.lsp.enable('lua_ls')
+
 Luasnip.add_snippets('lua', {
   Luasnip.snippet(
     '---@type', {
@@ -26,3 +28,4 @@ Luasnip.add_snippets('lua', {
     }
   )
 })
+

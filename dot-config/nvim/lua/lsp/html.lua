@@ -1,4 +1,4 @@
-Lspconfig.html.setup({
+vim.lsp.config('html',{
   capabilities = Lsp_capabilities,
   cmd = { 'html-languageserver', '--stdio' },
   init_options = {
@@ -10,3 +10,5 @@ Lspconfig.html.setup({
   },
   settings = {}
 })
+
+vim.lsp.enable('html')

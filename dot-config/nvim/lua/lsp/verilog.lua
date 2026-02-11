@@ -1,4 +1,4 @@
-Lspconfig.verible.setup({
+vim.lsp.config('verible',{
   capabilities = Lsp_capabilities,
   cmd = {'verible-verilog-ls', '--rules_config_search'},
 })
@@ -8,3 +8,5 @@ Lspconfig.verible.setup({
 -- -always-comb
 -- -explicit-parameter-storage-type
 -- -unpacked-dimensions-range-ordering
+--
+vim.lsp.enable('verible')

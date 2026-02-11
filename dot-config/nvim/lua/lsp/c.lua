@@ -1,4 +1,4 @@
-Lspconfig.clangd.setup({
+vim.lsp.config('clangd',{
   capabilities = Lsp_capabilities,
   on_attach = function(client, bufnr)
     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
@@ -11,6 +11,8 @@ Lspconfig.clangd.setup({
   end,
   -- cmd = {'clangd', '--query-driver=~/Downloads/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-gcc'}
 })
+
+vim.lsp.enable('clangd')
 
 Dap.adapters.gdb = {
   type = 'executable',
@@ -53,3 +55,4 @@ Dap.configurations.c = {
     cwd = '${workspaceFolder}'
   },
 }
+
