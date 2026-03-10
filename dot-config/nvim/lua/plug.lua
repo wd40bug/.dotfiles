@@ -38,9 +38,13 @@ lazy.opts = {
 }
 
 lazy.setup({
-  -- Libraries
+
+
+  --  Libraries : ---------------------------------------------------------------------- (section)  --
   { 'nvim-lua/plenary.nvim' },
-  -- Visuals
+  --  (section) ---------------------------------------------------------------------- : Libraries  --
+
+  --  Visuals : ------------------------------------------------------------------------ (section)  --
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' }
@@ -87,17 +91,41 @@ lazy.setup({
   {
     'HiPhish/rainbow-delimiters.nvim'
   },
-  -- Tools
+
+  --  (section) ------------------------------------------------------------------------ : Visuals  --
+
+
+  --  General Tools : ------------------------------------------------------------------ (section)  --
+  {
+    'YUSHACOD/sections.nvim',
+    config = function()
+      require('sections').setup({
+        -- all options are optional; these are the defaults
+        marker = '(section)',
+        width = 100,
+        keymaps = {
+          next = ']s',
+          prev = '[s',
+          ['end'] = '<leader>es',
+          create = '<leader>sc',
+          jump = '<leader>sj',
+          delete = '<leader>sd',
+          telescope = '<leader>ss',
+        },
+        textobjects = true,
+        commands = true,
+        wrap_navigation = false,
+      })
+    end,
+  },
   { 'tpope/vim-fugitive' },
   { 'tpope/vim-repeat' },
   { 'tpope/vim-sleuth' },
-  { 'numToStr/Comment.nvim', opts = {} },
   {
     'folke/todo-comments.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
     opts = {}
   },
-  { 'tpope/vim-surround' },
   {
     'akinsho/toggleterm.nvim',
     opts = {
@@ -155,6 +183,19 @@ lazy.setup({
     }
   },
   {
+    'ThePrimeagen/refactoring.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-treesitter/nvim-treesitter',
+    },
+    lazy = false,
+    opts = {},
+  },
+  { 'numToStr/Comment.nvim', opts = {} },
+
+  { 'tpope/vim-surround' },
+
+  {
     'sudormrfbin/cheatsheet.nvim',
     dependencies = {
       'nvim-telescope/telescope.nvim',
@@ -206,12 +247,111 @@ lazy.setup({
     },
   },
   { 'echasnovski/mini.nvim',      version = '*' },
-  -- Language support
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    ft = { 'markdown', 'codecompanion' }
+  },
+  {
+    'HakonHarnes/img-clip.nvim',
+    opts = {
+      filetypes = {
+        codecompanion = {
+          prompt_for_file_name = false,
+          template = '[Image]($FILE_PATH)',
+          use_absolute_path = true,
+        },
+      },
+    },
+  },
+
+  --  (section) ------------------------------------------------------------------ : General Tools  --
+
+  --  Language Support : --------------------------------------------------------------- (section)  --
   System == 'termux' and {
     'mason-org/mason.nvim',
     opts = { PATH = 'append' }
   } or {},
-  --- AI
+  {
+    'stevearc/conform.nvim',
+    opts = {
+      formatters_by_ft = {
+        xml = { 'xmlformat' },
+        python = { 'ruff_format' },
+        c = { 'clang-format' },
+        json = { 'jq' },
+      }
+    },
+  },
+  {
+    'folke/lazydev.nvim',
+    -- ft = 'lua', -- only load on lua files
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+        'lazy.nvim',
+      },
+
+    },
+  },
+  {
+    'Bilal2453/luvit-meta',
+    lazy = true
+  },
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^6', -- Recommended
+    ft = { 'rust' },
+    lazy = false
+  },
+  {
+    'saecki/crates.nvim',
+    opts = {},
+  },
+  { 'p00f/clangd_extensions.nvim' },
+  {
+    'akinsho/flutter-tools.nvim',
+    lazy = false,
+    commit = '6610090a4e68d10fd73b68450004dafd26e7cc34',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+  },
+  { 'henry-hsieh/riscv-asm-vim',                  ft = { 'riscv_asm' } },
+  {
+    'mfussenegger/nvim-jdtls',
+    dependencies = {
+      'mfussenegger/nvim-dap',
+    }
+  },
+  {
+    'danymat/neogen',
+    config = true,
+    -- Uncomment next line if you want to follow only stable versions
+    -- version = "*"
+  },
+  {
+    'folke/trouble.nvim',
+    opts = {},
+    cmd = 'Trouble',
+    keys = {
+      {
+        '<leader>xx',
+        '<cmd>Trouble diagnostics toggle<cr>',
+        desc = 'Diagnostics (Trouble)',
+      },
+      {
+        '<leader>xb',
+        '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
+        desc = 'Buffer Diagnostics (Trouble)',
+      },
+    },
+  },
+
+  --  (section) --------------------------------------------------------------- : Language Support  --
+
+  --  AI : ----------------------------------------------------------------------------- (section)  --
   {
     'milanglacier/minuet-ai.nvim',
     config = function()
@@ -295,106 +435,17 @@ lazy.setup({
       },
     },
   },
-  {
-    'MeanderingProgrammer/render-markdown.nvim',
-    ft = { 'markdown', 'codecompanion' }
-  },
-  {
-    'HakonHarnes/img-clip.nvim',
-    opts = {
-      filetypes = {
-        codecompanion = {
-          prompt_for_file_name = false,
-          template = '[Image]($FILE_PATH)',
-          use_absolute_path = true,
-        },
-      },
-    },
-  },
-  {
-    'stevearc/conform.nvim',
-    opts = {
-      formatters_by_ft = {
-        xml = { 'xmlformat' },
-        python = { 'ruff_format' },
-        c = { 'clang-format' },
-        json = { 'jq' },
-      }
-    },
-  },
-  {
-    'folke/lazydev.nvim',
-    -- ft = 'lua', -- only load on lua files
-    opts = {
-      library = {
-        -- See the configuration section for more details
-        -- Load luvit types when the `vim.uv` word is found
-        { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
-        'lazy.nvim',
-      },
+  --  (section) ----------------------------------------------------------------------------- : AI  --
 
-    },
-  },
-  {
-    'Bilal2453/luvit-meta',
-    lazy = true
-  },
-  {
-    'mrcjkb/rustaceanvim',
-    version = '^6', -- Recommended
-    ft = { 'rust' },
-    lazy = false
-  },
-  {
-    'saecki/crates.nvim',
-    opts = {},
-  },
-  { 'p00f/clangd_extensions.nvim' },
-  {
-    'akinsho/flutter-tools.nvim',
-    lazy = false,
-    commit = '6610090a4e68d10fd73b68450004dafd26e7cc34',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-    },
-  },
-  { 'henry-hsieh/riscv-asm-vim',                  ft = { 'riscv_asm' } },
-  {
-    'mfussenegger/nvim-jdtls',
-    dependencies = {
-      'mfussenegger/nvim-dap',
-    }
-  },
-  {
-    'danymat/neogen',
-    config = true,
-    -- Uncomment next line if you want to follow only stable versions
-    -- version = "*"
-  },
-  {
-    'folke/trouble.nvim',
-    opts = {},
-    cmd = 'Trouble',
-    keys = {
-      {
-        '<leader>xx',
-        '<cmd>Trouble diagnostics toggle<cr>',
-        desc = 'Diagnostics (Trouble)',
-      },
-      {
-        '<leader>xb',
-        '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
-        desc = 'Buffer Diagnostics (Trouble)',
-      },
-    },
-  },
+  --  TreeSitter : --------------------------------------------------------------------- (section)  --
 
-  -- Treesitter
   { 'nvim-treesitter/nvim-treesitter' }, -- Parses code as AST
   { 'nvim-treesitter/nvim-treesitter-textobjects' },
   { 'RRethy/nvim-treesitter-textsubjects' },
+  --  (section) --------------------------------------------------------------------- : TreeSitter  --
 
-  -- LSP
+
+  --  LSP : ---------------------------------------------------------------------------- (section)  --
   { 'neovim/nvim-lspconfig' },
   {
     'hrsh7th/nvim-cmp',
@@ -421,7 +472,9 @@ lazy.setup({
     dependencies = { 'rafamadriz/friendly-snippets' }
   },
 
-  -- Debug
+  --  (section) ---------------------------------------------------------------------------- : LSP  --
+
+  --  Debugging : ---------------------------------------------------------------------- (section)  --
   { 'mfussenegger/nvim-dap' },
   {
     'rcarriga/nvim-dap-ui',
@@ -429,6 +482,8 @@ lazy.setup({
     dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' }
   },
   { 'theHamsta/nvim-dap-virtual-text' },
+
+  --  (section) ---------------------------------------------------------------------- : Debugging  --
 
 })
 
