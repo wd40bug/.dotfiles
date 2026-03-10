@@ -1,9 +1,14 @@
 -- https://luals.github.io/wiki/settings/
 
-vim.lsp.config('lua_ls',{
+vim.lsp.config('lua_ls', {
   capabilities = Lsp_capabilities,
   settings = {
     Lua = {
+      workspace = {
+        checkThirdParty = false,
+        -- REMOVE 'ignoreDir' or set it to an empty table
+        ignoreDir = {},
+      },
       format = {
         enable = true,
         defaultConfig = {
@@ -28,4 +33,3 @@ Luasnip.add_snippets('lua', {
     }
   )
 })
-

@@ -211,6 +211,106 @@ lazy.setup({
     'mason-org/mason.nvim',
     opts = { PATH = 'append' }
   } or {},
+  --- AI
+  {
+    'milanglacier/minuet-ai.nvim',
+    config = function()
+      require('minuet').setup {
+        -- Your configuration options here
+        cmp = {
+          enable_auto_complete = true,
+        },
+        virtualtext = {
+          auto_trigger_ft = {},
+          keymap = {
+            -- accept whole completion
+            accept = '<A-A>',
+            -- accept one line
+            accept_line = '<A-a>',
+            -- accept n lines (prompts for number)
+            -- e.g. "A-z 2 CR" will accept 2 lines
+            accept_n_lines = '<A-z>',
+            -- Cycle to prev completion item, or manually invoke completion
+            prev = '<A-[>',
+            -- Cycle to next completion item, or manually invoke completion
+            next = '<A-c>',
+            dismiss = '<A-e>',
+          },
+        },
+        provider = 'openai_fim_compatible',
+        n_completions = 1, -- recommend for local model for resource saving
+        -- I recommend beginning with a small context window size and incrementally
+        -- expanding it, depending on your local computing power. A context window
+        -- of 512, serves as an good starting point to estimate your computing
+        -- power. Once you have a reliable estimate of your local computing power,
+        -- you should adjust the context window to a larger value.
+        context_window = 512,
+        provider_options = {
+          openai_fim_compatible = {
+            -- For Windows users, TERM may not be present in environment variables.
+            -- Consider using APPDATA instead.
+            api_key = 'TERM',
+            name = 'Ollama',
+            end_point = 'http://localhost:11434/v1/completions',
+            model = 'qwen2.5-coder:3b',
+            optional = {
+              max_tokens = 56,
+              top_p = 0.9,
+            },
+          },
+        },
+      }
+    end,
+  },
+  {
+    'olimorris/codecompanion.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-treesitter/nvim-treesitter',
+    },
+    opts = {
+      interactions = {
+        chat = {
+          adapter = 'ollama',
+          model = 'deepseek-coder-v2:lite'
+        },
+        inline = {
+          adapter = 'ollama',
+          model = 'starcoder2:7b'
+        },
+        cmd = {
+          adapter = 'ollama',
+          model = 'starcoder2:7b'
+        },
+        background = {
+          adapter = {
+            name = 'ollama',
+            model = 'qwen2.5-coder:7b',
+          },
+        },
+      },
+      -- NOTE: The log_level is in `opts.opts`
+      opts = {
+        log_level = 'DEBUG', -- or "TRACE"
+      },
+    },
+  },
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    ft = { 'markdown', 'codecompanion' }
+  },
+  {
+    'HakonHarnes/img-clip.nvim',
+    opts = {
+      filetypes = {
+        codecompanion = {
+          prompt_for_file_name = false,
+          template = '[Image]($FILE_PATH)',
+          use_absolute_path = true,
+        },
+      },
+    },
+  },
   {
     'stevearc/conform.nvim',
     opts = {
@@ -224,7 +324,7 @@ lazy.setup({
   },
   {
     'folke/lazydev.nvim',
-    ft = 'lua', -- only load on lua files
+    -- ft = 'lua', -- only load on lua files
     opts = {
       library = {
         -- See the configuration section for more details
@@ -271,7 +371,23 @@ lazy.setup({
     -- Uncomment next line if you want to follow only stable versions
     -- version = "*"
   },
-
+  {
+    'folke/trouble.nvim',
+    opts = {},
+    cmd = 'Trouble',
+    keys = {
+      {
+        '<leader>xx',
+        '<cmd>Trouble diagnostics toggle<cr>',
+        desc = 'Diagnostics (Trouble)',
+      },
+      {
+        '<leader>xb',
+        '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
+        desc = 'Buffer Diagnostics (Trouble)',
+      },
+    },
+  },
 
   -- Treesitter
   { 'nvim-treesitter/nvim-treesitter' }, -- Parses code as AST
@@ -291,6 +407,9 @@ lazy.setup({
         name = 'lazydev',
         group_index = 0, -- set group index to 0 to skip loading LuaLS completions
       })
+      opts.sources.per_filetype = {
+        codecompanion = { 'codecompanion' },
+      }
     end
   },
   { 'hrsh7th/cmp-buffer' },
@@ -325,3 +444,7 @@ vim.g.undotree_DiffCommand = 'FC'
 require('dapui').setup()
 Dap = require('dap')
 Dap.set_log_level('TRACE')
+
+require('mini.diff').setup({
+
+})

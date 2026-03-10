@@ -9,7 +9,10 @@ vim.lsp.config('clangd',{
       vim.cmd.ClangdTypeHierarchy()
     end, { buffer = bufnr, desc = 'Class Type Hierarchy' })
   end,
-  -- cmd = {'clangd', '--query-driver=~/Downloads/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-gcc'}
+  cmd = {
+    'clangd',
+    '--query-driver=~/Downloads/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-gcc,/home/wd40bug/.platformio/packages/toolchain-xtensa-esp32*/bin/xtensa-esp32-elf-g++',
+  }
 })
 
 vim.lsp.enable('clangd')

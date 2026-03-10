@@ -4,7 +4,7 @@ Lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 Lsp_leader = 's'
 Hints.add_hint_key(Lsp_leader, false)
 
-require("luasnip.loaders.from_snipmate").lazy_load()
+require('luasnip.loaders.from_snipmate').lazy_load()
 require('luasnip.loaders.from_vscode').lazy_load()
 
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
@@ -65,7 +65,7 @@ cmp.setup({
     { name = 'nvim_lsp', keyword_length = 2 },
     { name = 'buffer',   keyword_length = 5 },
     { name = 'luasnip',  keyword_length = 0 },
-    { name = 'lazydev', group_index = 0}
+    { name = 'lazydev',  group_index = 0 }
   },
   window = {
     documentation = cmp.config.window.bordered()
@@ -177,41 +177,24 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.keymap.set(mode, lhs, rhs, opts)
     end
 
-    -- Displays hover information about the symbol under the cursor
-    bufmap('n', '<leader>k', '<cmd>lua vim.lsp.buf.hover()<cr>', 'Hover')
+    bufmap('n', 'K', vim.lsp.buf.hover, 'Hover')
+    bufmap('n', 'gd', vim.lsp.buf.definition, 'Go to definition')
+    bufmap('n', 'gD', vim.lsp.buf.declaration, 'Go to declaration')
+    bufmap('n', 'gi', vim.lsp.buf.implementation, 'List implementations')
+    bufmap('n', 'go', vim.lsp.buf.type_definition, 'Go to type definition')
+    bufmap('n', 'gr', vim.lsp.buf.references, 'List references')
+    bufmap('n', 'gs', vim.lsp.buf.signature_help, 'Show function signature')
+    bufmap('n', '<leader>rn', vim.lsp.buf.rename, 'Rename')
+    bufmap('n', '<leader>ca', vim.lsp.buf.code_action, 'Code action')
 
-    -- Jump to the definition
-    bufmap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', 'Go to definition')
-
-    -- Jump to declaration
-    bufmap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', 'Go to declaration')
-
-    -- Lists all the implementations for the symbol under the cursor
-    bufmap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', 'List implementations')
-
-    -- Jumps to the definition of the type symbol
-    bufmap('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', 'Go to type definition')
-
-    -- Lists all the references
-    bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', 'List references')
-
-    -- Displays a function's signature information
-    bufmap('n', '<leader>s', '<cmd>lua vim.lsp.buf.signature_help()<cr>', 'Show function signature')
-
-    -- Renames all references to the symbol under the cursor
-    bufmap('n', '<leader>r', '<cmd>lua vim.lsp.buf.rename()<cr>', 'Rename')
-
-    -- Selects a code action available at the current cursor position
-    bufmap('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<cr>', 'Code action')
-
-    -- Show diagnostics in a floating window
-    bufmap('n', '<leader>l', '<cmd>lua vim.diagnostic.open_float()<cr>', 'Diagnostic')
-
-    -- Move to the previous diagnostic
-    bufmap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', 'Go to prev. diagnostic')
-
-    -- Move to the next diagnostic
-    bufmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', 'Go to next diagnostic')
+    -- Diagnostic Mappings
+    bufmap('n', '<leader>d', vim.diagnostic.open_float, 'Show line diagnostics')
+    bufmap('n', '[d', function()
+      vim.diagnostic.jump({ count = -1, float = true })
+    end, 'Go to prev. diagnostic')
+    bufmap('n', ']d', function()
+      vim.diagnostic.jump({ count = 1, float = true })
+    end, 'Go to next diagnostic')
 
     Hints.add_hint_key('g', true)
     Hints.add_hint_key('[', true)
@@ -228,6 +211,25 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
     end, {})
   end
 })
+vim.api.nvim_create_user_command('LspLog', function()
+  local log_path = vim.lsp.log.get_filename()
+  vim.cmd('vsplit ' .. log_path)
+end, {})
+
+vim.api.nvim_create_user_command('LspRestart', function()
+  local curr_buf = vim.api.nvim_get_current_buf()
+  local clients = vim.lsp.get_clients({ bufnr = curr_buf })
+
+  for _, client in ipairs(clients) do
+    client:stop()
+  end
+
+  vim.schedule(function()
+    vim.cmd('edit')
+  end)
+
+  print('LSP Restarted')
+end, {})
 -- LSP setups
 require('lsp.rust')
 require('lsp.lua')

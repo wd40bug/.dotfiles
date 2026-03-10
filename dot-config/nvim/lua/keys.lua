@@ -100,7 +100,7 @@ Dap.listeners.before.event_exited.dapui_config = function()
 end
 
 -- Other
-vim.keymap.set({'n', 'v'}, '<leader>f', function()
+vim.keymap.set({ 'n', 'v' }, '<leader>f', function()
   require('conform').format({ lsp_format = 'fallback' })
 end, { desc = 'Format buffer' }) -- Format
 
@@ -110,5 +110,14 @@ end, { desc = 'Clear previous search' })
 
 vim.keymap.set('n', '<F4>', vim.cmd.UndotreeToggle)
 vim.keymap.set('n', '<leader>`', vim.cmd.Oil, { desc = 'Open the oil file explorer' })
-vim.keymap.set('n', '<leader>m', ':Startup display<CR>', {desc = 'Main menu'})
-vim.keymap.set('n', '<leader>d', ':Neogen<CR>', {desc = 'Neogen documentation'})
+vim.keymap.set('n', '<leader>m', ':Startup display<CR>', { desc = 'Main menu' })
+vim.keymap.set('n', '<leader>d', ':Neogen<CR>', { desc = 'Neogen documentation' })
+
+-- CodeCompanion
+vim.keymap.set({ 'n', 'v' }, '<leader>l', '<Cmd>CodeCompanionActions<CR>',
+  { desc = 'Code Companion Pallette', noremap = true, silent = true })
+vim.keymap.set({ 'n', 'v' }, '<C-c>', '<cmd>CodeCompanionChat Toggle<cr>',
+  { noremap = true, silent = true, desc = 'Toggle Code Companion Chat' })
+vim.keymap.set("v", "<leader>la", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true, desc='Add selection into the current chat' })
+
+vim.cmd([[cab cc CodeCompanion]])
