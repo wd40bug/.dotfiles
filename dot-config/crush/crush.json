@@ -1,0 +1,21 @@
+{
+  "$schema": "https://charm.land/crush.json",
+  "providers": {
+    "ollama": {
+      "type": "openai",
+      "base_url": "http://localhost:11434/v1/",
+      "name": "Ollama",
+      "models": [
+        {
+          "id": "llama3.1:latest",
+          "name": "Llama 3.1 latest",
+          "context_window": 8192,
+          "default_max_tokens": 2048,
+          "cost_per_1m_in": 0,
+          "cost_per_1m_out": 0
+        }
+      ]
+    }
+  },
+  "default_model": "llama3.1:latest"
+}
