@@ -114,10 +114,10 @@ vim.keymap.set('n', '<leader>m', ':Startup display<CR>', { desc = 'Main menu' })
 vim.keymap.set('n', '<leader>d', ':Neogen<CR>', { desc = 'Neogen documentation' })
 
 -- CodeCompanion
-vim.keymap.set({ 'n', 'v' }, '<leader>l', '<Cmd>CodeCompanionActions<CR>',
+vim.keymap.set({ 'n', 'v' }, '<leader>L', '<Cmd>CodeCompanionActions<CR>',
   { desc = 'Code Companion Pallette', noremap = true, silent = true })
 vim.keymap.set({ 'n', 'v' }, '<C-c>', '<cmd>CodeCompanionChat Toggle<cr>',
   { noremap = true, silent = true, desc = 'Toggle Code Companion Chat' })
-vim.keymap.set("v", "<leader>la", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true, desc='Add selection into the current chat' })
+vim.keymap.set("v", "<leader>La", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true, desc='Add selection into the current chat' })
 
 vim.cmd([[cab cc CodeCompanion]])

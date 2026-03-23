@@ -411,8 +411,8 @@ lazy.setup({
     opts = {
       interactions = {
         chat = {
-          adapter = 'ollama',
-          model = 'deepseek-coder-v2:lite'
+          adapter = 'gemini',
+          model = 'gemini-2.5-flash'
         },
         inline = {
           adapter = 'ollama',
@@ -478,7 +478,28 @@ lazy.setup({
   { 'mfussenegger/nvim-dap' },
   {
     'rcarriga/nvim-dap-ui',
-    -- opts = {},
+    opts = {
+      layouts = {
+        {
+          elements = {
+            { id = 'scopes',      size = 0.25 },
+            { id = 'breakpoints', size = 0.25 },
+            { id = 'stacks',      size = 0.25 },
+            { id = 'watches',     size = 0.25 },
+          },
+          position = 'left',
+          size = 40,
+        },
+        {
+          elements = {
+            { id = 'repl',    size = 0.5 },
+            { id = 'console', size = 0.5 }, -- <--- Ensure this is here!
+          },
+          position = 'bottom',
+          size = 10,
+        },
+      },
+    },
     dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' }
   },
   { 'theHamsta/nvim-dap-virtual-text' },

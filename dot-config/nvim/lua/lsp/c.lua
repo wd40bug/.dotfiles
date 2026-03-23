@@ -1,4 +1,4 @@
-vim.lsp.config('clangd',{
+vim.lsp.config('clangd', {
   capabilities = Lsp_capabilities,
   on_attach = function(client, bufnr)
     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
@@ -24,6 +24,18 @@ Dap.adapters.gdb = {
 }
 
 Dap.configurations.c = {
+  {
+    name = 'Run Executable (Integrated Console)',
+    type = 'gdb',
+    request = 'launch',
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopAtBeginningOfMainSubprogram = false,
+    -- Use the integrated terminal instead of an external one
+    console = 'integratedTerminal',
+  },
   {
     name = 'Run Executable',
     type = 'gdb',
@@ -58,4 +70,3 @@ Dap.configurations.c = {
     cwd = '${workspaceFolder}'
   },
 }
-

@@ -183,12 +183,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
     bufmap('n', 'gi', vim.lsp.buf.implementation, 'List implementations')
     bufmap('n', 'go', vim.lsp.buf.type_definition, 'Go to type definition')
     bufmap('n', 'gr', vim.lsp.buf.references, 'List references')
-    bufmap('n', 'gs', vim.lsp.buf.signature_help, 'Show function signature')
-    bufmap('n', '<leader>rn', vim.lsp.buf.rename, 'Rename')
-    bufmap('n', '<leader>ca', vim.lsp.buf.code_action, 'Code action')
+    bufmap('n', '<leader>s', vim.lsp.buf.signature_help, 'Show function signature')
+    bufmap('n', '<leader>r', vim.lsp.buf.rename, 'Rename')
+    bufmap('n', '<leader>a', vim.lsp.buf.code_action, 'Code action')
 
     -- Diagnostic Mappings
-    bufmap('n', '<leader>d', vim.diagnostic.open_float, 'Show line diagnostics')
+    bufmap('n', '<leader>l', vim.diagnostic.open_float, 'Show line diagnostics')
     bufmap('n', '[d', function()
       vim.diagnostic.jump({ count = -1, float = true })
     end, 'Go to prev. diagnostic')
