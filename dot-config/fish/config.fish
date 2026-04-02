@@ -1,6 +1,6 @@
 set -gx SYSTEM $(ccat ~/.system )
 
-if test "$SYSTEM" = ubuntu
+if test "$SYSTEM" = ubuntu -o "$SYSTEM" = opensuse
     bass source /etc/profile
 
     ~/.local/bin/mise activate fish | source
