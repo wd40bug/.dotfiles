@@ -12,7 +12,8 @@ else
 end
 
 if status is-interactive
-    oh-my-posh init fish --config ~/.mytheme.toml | source
+    # oh-my-posh init fish --config ~/.mytheme.toml | source
+    starship init fish | source
     function set_poshcontext
         set -gx COLS (tput cols)
     end

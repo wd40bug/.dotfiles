@@ -70,6 +70,20 @@ final_space = true
       style = 'folder'
 
   [[blocks.segments]]
+    template= '{{if atoi .Env.COLS | lt 75}}{{.ChangeID}}{{if .Working.Changed}}{{ .Working.String }}{{ end }}{{end}}'
+    type = "jujutsu"
+    style = "powerline"
+    powerline_symbol = ""
+    foreground = "#193549"
+    background = "#ffeb3b"
+
+    [options]
+    fetch_status = true
+    ignore_working_copy = false
+    fetch_ahead_counter = true
+    ahead_icon = "⇡"
+
+  [[blocks.segments]]
     template = '{{if atoi .Env.COLS | lt 75}} {{ if .UpstreamURL }}{{ url .UpstreamIcon .UpstreamURL }} {{ end }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }} {{end}}'
     foreground = 'p:text'
     powerline_symbol = ''
