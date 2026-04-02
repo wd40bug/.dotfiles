@@ -26,3 +26,4 @@ windows
 windows_terminal_settings.json
 .*\.py
 __pycache__
+\.jj
