@@ -1,0 +1,96 @@
+module_separator = " "
+reset_color = false
+
+[bookmarks]
+search_depth = 100
+exclude = []
+
+[[module]]
+type = "Symbol"
+symbol = "🥋"
+bg_color.TrueColor = [249, 226, 175]
+# color = "Blue"
+
+[[module]]
+type = "Bookmarks"
+separator = " "
+color.TrueColor = [173, 0, 200]
+behind_symbol = "⇡"
+surround_with_quotes = true
+ignore_empty_commits = "None"
+bg_color.TrueColor = [249, 226, 175]
+
+[[module]]
+type = "Commit"
+color = "Black"
+previous_message_symbol = "⇣"
+max_length = 24
+show_previous_if_empty = false
+empty_text = "(no description set)"
+surround_with_quotes = true
+bg_color.TrueColor = [249, 226, 175]
+
+[module.non_unique]
+color = "Black"
+bg_color.TrueColor = [249, 226, 175]
+
+[[module]]
+type = "State"
+separator = " "
+bg_color.TrueColor = [249, 226, 175]
+
+[module.conflict]
+disabled = false
+text = "(CONFLICT)"
+color = "Red"
+bg_color.TrueColor = [249, 226, 175]
+
+[module.divergent]
+disabled = false
+text = "(DIVERGENT)"
+color = "Cyan"
+bg_color.TrueColor = [249, 226, 175]
+
+[module.empty]
+disabled = false
+text = "(EMPTY)"
+color.TrueColor = [200, 113, 0]
+bg_color.TrueColor = [249, 226, 175]
+
+[module.immutable]
+disabled = false
+text = "(IMMUTABLE)"
+color.TrueColor = [200, 113, 0]
+bg_color.TrueColor = [249, 226, 175]
+
+[module.hidden]
+disabled = false
+text = "(HIDDEN)"
+color.TrueColor = [200, 113, 0]
+bg_color.TrueColor = [249, 226, 175]
+
+[[module]]
+type = "Metrics"
+template = "[{changed} {added}{removed}]"
+hide_if_empty = false
+color = "Magenta"
+bg_color.TrueColor = [249, 226, 175]
+
+[module.changed_files]
+prefix = ""
+suffix = ""
+color.TrueColor = [0, 0, 255]
+bg_color.TrueColor = [249, 226, 175]
+
+[module.added_lines]
+prefix = "+"
+suffix = ""
+# color = "Green"
+bg_color.TrueColor = [249, 226, 175]
+color.TrueColor = [0, 255, 0]
+
+[module.removed_lines]
+prefix = "-"
+suffix = ""
+color = "Red"
+bg_color.TrueColor = [249, 226, 175]
