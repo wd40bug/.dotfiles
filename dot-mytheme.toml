@@ -125,7 +125,8 @@ final_space = true
     style = 'powerline'
 
   [[blocks.segments]]
-    template = '{{if atoi .Env.COLS | lt 75}}  {{ .Full }} {{end}}'
+    template = '{{if atoi .Env.COLS | lt 75}} {{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{end}}'
+    fetch_virtual_env = true
     foreground = '#100e23'
     powerline_symbol = ''
     background = '#906cff'
