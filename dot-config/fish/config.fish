@@ -3,7 +3,6 @@ set -gx SYSTEM $(ccat ~/.system )
 if test "$SYSTEM" = ubuntu
     bass source /etc/profile
 
-    eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
     ~/.local/bin/mise activate fish | source
 else
     pyenv init - | source
@@ -17,6 +16,4 @@ if status is-interactive
     function set_poshcontext
         set -gx COLS (tput cols)
     end
-
-    thefuck --alias | source
 end
