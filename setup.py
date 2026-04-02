@@ -1,11 +1,12 @@
 import os
 from typing import assert_never, cast, Literal, get_args
 import inquirer
+from opensuse import opensuse
 from windows import windows
 from ubuntu import ubuntu
 from termux import termux
 
-System = Literal["windows", "ubuntu", "termux"]
+System = Literal["windows", "ubuntu", "termux", "opensuse"]
 
 questions = [
     inquirer.List(
@@ -29,6 +30,8 @@ match system:
         termux()
     case "ubuntu":
         ubuntu()
+    case "opensuse":
+        opensuse()
     case _: 
         assert_never(system)
 
