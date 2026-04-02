@@ -17,4 +17,5 @@ if status is-interactive
     function set_poshcontext
         set -gx COLS (tput cols)
     end
+    zoxide init fish --cmd cd | source
 end
